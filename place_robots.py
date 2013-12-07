@@ -31,7 +31,7 @@ def smallest_enclosing_circle(points):
     with the minimal radius.
     """
     
-    def 
+    pass 
     
 
 ###
@@ -56,7 +56,7 @@ def generate_point_boxed(min_x, min_y, max_x, max_y):
     return generate_point(x_min, y_min, x_max, y_max)
 
 def generate_first_robot():
-    return generate_point(0,1,0,1)
+    return generate_point(0,0,10000,10000)
 
 def generate_data():
     data = np.zeros((N,2), int)
@@ -81,6 +81,14 @@ def generate_data():
     
     return data
 
+def normalize_data(points):
+    min_x, min_y = np.amin(points, axis=0)
+    normalized = np.zeros_like(points)
+    for i, (p_x, p_y) in enumerate(points):
+        normalized[i][0] = p_x - min_x
+        normalized[i][1] = p_y - min_y
+    return normalized
+
 ##
 # Graphics
 ##
@@ -102,5 +110,6 @@ def plot(data):
     plt.plot(*np.transpose(data), marker='o', color='r', ls='')
     
 if __name__ == "__main__":         
-    data = generate_data()
-    plot(data)
+    points = generate_data()
+    normalized_data = normalize_data(points)
+    plot(normalized_data)
