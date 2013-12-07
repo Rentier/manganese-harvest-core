@@ -108,6 +108,7 @@ def plot(data):
         fig.gca().add_artist(circle)
     
     plt.plot(*np.transpose(data), marker='o', color='r', ls='')
+    plt.show()
     
 if __name__ == "__main__":         
     points = generate_data()
