@@ -6,9 +6,7 @@ import matplotlib.pyplot as plt
 # Constants
 ##
 
-N = 100 # Number of robots
 MAX_DISTANCE = 200
-FRAMES = 30
 
 ##
 # Helper functions
@@ -58,8 +56,8 @@ def generate_point_boxed(min_x, min_y, max_x, max_y):
 def generate_first_robot():
     return generate_point(0,0,10000,10000)
 
-def generate_data():
-    data = np.zeros((N,2), int)
+def generate_data(number):
+    data = np.zeros((number,2), int)
     data[0,0], data[0,1] = generate_first_robot()
     
     # Keeps the coordinates of the box
@@ -67,7 +65,7 @@ def generate_data():
     min_x, min_y = np.amin(data, axis=0)
     max_x, max_y = np.amax(data, axis=0)
     
-    for i in range(1, N):               
+    for i in range(1, number):               
         while True:
             p = generate_point_boxed(min_x, min_y, max_x, max_y)
             nearest = nearest_neighbour(data[:i], p)
@@ -78,16 +76,7 @@ def generate_data():
         
         min_x, min_y = np.amin(data, axis=0)
         max_x, max_y = np.amax(data, axis=0)
-    
     return data
-
-def normalize_data(points):
-    min_x, min_y = np.amin(points, axis=0)
-    normalized = np.zeros_like(points)
-    for i, (p_x, p_y) in enumerate(points):
-        normalized[i][0] = p_x - min_x
-        normalized[i][1] = p_y - min_y
-    return normalized
 
 ##
 # Graphics
