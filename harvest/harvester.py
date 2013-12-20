@@ -1,8 +1,6 @@
 from harvest.agents import *
 from harvest.environments import *
 
-from harvest.place_robots import generate_data
-
 class Harvester():
     
     def __init__(self, field, agent, time, animator=None):
