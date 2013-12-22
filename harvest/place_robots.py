@@ -3,32 +3,8 @@ import scipy.spatial
 import matplotlib.pyplot as plt
 
 from harvest.distance import euclidean_distance as distance
-
-##
-# Constants
-##
-
-MAX_DISTANCE = 200
-
-def nearest_neighbour(points, p):
-	""" Returns the nearest number of p in
-	a set of points
-	"""
-	index = np.argmin([distance(p,x) for x in points])
-	return points[index]
-
-def smallest_enclosing_circle(points):
-	""" Solution of the Minimal Enclosing Circle problem.
-	Calculates radius and centre of the circle which
-	contains all points on its borders or its area
-	with the minimal radius.
-	"""
-	
-	pass 
-
-###
-# Generate stuff
-##
+from harvest.util import nearest_neighbour
+from harvest.constants import MAX_DISTANCE
 
 def generate_point(x_min, y_min, x_max, y_max):
 	x = np.random.random_integers(x_min,x_max,1)

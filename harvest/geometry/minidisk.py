@@ -9,6 +9,17 @@ class UndefinedCircle():
     def __contains__(self, item): return False   
 
 def minidisk(points, Circle):
+    """
+    Solution of the Minimal Enclosing Circle problem.
+    
+    Calculates radius and centre of the circle which
+	contains all points on its borders or its area
+	with the minimal radius. The implemented algorithm
+    to solve this problem can be found in
+
+    'Smallest enclosing disks (balls and ellipsoids)'
+    from Emo Welzl   
+    """
     
     def empty(P):
         """ Checks whether a given set P is emtpy """

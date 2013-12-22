@@ -31,7 +31,7 @@ class PrintAnimator():
     
         fig  = plt.figure()
         axis = plt.gca() 
-        line, = axis.plot([], [], linestyle='none', marker='o', color='r', zorder=42)
+        line, = axis.plot([], [], linestyle='none', marker='o', color='r', ms=3., zorder=42)
 
         axis.set_xlim([xmid-border, xmid+border])    
         axis.set_ylim([ymid-border, ymid+border])
