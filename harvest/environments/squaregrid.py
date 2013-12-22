@@ -21,6 +21,7 @@ class SquareGrid(Field):
     
     def move_robot(self, robot, p):
         assert self.distance(robot,p) <= 1
+        self.collected[tuple(p)] = True
         robot[0], robot[1] = p
         
     def has_robot(self, p):
@@ -29,5 +30,5 @@ class SquareGrid(Field):
     def distance(self, p, q):
         return taxicab_distance(p, q)
     
-    def is_harvested(self, ):
+    def is_harvested(self, p):
         return self.collected.get(tuple(p), False)

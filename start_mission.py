@@ -80,4 +80,4 @@ if __name__ == '__main__':
     animator = PrintAnimator(goal)
     harvester = Harvester(field, agent, mission_time, animator)
     harvester.play()
-    animator.movietime(vid=True)
+    animator.movietime(vid=False)
