@@ -1,0 +1,1 @@
+MAX_DISTANCE = 200
