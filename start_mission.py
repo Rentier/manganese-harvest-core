@@ -69,15 +69,21 @@ class PrintAnimator():
                 
 
 if __name__ == '__main__':
-    robots = place_robots(10)
+    ROBOT_CNT = 10
+    robots = place_robots(ROBOT_CNT)
     field = SquareGrid(robots)
     points = [ (x,y) for x,y in robots ]
     circle = minidisk(frozenset(points), TaxicabCircle)
     mission_time = int( np.ceil(circle.r) )
+    #mission_time *= 2
 
     goal = circle.center()
-    agent = RandomAgent(goal)
+    agent = LogicalAgent(goal)
+    #agent = RandomAgent(goal)
     animator = PrintAnimator(goal)
     harvester = Harvester(field, agent, mission_time, animator)
     harvester.play()
+    print "Mission Time: ", mission_time
+    print "Score: ", len(field.collected)
+    print "% harvested: ", len(field.collected) / float(mission_time * ROBOT_CNT)
     animator.movietime(vid=False)
