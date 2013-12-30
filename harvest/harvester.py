@@ -12,7 +12,7 @@ class Harvester():
     def play(self):
         for t in reversed(xrange(1, self.time)):
             self.update(t)
-            if self.animator: self.animator.on_update(self.field)
+            if self.animator: self.animator.on_update(self.field, self.time - t - 1)
             
     def update(self,t ):
         # Thank you Mr Asimov        
