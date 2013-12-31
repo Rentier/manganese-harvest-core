@@ -36,7 +36,7 @@ def positions_from_file(path):
         data = np.empty([n, 2], dtype=int)
         
         for i, line in enumerate(f):
-            p = [int(i) for i in line.split()]
+            p = [int(n) for n in line.split()]
             assert len(p) == 2
             data[i,0], data[i,1] = p
 
