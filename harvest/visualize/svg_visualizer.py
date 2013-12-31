@@ -1,6 +1,8 @@
 import numpy as np
 import svgwrite
 
+from scipy.spatial import KDTree 
+
 from harvest.visualize.visualizer import Visualizer
 
 class SvgVisualizer(Visualizer):
@@ -9,6 +11,7 @@ class SvgVisualizer(Visualizer):
         pass
 
     def visualize(self, **kwargs):
+        print "goal: ", self.goal
         for z in zip(self.positions_x[-1], self.positions_y[-1]):
             print z
         return

@@ -37,7 +37,7 @@ if __name__ == '__main__':
     mission_time = int( np.ceil(circle.r) )
     #mission_time *= 2
 
-    goal = circle.center()
+    goal = np.rint(circle.center()).astype(int)
     agent = LogicalAgent(goal)
     #agent = RandomAgent(goal)
     #visualizer = PlotVisualizer(goal, ROBOT_CNT, mission_time)
