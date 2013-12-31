@@ -12,20 +12,21 @@ class Visualizer():
         """
         self.goal = goal
         self.n = n
-        self.t = t
+        self.t = t + 1
 
         # First dimension is time
         # Second dimension is robots
         # Third dimension is x and y
         # self.data[1][1] asks for the position of the second robot for t=1
-        self.positions = np.empty([t,n,2], dtype=int)
+        self.positions_x = np.empty([self.t,n], dtype=int)
+        self.positions_y = np.empty([self.t,n], dtype=int)
 
-        self.collected = np.empty(t, dtype=np.ndarray)
+        self.collected = np.empty(self.t, dtype=np.ndarray)
 
     def on_update(self, field, t):
-        self.positions[t] = field.robots.copy()
+        self.positions_x[t], self.positions_y[t] = field.robots.copy().T
         self.collected[t] = np.asarray(field.collected.keys())
 
-    def visualize(self):
+    def visualize(self, **kwargs):
         abstract()
 

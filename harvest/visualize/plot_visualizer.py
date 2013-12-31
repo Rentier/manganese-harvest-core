@@ -8,7 +8,7 @@ from harvest.visualize.visualizer import Visualizer
 
 class PlotVisualizer(Visualizer):
 
-    def visualize(self):
+    def visualize(self, **kwargs):
         self.do_animation(vid=False)
 
     def do_animation(self, vid=False, draw_paths=False):
@@ -41,7 +41,7 @@ class PlotVisualizer(Visualizer):
             return robots, harvested, patch
 
         def animate(i):
-            robots.set_data(self.positions[i].transpose())
+            robots.set_data(self.positions_x[i], self.positions_y[i])
             if draw_paths:
                 harvested.set_data(self.collected[i].transpose() if self.collected[i] is not None else ([], []))
             patch.radius = mission_time - i

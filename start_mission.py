@@ -24,6 +24,7 @@ def distance_constraint_holds(robots):
 if __name__ == '__main__':
     ROBOT_CNT = 10
     robots = place_robots(ROBOT_CNT)
+    #robots = positions_from_file('svg_test.txt')
     field = SquareGrid(robots)
     
     if not distance_constraint_holds(field):
@@ -39,7 +40,8 @@ if __name__ == '__main__':
     goal = circle.center()
     agent = LogicalAgent(goal)
     #agent = RandomAgent(goal)
-    visualizer = PlotVisualizer(goal, ROBOT_CNT, mission_time)
+    #visualizer = PlotVisualizer(goal, ROBOT_CNT, mission_time)
+    visualizer = SvgVisualizer(goal, ROBOT_CNT, mission_time)
     harvester = Harvester(field, agent, mission_time, visualizer)
     harvester.play()
     print "Mission Time: ", mission_time
