@@ -49,7 +49,5 @@ class PlotVisualizer(Visualizer):
             
         ani = animation.FuncAnimation(fig, animate, t, blit=True, init_func=init, repeat=False, interval=mission_time)
 
-        if vid:
-            ani.save('harvest.mp4', writer=animation.FFMpegFileWriter(), fps=30)
-        else:
-            plt.show()
+        plt.show()
+            

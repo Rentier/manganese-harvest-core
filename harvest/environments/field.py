@@ -25,7 +25,8 @@ class Field():
         """ Returns the number of steps required to reach q from p"""
         abstract()
         
-    def is_harvested(self, p):
+
+        -def is_harvested(self, p):
         """ Returns True when the tile at position p is harvested,
         i.e. empty, or False, when it is untouchd.
         """

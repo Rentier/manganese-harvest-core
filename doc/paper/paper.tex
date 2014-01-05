@@ -1,0 +1,239 @@
+\documentclass{article}
+
+\usepackage[ngerman]{babel} 
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+\begin{document}
+% Title page
+
+% ############################################
+\section{Problembeschreibung und -analyse}
+
+\subsection{Problembeschreibung}
+
+Die Hauptschwierigkeit des Problems liegt daran, dass es sich eigentlich
+um eine Kombination aus (mindestens) zwei Problemen handelen. Jedes Problem
+für sich ist gut beschrieben und gelöst worden, doch für alles gleichzeitig
+nicht.
+
+\begin{enumerate}
+\item Graph coloring - Visit stuff
+\item Evacuate 
+\end{enumerate}
+
+\subsection{Annahmen über das Problem}
+
+\begin{itemize}
+\item Roboter sind punktförmig
+\item Können in der Bewegung saugen
+\item Keine Beschränkung, wie viele Roboter sich in einem Punkt befinden
+\item Kommunikation ist instantan und ohne Berechnungszeit (Senden wie Empfangen)
+\item Kommunikation zwischen Robotern kann alles sein
+\item Roboter haben unbeschränkt viel Speicher
+\end{itemize}
+
+\subsection{Disclaimer}
+
+Einschränkungen nicht simuliert, aber deren Auswirkungen
+
+% ############################################
+\clearpage
+\section{Vorgehensmodell}
+
+\begin{itemize}
+\item Keep it simple
+\item Start with working prototype before you do srs stuff
+\item Getrennt marschieren, zusammen kämpfen (self contained subprograms, assemble at the end, bottom to top)
+\item ipython notebook
+\item using a lib before reinventing the wheel
+\item Optimize when needed, first correct and working, then fast
+\item 90 \% thinking, 10 \% coding
+\item Abstract away decisions not made or which might change (geometry, polygon, agent)
+\end{itemize}
+
+% ############################################
+\clearpage
+\section{Problembetrachtung}
+
+Das Problem kann unter vielen verschiedenen betrachtet 
+werden. Je nachdem, in welcher Domäne der Informatik
+es eingeordnet wird, gibt es unterschiedliche Lösungsansätze.
+
+In diesem Abschnitt wird kurz beschrieben, 
+
+\subsection{Graphenproblem}
+
+Suche
+
+\subsection{Optimierungsproblem}
+
+\subsection{Maschinenlernen}
+
+\subsection{Künstliche Intelligenz}
+
+
+
+% ############################################
+\clearpage
+\section{Umgebung}
+
+Die Modellierung des Meeresbodens hat zum Ziel, die folgenden 
+Fragen zu beantworten oder einen guten Kompromiss zu finden:
+
+\begin{enumerate}
+\item Wie lassen sich eine begrenzte Anzahl an Kreisen auf einer 
+unendlichen Fläche anorden, sodass die nicht von Kreisen bedeckte Fläche minimal 
+ist (vergleichbar mit dem Ausstechen von Kreisen aus Keksteig)?
+\item Wie lässt sich der Meeresboden unterteilen, sodass eine Simulation
+möglichst einfach wird?
+\end{enumerate}
+
+Geplant ist, dass die Missionsdauer in Zeitschritt von 1s aufgeteilt wird.
+In jedem Zeitschritt bewegen sich die Roboter einen geometrischen Schritt
+auf dem Meeresboden weiter und säubern ihn dabei von Manganknollen. Der Vorteil
+darin besteht, dass die Optimierung der Ausbeute darauf reduziert wird, 
+den nächsten Schritt möglichst geeignet auszuwählen.
+
+Dazu werden unendlichen Weiten des pazifischen Meeresgrundes
+in Abschnitte in Form von Polygonen eingeteilt (parkettiert),
+damit der Wertebereich der nächsten möglichen Schritte diskretisiert wird.
+
+Die Wahl, mit welchem Polygon gearbeitet wird, hat direkte
+Auswirkungen auf Genauigkeit und Leistungsfähigkeit der 
+Simulation, wie im Folgenden gezeigt wird.
+
+\subsection{Konkrete Modellierung des Meeresbodens}
+
+Es gibt nur drei verschiedene Polygone, mit denen gleichmäßig
+ohne Zuhilfenahme von Füllstücken parkettiert werden kann 
+\ref{img:floor_comp_polygons} \footnote{Source}.
+
+\begin{figure}
+\includegraphics{img/dummy.png}
+\caption{Diskretisierung des Spielfeldes mittels verschiedener Polygone}
+\label{img:floor_comp_polygons}
+\end{figure}
+
+Der Meeresboden kann dann als Graph gesehen werden, bei denen Knoten 
+als Zellen gesehen werden und geometrisch einem Polygon entsprechen. 
+Angeordnet werden diese so, dass zwischen den Schwerpunkten zweier 
+benachbarter Zellen exakt 1m Abstand ist. Dies hat den Grund, dass 
+ein Roboter in jedem Zeitschritt in die Mitte der nächste Zelle wechseln kann.
+
+Der Zusammenhang zwischen realer Umgebung und Modellierung kann in
+Fig. \ref{img:floor_grap_polygons} 
+
+\begin{figure}
+\includegraphics{img/dummy.png}
+\caption{Zusammenhang zwischen Meeresboden und Modellierung}
+\label{img:floor_grap_polygons}
+\end{figure}
+
+Roboter werden so simuliert, dass die Bewegungen nur über die Kanten einer
+Zelle möglich sind. Daher ist Anzahl der Ecken identisch mit den möglichen
+Bewegungsrichtungen. Somit gilt: je mehr Ecken, desto mehr Freiheitsgrade.
+Die Kanten geben an, von welchem Knoten zu welchen Nachbarn gewechselt werden
+kann. Somit hat jeder Knoten auch so viele Kanten wie das gewählte Polygon
+Ecken hat.
+
+Da eine Simulation mit unterschiedlichen Polygonen unnötig komplex
+wird, entscheidet es sich zwischen gleichschenkligem Dreieck, 
+Quadrat und regelmäßigem Sechseck.
+
+Der Arbeitsbereich eines Roboters ist kreisförmig, die Zellen, in denen er
+sich befindet, jedoch ein Polygon. Daher gibt es in den Ecken der Zelle 
+Bereiche, die nicht (unmittelbar) gesaugt werden. Berechnen lässt 
+sich der Verlust über das Verhältnis von der Fläche des Innenkreises 
+des Polygons zum Flächeninhalt des Polygons selbst. 
+
+\begin{figure}
+\includegraphics{img/dummy.png}
+\caption{Innenkreis und Polygon}
+\label{img:floor_quotient_circle_polygon}
+\end{figure}
+
+Die folgende Tabelle zeigt, wie viel Prozent einer Zelle nicht gesaugt werden,
+je nachdem, welches Polygon gewählt wurde.
+
+\begin{figure}
+\includegraphics{img/dummy.png}
+\caption{Fehlerrechnung}
+\label{img:floor_error_circle_polygon}
+\end{figure}
+
+Die Auswahl fiel schließlich leicht, da die Simulation mit einem Quadrat als Polygon
+folgende Vorteile bietet:
+
+\begin{itemize}
+\item Einfache Datenstruktur
+\item Einfaches Berechnen der Nachbarn
+\item Visualisierung entspricht pixeln, keine Umrechnung nötig
+\item Weniger Verlust als Dreieck
+\item Weniger Freiheitsgrade als Sechseck (weniger Auswahl bedeutet weniger Rechenaufwand)
+\item Einfache Berechnung von Entfernungen zwischen zwei Zellen \ref{sec:manhattan}
+\end{itemize}
+
+Die Herleitung kann im Anhang \footnote{Anhang} nachvollzogen werden.
+
+% ############################################
+\clearpage
+\section{Theory Crafting}
+
+%#
+\subsection{Manhattan-Metrik}
+\label{sec:manhattan}
+
+\subsubsection{Entfernung}
+
+
+\subsubsection{Kreise}
+
+
+%#
+\subsection{Platzierung}
+
+Keine Häufigkeitsverteilung gegeben
+
+%#
+\subsection{Missionsdauer}
+
+goal runden
+missiontime runden
+
+%#
+\subsection{Finden des Sammelpunktes}
+
+%#
+\subsection{Zeitbeschränkung}
+
+% ############################################
+\clearpage
+\section{Implementierung}
+
+
+% ############################################
+\clearpage
+\section{Diskussion}
+
+\subsection{Performance}
+
+\subsection{Fehlerrechnung}
+
+\subsubsection{Abweichung vom Optimum}
+
+\subsubsection{Fehler durch Modellierung}
+
+\subsection{Lessons learned/Fehlentscheidungen}
+
+\begin{itemize}
+\item Zu viele Abstraktion, die sich später unnötig herausgetsellt hat (Geometry, Circle)
+\end{itemize}
+
+\subsection{Ausblick}
+
+
+\end{document}

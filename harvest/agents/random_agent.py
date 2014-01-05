@@ -1,7 +1,6 @@
 import random
 
 from harvest.agents.agent import Agent
-from harvest.util import nearest_neighbour
 from harvest.distance import euclidean_distance
 from harvest.constants import MAX_DISTANCE
 

@@ -22,9 +22,11 @@ def distance_constraint_holds(robots):
     return not invalid
 
 if __name__ == '__main__':
-    ROBOT_CNT = 10
-    robots = place_robots(ROBOT_CNT)
-    #robots = positions_from_file('svg_test.txt')
+    ROBOT_CNT = 100
+    #robots = place_robots(ROBOT_CNT)
+    robots = positions_from_file('profile_positions_100.txt')
+    #positions_to_file('profile.txt', robots)
+    #sys.exit(0) 
     field = SquareGrid(robots)
     
     if not distance_constraint_holds(field):
@@ -40,11 +42,14 @@ if __name__ == '__main__':
     goal = np.rint(circle.center()).astype(int)
     agent = LogicalAgent(goal)
     #agent = RandomAgent(goal)
-    #visualizer = PlotVisualizer(goal, ROBOT_CNT, mission_time)
-    visualizer = SvgVisualizer(goal, ROBOT_CNT, mission_time)
+    #agent = HeuristicAgent(goal)
+    visualizer = PlotVisualizer(goal, ROBOT_CNT, mission_time)
+    #visualizer = SvgVisualizer(goal, ROBOT_CNT, mission_time)
+    visualizer = None
     harvester = Harvester(field, agent, mission_time, visualizer)
     harvester.play()
     print "Mission Time: ", mission_time
+    print "Goal: ", goal
     print "Score: ", len(field.collected)
     print "% harvested: ", len(field.collected) / float(mission_time * ROBOT_CNT)
-    visualizer.visualize()
+    #visualizer.visualize()
