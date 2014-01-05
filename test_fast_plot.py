@@ -68,10 +68,10 @@ if __name__ == '__main__':
 	GOAL, MISSION_TIME = calc_battle_plan(robots)
 	assert all_can_reach_goal(robots, GOAL, MISSION_TIME)
 
-	MISSION_TIME *= 1
+	MISSION_TIME *= 2
 
 	STEPS = MISSION_TIME + 1	
-	GOAL_X, GOAL_Y = GOAL	
+	GOAL_X, GOAL_Y = GOAL
 
 	print MISSION_TIME
 	print GOAL
@@ -81,4 +81,5 @@ if __name__ == '__main__':
 
 	fhl.harvest(data, GOAL_X, GOAL_Y, STEPS, ROBO_COUNT)
 	assert goal_was_reached(data, GOAL)
-	plot(data,GOAL,interval=100)
+	#plot(data,GOAL,interval=100)
+	svg(data, "test.svg")
