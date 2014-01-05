@@ -33,33 +33,45 @@ def distance_constraint_holds(robots):
 
 	return True
 
-def can_reach_goal(robots, goal, t):
+def calc_battle_plan(robots):
+	while True:
+		points = [ (x,y) for x,y in robots ]
+		circle = minidisk(frozenset(points), TaxicabCircle)
+		MISSION_TIME = int( np.ceil(circle.r) ) + 1
+		GOAL =  np.rint(circle.center()).astype(int)
+
+		if all_can_reach_goal(robots, GOAL, MISSION_TIME):
+			return GOAL, MISSION_TIME
+
+def all_can_reach_goal(robots, goal, t):
 	for robot in robots:
 		if taxicab_distance(robot, goal) > t:
-			print robot, taxicab_distance(robot, goal)
+			return False
+	return True
 
+def goal_was_reached(data, goal):
+	for robot in data[-1]:
+		if not np.array_equal(robot, GOAL):
+			return False
 	return True
 
 if __name__ == '__main__':
 	from_file = True
 	if from_file:
-		ROBO_COUNT, robots = io.positions_from_file('tests/robots_100.txt')
+		ROBO_COUNT, robots = io.positions_from_file('tests/robots_010.txt')
 	else:
 		ROBO_COUNT = 100
 		robots = place_robots(ROBO_COUNT)
 
 	assert distance_constraint_holds(robots)
 
-		
-	points = [ (x,y) for x,y in robots ]
-	circle = minidisk(frozenset(points), TaxicabCircle)
+	GOAL, MISSION_TIME = calc_battle_plan(robots)
+	assert all_can_reach_goal(robots, GOAL, MISSION_TIME)
 
-	MISSION_TIME = int( np.ceil(circle.r) )
-	STEPS = MISSION_TIME + 2
-	GOAL =  np.rint(circle.center()).astype(int)
-	GOAL_X, GOAL_Y = GOAL
+	MISSION_TIME *= 1
 
-	assert can_reach_goal(robots, GOAL, MISSION_TIME)
+	STEPS = MISSION_TIME + 1	
+	GOAL_X, GOAL_Y = GOAL	
 
 	print MISSION_TIME
 	print GOAL
@@ -68,7 +80,5 @@ if __name__ == '__main__':
 	data[0] = robots
 
 	fhl.harvest(data, GOAL_X, GOAL_Y, STEPS, ROBO_COUNT)
-	print "Finished calc"
-
-
-	plot(data,GOAL)
+	assert goal_was_reached(data, GOAL)
+	plot(data,GOAL,interval=100)

@@ -4,7 +4,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-def plot(data, goal):
+def plot(data, goal, interval=200):
 	STEPS = data.shape[0]
 	border = STEPS  + 5 
 	xmid, ymid = goal
@@ -38,7 +38,7 @@ def plot(data, goal):
 		patch.radius = STEPS - i
 		return robots, harvested, patch
 		
-	ani = animation.FuncAnimation(fig, animate, t, blit=True, init_func=init, repeat=False, interval=200)
+	ani = animation.FuncAnimation(fig, animate, t, blit=True, init_func=init, repeat=False, interval=interval)
 
 
 	#ani.save('harvest.mp4', writer=animation.FFMpegFileWriter(), fps=30)
