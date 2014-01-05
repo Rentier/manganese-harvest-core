@@ -83,3 +83,4 @@ if __name__ == '__main__':
 	assert goal_was_reached(data, GOAL)
 	#plot(data,GOAL,interval=100)
 	svg(data, "test.svg")
+	png(data, "test.png")
