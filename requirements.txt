@@ -10,6 +10,7 @@ numpy==1.8.0
 pyparsing==2.0.1
 pypng==0.0.16
 python-dateutil==2.2
+pyttk==0.3.2
 scipy==0.13.1
 six==1.4.1
 svgwrite==1.1.3
