@@ -1,4 +1,10 @@
+import sys
+
 from harvest.gui import wizard
 
 if __name__ == "__main__":
-	wizard.demo()
+	try:
+		wizard.demo()
+	except Exception, e:
+		print e
+		sys.exit(1)
