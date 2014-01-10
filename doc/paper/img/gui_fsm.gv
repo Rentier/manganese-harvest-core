@@ -1,0 +1,28 @@
+digraph gui_state_machine {
+
+    ratio = "auto";
+
+    node [shape = circle, label="Program started", fontsize=12] S;
+    node [shape = circle, label="Positions created", fontsize=12] q1;
+    node [shape = circle, label="Ready for visualization", fontsize=12] q2;
+    node [shape = circle, label="Constant loaded", fontsize=12] q3;
+    node [shape = circle, label="Positions saved", fontsize=12] q4;
+
+    node [shape = point ]; qi
+    qi -> S;
+
+    S   -> q1  [ label = "Load positions" ];
+    S   -> q1  [ label = "Generate Positions" ];
+    S   -> q3  [ label = "Load constant" ];
+    
+    q1  -> q2  [ label = "Simulate" ];
+    q1  -> q4  [ label = "Save positions" ];
+
+    q3 -> q1   [ label = "Generate positions" ];
+
+    q4 -> q2   [ label = "Simulate" ];
+
+    q2 -> q2   [ label = "Visualize" ];
+
+    q2 -> S   [ label = "Start over" ];
+}

@@ -6,6 +6,15 @@
 \usepackage{lmodern}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{subfig}
+\usetikzlibrary{shapes}
+
+\newcounter{ga}\setcounter{ga}{1}
+
+\usepackage[left=3cm,right=3cm,top=2cm,bottom=2cm,includeheadfoot]{geometry}
+
+
 
 \begin{document}
 % Title page
@@ -131,12 +140,30 @@ benachbarter Zellen exakt 1m Abstand ist. Dies hat den Grund, dass
 ein Roboter in jedem Zeitschritt in die Mitte der nächste Zelle wechseln kann.
 
 Der Zusammenhang zwischen realer Umgebung und Modellierung kann in
-Fig. \ref{img:floor_grap_polygons} 
+Fig. 
 
-\begin{figure}
-\includegraphics{img/dummy.png}
-\caption{Zusammenhang zwischen Meeresboden und Modellierung}
-\label{img:floor_grap_polygons}
+\begin{figure}[!ht]
+  \centering
+  \subfloat[][]{\includegraphics[width=.45\textwidth]{img/triangle_grid.png}}\qquad
+  \subfloat[][]{\includegraphics[width=.4\textwidth]{img/triangle_graph.png}}\\
+  \caption{Parkettierung mit gleichseitigen Dreiecken}
+  \label{fig:tess_triangle}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering
+  \subfloat[][]{\includegraphics[width=.4\textwidth]{img/square_grid.png}}\qquad
+  \subfloat[][]{\includegraphics[width=.5\textwidth]{img/square_graph.png}}\\
+  \caption{Parkettierung mit Quadraten}
+  \label{fig:tess_square}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering
+  \subfloat[][]{\includegraphics[width=.45\textwidth]{img/hexagon_grid.png}}\qquad
+  \subfloat[][]{\includegraphics[width=.4\textwidth]{img/hexagon_graph.png}}\\
+  \caption{Parkettierung mit regelmäßigen Sechsecken}
+  \label{fig:tess_hexagon}
 \end{figure}
 
 Roboter werden so simuliert, dass die Bewegungen nur über die Kanten einer

@@ -76,7 +76,7 @@ if __name__ == '__main__':
 	print MISSION_TIME
 	print GOAL
 	
-	data = np.zeros([STEPS, ROBO_COUNT, 2], dtype=int)
+	data = np.zeros([STEPS, ROBO_COUNT, 2], dtype=np.int32)
 	data[0] = robots
 
 	fhl.harvest(data, GOAL_X, GOAL_Y, STEPS, ROBO_COUNT)
