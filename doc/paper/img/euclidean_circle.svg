@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="200"
+   height="200"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.48.3.1 r9886"
+   version="1.0"
+   sodipodi:docname="euclidean_circle.svg"
+   inkscape:export-filename="/home/jan-christoph/git/mangan-harvest/doc/paper/img/euclidean_circle.png"
+   inkscape:export-xdpi="269.46109"
+   inkscape:export-ydpi="269.46109">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="135.20858"
+     inkscape:cy="102.14814"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showguides="false"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="891"
+     inkscape:window-height="772"
+     inkscape:window-x="382"
+     inkscape:window-y="25"
+     showgrid="false"
+     inkscape:window-maximized="0">
+    <sodipodi:guide
+       orientation="vertical"
+       position="100.0051"
+       id="guide2182" />
+    <sodipodi:guide
+       orientation="horizontal"
+       position="100.0051"
+       id="guide2184" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Kreis</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       sodipodi:type="arc"
+       style="opacity:1;color:#000000;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.879;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+       id="path1307"
+       sodipodi:cx="87.88327"
+       sodipodi:cy="87.367989"
+       sodipodi:rx="87.378197"
+       sodipodi:ry="87.378197"
+       d="M 175.26147 87.367989 A 87.378197 87.378197 0 1 1  0.50507355,87.367989 A 87.378197 87.378197 0 1 1  175.26147 87.367989 z"
+       transform="translate(12.11673,12.63201)" />
+    <path
+       id="path2192"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:0.332;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 95.681371,95.681371 L 104.31863,104.31863 M 104.31863,95.681371 L 95.681371,104.31863"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 100.0051,99.9949 L 187.14286,99.9949"
+       id="path3072" />
+    <text
+       xml:space="preserve"
+       style="font-size:22.16248322px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="74.367172"
+       y="100.97993"
+       id="text4820"><tspan
+         sodipodi:role="line"
+         id="tspan4822"
+         x="74.367172"
+         y="100.97993">M</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:19.65225983px;font-style:normal;font-weight:normal;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       x="145.01953"
+       y="114.38213"
+       id="text5701"><tspan
+         sodipodi:role="line"
+         id="tspan5703"
+         x="145.01953"
+         y="114.38213">r</tspan></text>
+  </g>
+</svg>

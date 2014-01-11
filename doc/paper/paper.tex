@@ -14,6 +14,9 @@
 \usepackage[parfill]{parskip}
 \usepackage[left=3cm,right=3cm,top=2cm,bottom=2cm,includeheadfoot]{geometry}
 \usepackage{subfig}
+\usepackage{units}
+\usepackage[named]{algo}
+\usepackage{textcomp}
 \usepackage{tikz}
 \usetikzlibrary{shapes}
 
@@ -202,15 +205,33 @@ des Polygons zum Flächeninhalt des Polygons selbst:
 
 \begin{figure}[!ht]
   \centering
-  \subfloat[][]{\includegraphics[width=.25\textwidth]{img/triangle_circle.png}}\qquad
-  \subfloat[][]{\includegraphics[width=.25\textwidth]{img/hexagon_circle.png}}\qquad
+  \subfloat[][]{\includegraphics[width=.4\textwidth]{img/triangle_circle.png}}\qquad
+  \subfloat[][]{\includegraphics[width=.25\textwidth]{img/square_circle.png}}\qquad
   \subfloat[][]{\includegraphics[width=.25\textwidth]{img/hexagon_circle.png}}\\
   \caption{Regelmäßiges 3,4,6-Eck mit eingezeichnetem Innenkreis und Radius}
   \label{fig:floor_quotient_circle_polygon}
 \end{figure}
 
-Die folgende Tabelle zeigt, wie viel Prozent einer Zelle nicht gesaugt werden,
-je nachdem, welches Polygon gewählt wurde.
+Die folgende Tabelle zeigt das Verhälntis von den drei Polygonen. 
+
+
+\begin{figure}[ht]
+\begin{center}
+    \begin{tabular}{ l | l}
+    n & Q \\ \hline
+    3 & 60,46 \% \\
+    4 & 78,50 \% \\
+    6 & 90,69 \% \\
+    \end{tabular}
+    \caption{Verhältnis $Q$ der Flächeninhalte von Innenkreis \\ eines n-Ecks und dessen gesamten Flächeninhalts}
+    \end{center}
+\end{figure}
+
+Somit würde zum Beispiel bei Modellierung durch Zellen in Form von regelmäßigen Dreiecken ein Roboter
+nur 60 \% des Mangans darin einsammeln. Je größer $n$, desto besser wird die unmittelbare Ausbeute.
+
+
+Die genaue Herleitung kann unter HIER\footnote{HIER} nachvollzogen werden.
 
 \begin{figure}
 \includegraphics{img/dummy.png}
@@ -220,32 +241,98 @@ je nachdem, welches Polygon gewählt wurde.
 
 \subsection{Entscheidung}
 
-Die Auswahl fiel schließlich leicht, da die Simulation mit einem Quadrat als Polygon
-folgende Vorteile bietet:
+Die Auswahl fiel schließlich leicht, da die Simulation mit einem Quadrat als 
+zugrundeliegendem Polygon folgende Vorteile bietet:
 
 \begin{itemize}
 \item Einfache Datenstruktur
 \item Einfaches Berechnen der Nachbarn
-\item Visualisierung entspricht pixeln, keine Umrechnung nötig
+\item Visualisierung einfach, da eine Zelle einem Pixel entspricht, somit keine Umrechnung nötig
 \item Weniger Verlust als Dreieck
 \item Weniger Freiheitsgrade als Sechseck (weniger Auswahl bedeutet weniger Rechenaufwand)
 \item Einfache Berechnung von Entfernungen zwischen zwei Zellen \ref{sec:manhattan}
 \end{itemize}
 
-Die Herleitung kann im Anhang \footnote{Anhang} nachvollzogen werden.
+Als wie gut sich diese Entscheidung schließlich herausgestellt hat, wird im Abschnitt 
+HIER\footnote{HIER2} evaluiert.
 
 % ############################################
 \clearpage
 \section{Theory Crafting}
 
+Der folgende Abschnitt beschreibt die zugrundeliegende Theorie hinter der Implementierung.
+
 %#
 \subsection{Manhattan-Metrik}
 \label{sec:manhattan}
 
+Die Manhattan-Metrik (oder Taxicab-Metrik, Cityblock-Metrik), ist eine Geometry, in der
+die übliche, euklidische Entfernungsfunktion durch eine neue Metrik ersetzt ist.
+
+\begin{figure}[!ht]
+  \centering
+  \subfloat[][New York]{\includegraphics[width=.35\textwidth]{img/manhattan.png}}\qquad
+  \subfloat[][Mannheim]{\includegraphics[width=.5\textwidth]{img/mannheim.png}}\\
+  \caption{Auszüge aus Stadplänen von New York und Mannheim. \\ Auffallend ist die gitterförmige
+  Anordnung der Straßenzüge. }
+  \label{fig:tess_hexagon}
+\end{figure}
+
+Ihr Name entstammt der Analogie mit dem Straßennetz von Manhattan (oder Mannheim, wo sich
+die Universität der beiden Autoren befindet). Es ist gitterförmig angelegt. Um ein Ziel zu erreichen,
+wird die Entfernung durch Aneinanderreihung von vertikalen und Horizontalen Stücken zurückgelegt.
+
+Ein Taxifahrer, welcher eine Route durch solch eine System plant, legt immer die gleiche 
+Strecke zurück, wenn er Wege benutzt, die ihn näher zum Ziel bringen. 
+
+Da diese Geometrie der Modellierung des Meeresbodens durch Quadrate entspricht, werden im Folgenden
+notwendige und wichtige Eigenschaften derer beschrieben.
+
 \subsubsection{Entfernung}
 
+Die Entfernung zwischen zwei Punkten $a, b \in \mathbb{R}^n$ in einer Manhattan-Geometrie ist die Summe 
+der absoluten Differenzen derer kartesischer Einzelkoordinaten:
+
+\begin{equation*}
+d(a,b)=\sum_{i=1}^n \left|a_i-b_i\right|\,
+\end{equation*}
+
+Für den hier relevanten Spezialfall von $\mathbb{R}^2$ gilt somit:
+
+\begin{equation*}
+d(a,b)=|a_1-b_1|+|a_2-b_2|
+\end{equation*}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=.45\textwidth]{img/taxicab_distance.png}
+  \caption{Verschiedene, gleichgroße Taxicab-Distanzen zwischen zwei Punkten (je 12 Einheiten lang). 
+  Zum  Vergleich ist die grüne Linie die euklidische Distanz (etwa 8,5 Einheiten) eingetragen. \cite{wikicity}}
+  \label{fig:tess_triangle}
+\end{figure}
 
 \subsubsection{Kreise}
+
+Ein Kreis ist die Menge aller Punkte in einer Ebene, die einen konstanten Abstand, dem Radius, zu einem bestimmten
+Punkt, dem Mittelpunkt, haben. Die gewählte Metrik, die in dem Wort \textit{Abstand} versteckt ist,
+hat unmittelbar Einfluss auf die Form des Kreises.
+
+Kreise in einer Taxicab-Geometrie haben die Form von Quadraten, die um \unit[45]{\textdegree} um deren Mittelpunkt gedreht sind.
+Fig. \ref{img:circle_in_diff_metrics} gibt eine Idee, wieso es so ist. Eine ausführliche Behandlung ist in
+\cite{janssen2007} zu finden.
+
+\begin{figure}[!ht]
+  \centering
+  \subfloat[][Euklidischer Kreis]{\includegraphics[width=.4\textwidth]{img/euclidean_circle.png}}\qquad
+  \subfloat[][Taxicab-Kreis]{\includegraphics[width=.4\textwidth]{img/taxicab_circle.png}}\\
+  \caption{Alle Punkte auf der Kreislinie haben den gleichen Abstand zum Mittelpunkt.
+  Auffallend ist, das der Kreis in Taxicab-Metrik nicht rund, sondern quadratisch ist.}
+  \label{img:circle_in_diff_metrics}
+\end{figure}
+
+Die Berechnung von Mittelpunkt und Radius eines Kreises ist schwieriger als in euklidischer Geometrie. Es wird hier keine 
+Formel benutzt, sondern ein Algorithmus.
+
 
 
 %#

@@ -45,6 +45,47 @@
   \field{year}{2002}
 \endentry
 
+\entry{janssen2007}{report}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Janssen}{J.}%
+     {Christina}{C.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{JC1}
+  \strng{fullhash}{JC1}
+  \field{labelalpha}{Jan07}
+  \field{sortinit}{J}
+  \field{title}{Taxicab Geometry: Not the Shortest Ride Across Town}
+  \verb{url}
+  \verb http://www.math.iastate.edu/thesisarchive/MSM/JanssenMSMSS07.pdf
+  \endverb
+  \list{institution}{1}{%
+    {Iowa State University}%
+  }
+  \field{type}{techreport}
+  \field{year}{2007}
+\endentry
+
+\entry{wikicity}{booklet}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Wikipedia}{W.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{W1}
+  \strng{fullhash}{W1}
+  \field{labelalpha}{Wik}
+  \field{sortinit}{W}
+  \field{title}{Manhattan-Metrik}
+  \verb{url}
+  \verb https://de.wikipedia.org/wiki/Manhattan-Metrik
+  \endverb
+\endentry
+
 \lossort
 \endlossort
 
