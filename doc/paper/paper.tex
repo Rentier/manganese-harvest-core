@@ -6,14 +6,27 @@
 \usepackage{lmodern}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm} 
+\usepackage{ wasysym }
+\usepackage[justification=centering]{caption}
+\usepackage[parfill]{parskip}
+\usepackage[left=3cm,right=3cm,top=2cm,bottom=2cm,includeheadfoot]{geometry}
 \usepackage{subfig}
+\usepackage{tikz}
 \usetikzlibrary{shapes}
 
-\newcounter{ga}\setcounter{ga}{1}
+\newtheorem{satz}{Satz} 
 
-\usepackage[left=3cm,right=3cm,top=2cm,bottom=2cm,includeheadfoot]{geometry}
 
+\usepackage[sortcites=true, style=alphabetic,natbib=true]{biblatex}
+
+\bibliography{bibliography}
+
+%Autornamen in Bibliography fett
+\AtBeginBibliography{\renewcommand*{\mkbibnamelast }[1]{\textbf{#1}}}
+\AtBeginBibliography{\renewcommand*{\mkbibnamefirst }[1]{\textbf{#1}}}
 
 
 \begin{document}
@@ -78,7 +91,9 @@ Das Problem kann unter vielen verschiedenen betrachtet
 werden. Je nachdem, in welcher Domäne der Informatik
 es eingeordnet wird, gibt es unterschiedliche Lösungsansätze.
 
-In diesem Abschnitt wird kurz beschrieben, 
+In diesem Abschnitt wird kurz beschrieben, welche Ansätze
+erdacht wurden, welches deren Vor- und Nachteile sind, und
+für welche schließlich ausgewählt wurden.
 
 \subsection{Graphenproblem}
 
@@ -123,24 +138,14 @@ Simulation, wie im Folgenden gezeigt wird.
 
 \subsection{Konkrete Modellierung des Meeresbodens}
 
-Es gibt nur drei verschiedene Polygone, mit denen gleichmäßig
-ohne Zuhilfenahme von Füllstücken parkettiert werden kann 
-\ref{img:floor_comp_polygons} \footnote{Source}.
-
-\begin{figure}
-\includegraphics{img/dummy.png}
-\caption{Diskretisierung des Spielfeldes mittels verschiedener Polygone}
-\label{img:floor_comp_polygons}
-\end{figure}
-
 Der Meeresboden kann dann als Graph gesehen werden, bei denen Knoten 
 als Zellen gesehen werden und geometrisch einem Polygon entsprechen. 
-Angeordnet werden diese so, dass zwischen den Schwerpunkten zweier 
-benachbarter Zellen exakt 1m Abstand ist. Dies hat den Grund, dass 
+Angeordnet werden diese so, dass zwischen den Mittelpunkten der Innenkreise
+zweier benachbarter Zellen exakt 1m Abstand ist. Dies hat den Grund, dass 
 ein Roboter in jedem Zeitschritt in die Mitte der nächste Zelle wechseln kann.
 
-Der Zusammenhang zwischen realer Umgebung und Modellierung kann in
-Fig. 
+Der Zusammenhang zwischen realer Umgebung und Modellierung ist in
+Fig. \ref{fig:tess_triangle} - \ref{fig:tess_hexagon} visualisiert.
 
 \begin{figure}[!ht]
   \centering
@@ -173,20 +178,35 @@ Die Kanten geben an, von welchem Knoten zu welchen Nachbarn gewechselt werden
 kann. Somit hat jeder Knoten auch so viele Kanten wie das gewählte Polygon
 Ecken hat.
 
-Da eine Simulation mit unterschiedlichen Polygonen unnötig komplex
-wird, entscheidet es sich zwischen gleichschenkligem Dreieck, 
-Quadrat und regelmäßigem Sechseck.
+Nach \cite[S. 12]{hartfeldt2002} gilt: 
+\newline
+\begin{satz} 
+Eine lückenlose Parkettierung \textbf{ohne} Überschneidungen ist nur mit den 
+regulären n-Ecken für n = 3,4,6 möglich.
+\end{satz}
+
+Da eine Simulation mit unregelmäßiger Parkettierung unnötig komplex erscheint,
+entscheidet es sich zwischen gleichseitigem Dreieck, Quadrat und regelmäßigem Sechseck.
+
+\subsection{Polygone und Innenkreis}
 
 Der Arbeitsbereich eines Roboters ist kreisförmig, die Zellen, in denen er
 sich befindet, jedoch ein Polygon. Daher gibt es in den Ecken der Zelle 
 Bereiche, die nicht (unmittelbar) gesaugt werden. Berechnen lässt 
-sich der Verlust über das Verhältnis von der Fläche des Innenkreises 
-des Polygons zum Flächeninhalt des Polygons selbst. 
+sich der Verlust $Q$ über das Verhältnis von der Fläche des Innenkreises 
+des Polygons zum Flächeninhalt des Polygons selbst:
 
-\begin{figure}
-\includegraphics{img/dummy.png}
-\caption{Innenkreis und Polygon}
-\label{img:floor_quotient_circle_polygon}
+\begin{equation}
+  Q = \frac{A_\text{Kreis} }{A_\text{Polygon}}
+\end{equation}
+
+\begin{figure}[!ht]
+  \centering
+  \subfloat[][]{\includegraphics[width=.25\textwidth]{img/triangle_circle.png}}\qquad
+  \subfloat[][]{\includegraphics[width=.25\textwidth]{img/hexagon_circle.png}}\qquad
+  \subfloat[][]{\includegraphics[width=.25\textwidth]{img/hexagon_circle.png}}\\
+  \caption{Regelmäßiges 3,4,6-Eck mit eingezeichnetem Innenkreis und Radius}
+  \label{fig:floor_quotient_circle_polygon}
 \end{figure}
 
 Die folgende Tabelle zeigt, wie viel Prozent einer Zelle nicht gesaugt werden,
@@ -197,6 +217,8 @@ je nachdem, welches Polygon gewählt wurde.
 \caption{Fehlerrechnung}
 \label{img:floor_error_circle_polygon}
 \end{figure}
+
+\subsection{Entscheidung}
 
 Die Auswahl fiel schließlich leicht, da die Simulation mit einem Quadrat als Polygon
 folgende Vorteile bietet:
@@ -260,6 +282,18 @@ missiontime runden
 
 \subsubsection{Fehler durch Modellierung}
 
+\begin{figure}[!ht]
+  \centering
+  \subfloat[][]{\includegraphics[width=.4\textwidth, angle=0]{img/collected_edges.png}} \qquad
+  \subfloat[][]{\includegraphics[width=.4\textwidth, angle=90]{img/collected_edges.png}}\\
+  \subfloat[][]{\includegraphics[width=.4\textwidth, angle=180]{img/collected_edges.png}} \qquad
+  \subfloat[][]{\includegraphics[width=.4\textwidth, angle=270]{img/collected_edges.png}}
+  \caption{Überstreichen der Ecken beim Wechseln in eine benachbarte Zelle: Der Roboter (hier rot),
+  kann nicht nur den ursprünglichen, kreisförmigen Teil in der Mitte einer Zelle abernten, 
+  sondern beim Wechseln auch die Ecken, da sein Arbeitsbereich diese in der Bewegung überschneidet. }
+  \label{fig:harvested_edges}
+\end{figure}
+
 \subsection{Lessons learned/Fehlentscheidungen}
 
 \begin{itemize}
@@ -267,6 +301,11 @@ missiontime runden
 \end{itemize}
 
 \subsection{Ausblick}
+
+\nocite{*}
+
+\printbibliography[maxnames=25]
+
 
 
 \end{document}

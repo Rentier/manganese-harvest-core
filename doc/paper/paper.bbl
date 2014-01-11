@@ -1,0 +1,51 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 1.7 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{hartfeldt2002}{report}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Hartfeldt}{H.}%
+     {Christian}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Henning}{H.}%
+     {Prof. Dr.~Herbert}{P.~D.~H.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{HCHPDH1}
+  \strng{fullhash}{HCHPDH1}
+  \field{labelalpha}{HH02}
+  \field{sortinit}{H}
+  \field{title}{Muster, Flächen, Parkettierungen — Anregungen fur einen
+  kreativen Mathematikunterricht}
+  \verb{url}
+  \verb http://www.math.uni-magdeburg.de/reports/2002/parkett.pdf
+  \endverb
+  \list{institution}{1}{%
+    {Otto-von-Guericke-Universität Magdeburg}%
+  }
+  \field{type}{techreport}
+  \field{year}{2002}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput
