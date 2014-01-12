@@ -15,9 +15,10 @@
 \usepackage[left=3cm,right=3cm,top=2cm,bottom=2cm,includeheadfoot]{geometry}
 \usepackage{subfig}
 \usepackage{units}
-\usepackage[named]{algo}
+\usepackage[ruled,german]{algorithm2e}
 \usepackage{textcomp}
 \usepackage{tikz}
+\usepackage{url}
 \usetikzlibrary{shapes}
 
 \newtheorem{satz}{Satz} 
@@ -233,12 +234,6 @@ nur 60 \% des Mangans darin einsammeln. Je größer $n$, desto besser wird die u
 
 Die genaue Herleitung kann unter HIER\footnote{HIER} nachvollzogen werden.
 
-\begin{figure}
-\includegraphics{img/dummy.png}
-\caption{Fehlerrechnung}
-\label{img:floor_error_circle_polygon}
-\end{figure}
-
 \subsection{Entscheidung}
 
 Die Auswahl fiel schließlich leicht, da die Simulation mit einem Quadrat als 
@@ -253,6 +248,21 @@ zugrundeliegendem Polygon folgende Vorteile bietet:
 \item Einfache Berechnung von Entfernungen zwischen zwei Zellen \ref{sec:manhattan}
 \end{itemize}
 
+Die tatsächliche Modellierung ist in Fig. \ref{img:ocean_floor_squared} dargestellt. Zu beachten ist,
+dass sich das Gitter unendlich weit in alle Richtungen erstreckt, aber in der Implementierung
+fast nur der erste Quadrant genutzt wird. 
+
+Bewegungen können nur in Nachbarzellen erfolgen. Lediglich die Zellen, welche eine Kante mit der 
+Basisfläche gemeinsam haben, gelten als Nachbarn. Die wird auch Von-Neumann-Nachbarschaft genannt.
+
+\begin{figure}[hbt]
+\centering
+\includegraphics[width=.5\textwidth]{img/ocean_floor.png}
+\caption{Diskretisierung der möglichen Positionen auf dem pazifischen Meeresboden durch quadratische Zellen. Jede Zelle
+ist eindeutig durch kartesische Koordinaten bestimmt. Das Gitter erstreckt sich unendlich weit in alle Richtungen. }
+\label{img:ocean_floor_squared}
+\end{figure} 
+
 Als wie gut sich diese Entscheidung schließlich herausgestellt hat, wird im Abschnitt 
 HIER\footnote{HIER2} evaluiert.
 
@@ -266,8 +276,23 @@ Der folgende Abschnitt beschreibt die zugrundeliegende Theorie hinter der Implem
 \subsection{Manhattan-Metrik}
 \label{sec:manhattan}
 
-Die Manhattan-Metrik (oder Taxicab-Metrik, Cityblock-Metrik), ist eine Geometry, in der
-die übliche, euklidische Entfernungsfunktion durch eine neue Metrik ersetzt ist.
+Nachdem in \ref{img:ocean_floor_squared} gezeigt wurde, wie genau die Umgebung
+modelliert wurde, fällt auf, dass die Distanz zwischen zwei Zellen nicht der euklidischen Entfernung
+entspricht. Dies ist in Fig. \ref{img:taxicab_euclid} gezeigt. Daher muss eine neue Entfernungsfunktion 
+gefunden werden, bei der der Weg nur aus horizontalen und Vertikalen Wegstücken besteht.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=.45\textwidth]{img/taxicab_distance.png}
+  \caption{Verschiedene, gleichgroße Taxicab-Distanzen zwischen zwei Punkten (je 12 Einheiten lang). 
+  Zum  Vergleich ist die grüne Linie die euklidische Distanz (etwa 8,5 Einheiten) eingetragen. \cite{wikicity}}
+  \label{img:taxicab_euclid}
+\end{figure}
+
+Glücklicherweise wurde eine solche Geometrie, in der die Entfernung so definiert ist, bereits erforscht.
+Die Manhattan-Geometrie (oder Taxicab-Geometrie, Cityblock-Geometrie), ist eine Geometrie, in der
+die übliche, euklidische Entfernungsfunktion durch eine neue Metrik ersetzt ist. Eine Metrik ist hier
+eine Funktion, die zwei Elemente aus der Geometrie einen reele, nichtnegativen Abstand zuweist.
 
 \begin{figure}[!ht]
   \centering
@@ -283,7 +308,8 @@ die Universität der beiden Autoren befindet). Es ist gitterförmig angelegt. Um
 wird die Entfernung durch Aneinanderreihung von vertikalen und Horizontalen Stücken zurückgelegt.
 
 Ein Taxifahrer, welcher eine Route durch solch eine System plant, legt immer die gleiche 
-Strecke zurück, wenn er Wege benutzt, die ihn näher zum Ziel bringen. 
+Strecke zurück, wenn er Wege benutzt, die ihn näher zum Ziel bringen, egal welche Wahl er dabei 
+an Abzweigungen trifft.
 
 Da diese Geometrie der Modellierung des Meeresbodens durch Quadrate entspricht, werden im Folgenden
 notwendige und wichtige Eigenschaften derer beschrieben.
@@ -303,23 +329,15 @@ Für den hier relevanten Spezialfall von $\mathbb{R}^2$ gilt somit:
 d(a,b)=|a_1-b_1|+|a_2-b_2|
 \end{equation*}
 
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=.45\textwidth]{img/taxicab_distance.png}
-  \caption{Verschiedene, gleichgroße Taxicab-Distanzen zwischen zwei Punkten (je 12 Einheiten lang). 
-  Zum  Vergleich ist die grüne Linie die euklidische Distanz (etwa 8,5 Einheiten) eingetragen. \cite{wikicity}}
-  \label{fig:tess_triangle}
-\end{figure}
-
 \subsubsection{Kreise}
 
 Ein Kreis ist die Menge aller Punkte in einer Ebene, die einen konstanten Abstand, dem Radius, zu einem bestimmten
 Punkt, dem Mittelpunkt, haben. Die gewählte Metrik, die in dem Wort \textit{Abstand} versteckt ist,
 hat unmittelbar Einfluss auf die Form des Kreises.
 
-Kreise in einer Taxicab-Geometrie haben die Form von Quadraten, die um \unit[45]{\textdegree} um deren Mittelpunkt gedreht sind.
-Fig. \ref{img:circle_in_diff_metrics} gibt eine Idee, wieso es so ist. Eine ausführliche Behandlung ist in
-\cite{janssen2007} zu finden.
+Kreise in einer Taxicab-Geometrie haben die Form von Quadraten, die \unit[45]{\textdegree} um deren 
+Mittelpunkt gedreht sind. Fig. \ref{img:circle_in_diff_metrics} gibt eine Idee, wieso es so ist. Eine 
+ausführliche Behandlung ist in \cite{janssen2007} zu finden.
 
 \begin{figure}[!ht]
   \centering
@@ -330,10 +348,92 @@ Fig. \ref{img:circle_in_diff_metrics} gibt eine Idee, wieso es so ist. Eine ausf
   \label{img:circle_in_diff_metrics}
 \end{figure}
 
-Die Berechnung von Mittelpunkt und Radius eines Kreises ist schwieriger als in euklidischer Geometrie. Es wird hier keine 
-Formel benutzt, sondern ein Algorithmus.
+Die Berechnung von Mittelpunkt und Radius eines Taxicab-Kreises ist schwieriger als in euklidischer 
+Geometrie. Es wird hier keine Formel benutzt, sondern ein Algorithmus. Interessant hier ist das Berechnen
+von einem Kreis in Taxicab-Geometrie von zwei oder drei Punkten. Das Problem lässt sich auch wie folgt
+beschreiben: Finde das kleinste Quadrat, welches um \unit[45]{\textdegree} gedreht ist, welches zwei (drei) Punkte 
+enthält. Da es nicht eindeutig definiert wird, reicht eine einzige Lösung für dieses Problem.
 
+\begin{algorithm}[H]
+    \caption{Kreis von zwei Punkten in Taxicab-Geometrie}
+    \KwData{Zwei Punkte $X, Y \in \mathbb{R}^n$ }
+    \KwResult{Radius und Mittelpunkt eines Quadrates, das $X$ und $Y$ enthält und eine minimale Seitenlänge hat.}
+    \BlankLine
+    \begin{enumerate}
+    \item Um die Lösung des Problems zu vereinfachen, werden die Punkte je um \unit[45]{\textdegree} um den
+    Ursprung herum gedreht, dann das Quadrat berechnet, die so enstandende Lösung schließlich zurückgedreht.
+    \item Rotiere $X, Y$ \unit[45]{\textdegree} um den Ursprung und nenne die so entstehenden Punkte $P, Q$.
+    \item Offensichtlich ist nun die Seitenlänge $s$ des minimalen Quadrates gegeben durch
+    \begin{equation}
+    s = \max\{|P_x - Q_x|, |P_y - Q_y|\}
+    \end{equation}
+    \item Um eine Lösung zu finden, wähle die unterste Linke Ecke als Ausgangspunkt und nenne sie $A$
+    \begin{equation}
+    \begin{cases}
+    A_x = \min\{P_x,Q_x\}\\
+    A_y = \min\{P_y,Q_y\}
+    \end{cases}
+    \end{equation}
+    \item Der rotierte Mittelpunkt $M'$ ist somit gegeben durch
+    \begin{equation}
+    \begin{cases}
+    M'_x = A_x + \frac{s}{2}\\
+    M'_y = A_y + \frac{s}{2}
+    \end{cases}
+    \end{equation}
+    \item Rotiere $M'$ um \unit[45]{\textdegree} um den Ursprung und nenne den so entstehenden Punkt $M$.
+    \item Der Radius $r$ ist gegeben durch 
+    \begin{equation}
+    r = \sqrt( (A_x - M'_x) ^ 2 + (A_y - M'_y) ^ 2 )     
+    \end{equation}
+    \end{enumerate}
+    \Return{$r$, $M$}
+\end{algorithm} 
 
+Interessanterweise liefert dieser Algorithmus durch geringfügige Anpassungen auch die Lösung für folgendes Problem:
+Finde das kleinste Quadrat, welches um \unit[45]{\textdegree} gedreht ist, welches drei Punkte enthält:
+
+\begin{algorithm}[H]
+    \caption{Kreis von drei Punkten in Taxicab-Geometrie}
+    \KwData{Drei Punkte $X, Y, Z \in \mathbb{R}^n$ }
+    \KwResult{Radius und Mittelpunkt eines Quadrates, das $X, Y, Z$ enthält und eine minimale Seitenlänge hat.}
+    \BlankLine
+    \begin{enumerate}
+    \item Um die Lösung des Problems zu vereinfachen, werden die Punkte je um \unit[45]{\textdegree} um den
+    Ursprung herum gedreht, dann das Quadrat berechnet, die so enstandende Lösung schließlich zurückgedreht.
+    \item Rotiere $X, Y, Z$ \unit[45]{\textdegree} um den Ursprung und nenne die so entstehenden Punkte $P, Q, R$.
+    \item Offensichtlich ist nun die Seitenlänge $s$ des minimalen Quadrates gegeben durch
+    \begin{equation}
+    s = \max\{|P_x-Q_x|,|P_x-R_x|,|Q_x-R_x|,|P_y-Q_y|,|P_y-R_y|,|Q_y-R_y|\}
+    \end{equation}
+    \item Um eine Lösung zu finden, wähle die unterste Linke Ecke als Ausgangspunkt und nenne sie $A$
+    \begin{equation}
+    \begin{cases}
+    A_x = \min\{P_x,Q_x,R_x\}\\
+    A_y = \min\{P_y,Q_y,R_y\}
+    \end{cases}
+    \end{equation}
+    \item Der rotierte Mittelpunkt $M'$ ist somit gegeben durch
+    \begin{equation}
+    \begin{cases}
+    M'_x = A_x + \frac{s}{2}\\
+    M'_y = A_y + \frac{s}{2}
+    \end{cases}
+    \end{equation}
+    \item Rotiere $M'$ um \unit[45]{\textdegree} um den Ursprung und nenne den so entstehenden Punkt $M$.
+    \item Der Radius $r$ ist gegeben durch 
+    \begin{equation}
+    r = \sqrt( (A_x - M'_x) ^ 2 + (A_y - M'_y) ^ 2 )     
+    \end{equation}
+    \end{enumerate}
+    \Return{$r$, $M$}
+\end{algorithm}
+
+Im Rahmen dieser Arbeit wurden diese Algorithmen auch mittels GeoGebra visualisiert. Eine interaktive Visualisierung
+für einen Kreis in Taxicab-Geometrie, der zwei (drei) Punkte enthält, ist unter folgenden Links zu sehen: 
+
+\url{http://www.geogebratube.org/student/m65241} \newline
+\url{http://www.geogebratube.org/student/m68655}
 
 %#
 \subsection{Platzierung}
