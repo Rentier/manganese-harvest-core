@@ -15,6 +15,7 @@
 \usepackage[left=3cm,right=3cm,top=2cm,bottom=2cm,includeheadfoot]{geometry}
 \usepackage{subfig}
 \usepackage{units}
+\usepackage{subscript}
 \usepackage[ruled,german]{algorithm2e}
 \usepackage{textcomp}
 \usepackage{tikz}
@@ -23,6 +24,8 @@
 
 \newtheorem{satz}{Satz} 
 
+\newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\left(#1\right)}}
+\newcommand{\subs}[2]{#1\textsubscript{#2}}
 
 \usepackage[sortcites=true, style=alphabetic,natbib=true]{biblatex}
 
@@ -273,6 +276,99 @@ HIER\footnote{HIER2} evaluiert.
 Der folgende Abschnitt beschreibt die zugrundeliegende Theorie hinter der Implementierung.
 
 %#
+\subsection{Platzierung}
+
+Die Platzierung der Roboter $R$ kann wie folgt beschrieben werden: Platziere $n$ Punkte so, dass folgende Bedingung gilt:
+
+\begin{equation}
+\forall r \in R \  \exists p \in R : p \neq r \wedge d(p,r) \le 200 
+\label{eq:robot_constraint}
+\end{equation}
+
+$d(a,b)$ ist hier die euklidische Entfernung zwischen $a$ und $b$.
+
+Die hier gewählte Lösung ist iterativ. Beginnend mit einem ersten Punkt (gegeben durch \texttt{generateFirstPoint}),
+werden nach und nach Punkte durch \texttt{generatePointBoxed} erzeugt und überprüft, ob ein Punkt (\ref{eq:robot_constraint}) einhält. Falls ja,
+wird der Punkt hinzugefügt. \texttt{generatePointBoxed} erzeugt einen zufälligen Punkt, der in einem Rechteck 
+$\overline{PQRS}$ liegt, welches als Ecke links unten den Punkt P und als obere rechte Ecke den Punkt R hat. Es gilt:
+\begin{align*}
+P &= (min_x - 200, min_y - 200) \\
+R &= (max_x + 200, max_y + 200)
+\end{align*}
+
+\texttt{\subs{min}{x}, \subs{min}{y}, \subs{max}{x}, \subs{max}{y}} sind hier die minimalen bzw. maximalen x- und y- Werte in $R$ (\textbf{nicht} minimaler
+oder maximaler Punkt).
+
+Dies schränkt die Menge an Punkten ein, die erzeugt werden kann und ist eine grobe Annäherung für (\ref{eq:robot_constraint}).
+Wenn es nicht eingeschränkt würde, gäbe es zu viele Kandidaten zum testen, die eigentlich von vorneherein 
+ausgeschlossen werden könnten.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=.9\textwidth]{img/100_robots.png}
+  \caption{Platzierung von 100 Punkten. Die grüne Fläche entsteht aus Kreisen mit Radius 200 um jeden Punkt und
+  bezeichnet die Positionen, für die (\ref{eq:robot_constraint}) erfüllt ist. Da die Fläche verbunden ist und alle
+  Punkte enthält, ist diese Anordnung valide.}
+  \label{img:generated_robots}
+\end{figure}
+
+Es wurde nicht darauf geachtet, wie die Wahrscheinlichkeitsverteilung der Platzierung
+aussieht, da keine Einschränkungen gegeben wurden, was zufällig genau bedeutet (uniform, normalverteilt, 
+$\dots$). Die zufällig erzeugten Elemente sind grundsätzlich gleichmäßig verteilt, aber die Trial-und-Error
+Methode könnte das Ergebnis eventuell verfälschen.
+
+\begin{algorithm}[H]
+    \caption{Platzierung von Robotern}
+    \KwData{Die Anzahl von Robotern $n$, die platziert werden sollen}
+    \KwResult{Menge von Punkten, sodass (\ref{eq:robot_constraint}) erfüllt wird. Punkte werden zufällig erzeugt.}
+    \BlankLine
+    \texttt{R} \textleftarrow \{ generateFirstPoint() \}\;
+    \For{$i \leftarrow 1$ \KwTo $n$} {
+      %\texttt{\subs{min}{x}, \subs{min}{y}, \subs{max}{x}, \subs{max}{y}} \textleftarrow getExtrema(R)\;
+      \Repeat{ d(p, \text{nearest}) $\le 200$}{
+      p \textleftarrow generatePointBoxed(\texttt{\subs{min}{x}, \subs{min}{y}, \subs{max}{x}, \subs{max}{y}})\;
+      nearest \textleftarrow nearestNeighbour(R, p)
+      }
+      R $\leftarrow R\cup\{p\}$\;
+    }
+    \Return{$R$}
+\end{algorithm}    
+
+%#
+\subsection{Missionsdauer}
+
+Die Missionsdauer ist definiert als die minimal benötigte Zeit für ein Treffen aller Roboter an 
+einem gemeinsamen Ort auf dem Meeresboden. Es kann auch als Sonderfall des 1-center problem angesehen werden,
+welches sagt: Gegeben sei eine Menge von Punkten $R$, platziere einen Punkt $P$ so, dass die maximale Entfernung
+eines Punktes $r \in R$ zu $P$ minimiert wird. 
+
+Die Lösung des Problemes hier wird auf das Problem des kleinsten umschliessender Kreises reduziert. Dieser ist der Kreis,
+welcher alle Punkte enthält und dabei einen minimalen Radius hat. Dabei ist der Radius dessen die maximale Entfernung oder
+auch Missionsdauer. Der Mittelpunkt des Kreises ist der Treffpunkt.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=.9\textwidth]{img/kuk_100.png}
+  \caption{Kleinster umschliessender Kreis um eine Menge aus 100 zufällig generierten Punkten}
+  \label{img:kuk_100}
+\end{figure}
+
+Mit der Zeit sind viele verschiedene Algorithmen entwickelt worden. Der hier verwendete, im weiteren \texttt{minidisk} genannt,
+zeichnet sich dadurch aus, dass er äußerst einfach implementiert werden kann. Außerdem hat er eine Komplexität von erwarteten 
+$\mathcal O(n)$. Interessant ist dies, da das Problem offensichtlich $\Omega (n)$ ist (jeder Punkt muss mindestens einmal 
+gesichtet werden, da er prinzipiell auf der Kreislinie liegt und somit den Radius vergrößern kann).
+
+Vorgestellt wurde er in \cite{welzl91}. Es wird im Folgenden kurz beschrieben, wie er funktioniert. Für Einzelheiten, z.B. warum es funktioniert,
+sei auf dieses Paper verwiesen.
+
+
+goal runden
+missiontime runden
+
+%#
+\subsection{Finden des Sammelpunktes}
+
+%#
 \subsection{Manhattan-Metrik}
 \label{sec:manhattan}
 
@@ -357,7 +453,8 @@ enthält. Da es nicht eindeutig definiert wird, reicht eine einzige Lösung für
 \begin{algorithm}[H]
     \caption{Kreis von zwei Punkten in Taxicab-Geometrie}
     \KwData{Zwei Punkte $X, Y \in \mathbb{R}^n$ }
-    \KwResult{Radius und Mittelpunkt eines Quadrates, das $X$ und $Y$ enthält und eine minimale Seitenlänge hat.}
+    \KwResult{Radius und Mittelpunkt eines Quadrates, das $X$ und $Y$ enthält und eine minimale Seitenlänge hat.
+    Radius hier ist die halbe Länge der Diagonale.}
     \BlankLine
     \begin{enumerate}
     \item Um die Lösung des Problems zu vereinfachen, werden die Punkte je um \unit[45]{\textdegree} um den
@@ -367,7 +464,7 @@ enthält. Da es nicht eindeutig definiert wird, reicht eine einzige Lösung für
     \begin{equation}
     s = \max\{|P_x - Q_x|, |P_y - Q_y|\}
     \end{equation}
-    \item Um eine Lösung zu finden, wähle die unterste Linke Ecke als Ausgangspunkt und nenne sie $A$
+    \item Um eine Lösung zu finden, wähle die unterste linke Ecke als Ausgangspunkt und nenne sie $A$.
     \begin{equation}
     \begin{cases}
     A_x = \min\{P_x,Q_x\}\\
@@ -390,13 +487,23 @@ enthält. Da es nicht eindeutig definiert wird, reicht eine einzige Lösung für
     \Return{$r$, $M$}
 \end{algorithm} 
 
+\begin{figure}[!ht]
+  \centering
+  \subfloat[][Zwei Punkte]{\includegraphics[width=.45\textwidth]{img/taxicab_from_two.png}}\qquad
+  \subfloat[][Drei Punkte]{\includegraphics[width=.45\textwidth]{img/taxicab_from_three.png}}\qquad
+  \caption{Kreis in Taxicab-Geometrie von zwei respektiv drei Punkten. Auffallend ist, dass mindestens
+  zwei Punkte auf der Kreislinie liegen.}
+  \label{fig:taxicab_calc}
+\end{figure}
+
 Interessanterweise liefert dieser Algorithmus durch geringfügige Anpassungen auch die Lösung für folgendes Problem:
-Finde das kleinste Quadrat, welches um \unit[45]{\textdegree} gedreht ist, welches drei Punkte enthält:
+Finde das kleinste Quadrat, welches um \unit[45]{\textdegree} gedreht ist, welches \textbf{drei} Punkte enthält:
 
 \begin{algorithm}[H]
     \caption{Kreis von drei Punkten in Taxicab-Geometrie}
     \KwData{Drei Punkte $X, Y, Z \in \mathbb{R}^n$ }
-    \KwResult{Radius und Mittelpunkt eines Quadrates, das $X, Y, Z$ enthält und eine minimale Seitenlänge hat.}
+    \KwResult{Radius und Mittelpunkt eines Quadrates, das $X, Y, Z$ enthält und eine minimale Seitenlänge hat. Radius hier 
+    ist die halbe Länge der Diagonale.}
     \BlankLine
     \begin{enumerate}
     \item Um die Lösung des Problems zu vereinfachen, werden die Punkte je um \unit[45]{\textdegree} um den
@@ -406,7 +513,7 @@ Finde das kleinste Quadrat, welches um \unit[45]{\textdegree} gedreht ist, welch
     \begin{equation}
     s = \max\{|P_x-Q_x|,|P_x-R_x|,|Q_x-R_x|,|P_y-Q_y|,|P_y-R_y|,|Q_y-R_y|\}
     \end{equation}
-    \item Um eine Lösung zu finden, wähle die unterste Linke Ecke als Ausgangspunkt und nenne sie $A$
+    \item Um eine Lösung zu finden, wähle die unterste linke Ecke als Ausgangspunkt und nenne sie $A$.
     \begin{equation}
     \begin{cases}
     A_x = \min\{P_x,Q_x,R_x\}\\
@@ -435,19 +542,7 @@ für einen Kreis in Taxicab-Geometrie, der zwei (drei) Punkte enthält, ist unte
 \url{http://www.geogebratube.org/student/m65241} \newline
 \url{http://www.geogebratube.org/student/m68655}
 
-%#
-\subsection{Platzierung}
 
-Keine Häufigkeitsverteilung gegeben
-
-%#
-\subsection{Missionsdauer}
-
-goal runden
-missiontime runden
-
-%#
-\subsection{Finden des Sammelpunktes}
 
 %#
 \subsection{Zeitbeschränkung}

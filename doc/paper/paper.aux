@@ -39,34 +39,43 @@
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Entscheidung}{6}}
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Diskretisierung der m\IeC {\"o}glichen Positionen auf dem pazifischen Meeresboden durch quadratische Zellen. Jede Zelle ist eindeutig durch kartesische Koordinaten bestimmt. Das Gitter erstreckt sich unendlich weit in alle Richtungen. \relax }}{7}}
 \newlabel{img:ocean_floor_squared}{{6}{7}}
-\citation{wikicity}
-\citation{wikicity}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {5}Theory Crafting}{8}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Manhattan-Metrik}{8}}
-\newlabel{sec:manhattan}{{5.1}{8}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Verschiedene, gleichgro\IeC {\ss }e Taxicab-Distanzen zwischen zwei Punkten (je 12 Einheiten lang). Zum Vergleich ist die gr\IeC {\"u}ne Linie die euklidische Distanz (etwa 8,5 Einheiten) eingetragen. \cite {wikicity}\relax }}{8}}
-\newlabel{img:taxicab_euclid}{{7}{8}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Platzierung}{8}}
+\newlabel{eq:robot_constraint}{{2}{8}}
+\@writefile{loa}{\defcounter {refsection}{0}\relax }\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Platzierung von Robotern\relax }}{8}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Platzierung von 100 Punkten. Die gr\IeC {\"u}ne Fl\IeC {\"a}che entsteht aus Kreisen mit Radius 200 um jeden Punkt und bezeichnet die Positionen, f\IeC {\"u}r die (\ref  {eq:robot_constraint}) erf\IeC {\"u}llt ist. Da die Fl\IeC {\"a}che verbunden ist und alle Punkte enth\IeC {\"a}lt, ist diese Anordnung valide.\relax }}{9}}
+\newlabel{img:generated_robots}{{7}{9}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Missionsdauer}{9}}
+\citation{welzl91}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Kleinster umschliessender Kreis um eine Menge aus 100 zuf\IeC {\"a}llig generierten Punkten\relax }}{10}}
+\newlabel{img:kuk_100}{{8}{10}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Finden des Sammelpunktes}{10}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Manhattan-Metrik}{10}}
+\newlabel{sec:manhattan}{{5.4}{10}}
+\citation{wikicity}
+\citation{wikicity}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Verschiedene, gleichgro\IeC {\ss }e Taxicab-Distanzen zwischen zwei Punkten (je 12 Einheiten lang). Zum Vergleich ist die gr\IeC {\"u}ne Linie die euklidische Distanz (etwa 8,5 Einheiten) eingetragen. \cite {wikicity}\relax }}{11}}
+\newlabel{img:taxicab_euclid}{{9}{11}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1}Entfernung}{11}}
 \citation{janssen2007}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Ausz\IeC {\"u}ge aus Stadpl\IeC {\"a}nen von New York und Mannheim.   Auffallend ist die gitterf\IeC {\"o}rmige Anordnung der Stra\IeC {\ss }enz\IeC {\"u}ge. \relax }}{9}}
-\newlabel{fig:tess_hexagon}{{8}{9}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}Entfernung}{9}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}Kreise}{9}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Alle Punkte auf der Kreislinie haben den gleichen Abstand zum Mittelpunkt. Auffallend ist, das der Kreis in Taxicab-Metrik nicht rund, sondern quadratisch ist.\relax }}{10}}
-\newlabel{img:circle_in_diff_metrics}{{9}{10}}
-\@writefile{loa}{\defcounter {refsection}{0}\relax }\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Kreis von zwei Punkten in Taxicab-Geometrie\relax }}{11}}
-\@writefile{loa}{\defcounter {refsection}{0}\relax }\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Kreis von drei Punkten in Taxicab-Geometrie\relax }}{12}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Platzierung}{12}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Missionsdauer}{12}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Finden des Sammelpunktes}{12}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Zeitbeschr\IeC {\"a}nkung}{12}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6}Implementierung}{13}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {7}Diskussion}{14}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Performance}{14}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Fehlerrechnung}{14}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.1}Abweichung vom Optimum}{14}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.2}Fehler durch Modellierung}{14}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces \IeC {\"U}berstreichen der Ecken beim Wechseln in eine benachbarte Zelle: Der Roboter (hier rot), kann nicht nur den urspr\IeC {\"u}nglichen, kreisf\IeC {\"o}rmigen Teil in der Mitte einer Zelle abernten, sondern beim Wechseln auch die Ecken, da sein Arbeitsbereich diese in der Bewegung \IeC {\"u}berschneidet. \relax }}{14}}
-\newlabel{fig:harvested_edges}{{10}{14}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Ausz\IeC {\"u}ge aus Stadpl\IeC {\"a}nen von New York und Mannheim.   Auffallend ist die gitterf\IeC {\"o}rmige Anordnung der Stra\IeC {\ss }enz\IeC {\"u}ge. \relax }}{12}}
+\newlabel{fig:tess_hexagon}{{10}{12}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.2}Kreise}{12}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Alle Punkte auf der Kreislinie haben den gleichen Abstand zum Mittelpunkt. Auffallend ist, das der Kreis in Taxicab-Metrik nicht rund, sondern quadratisch ist.\relax }}{13}}
+\newlabel{img:circle_in_diff_metrics}{{11}{13}}
+\@writefile{loa}{\defcounter {refsection}{0}\relax }\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Kreis von zwei Punkten in Taxicab-Geometrie\relax }}{13}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Kreis in Taxicab-Geometrie von zwei respektiv drei Punkten. Auffallend ist, dass mindestens zwei Punkte auf der Kreislinie liegen.\relax }}{14}}
+\newlabel{fig:taxicab_calc}{{12}{14}}
+\@writefile{loa}{\defcounter {refsection}{0}\relax }\@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces Kreis von drei Punkten in Taxicab-Geometrie\relax }}{15}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Zeitbeschr\IeC {\"a}nkung}{15}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6}Implementierung}{16}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {7}Diskussion}{17}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Performance}{17}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Fehlerrechnung}{17}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.1}Abweichung vom Optimum}{17}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.2}Fehler durch Modellierung}{17}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces \IeC {\"U}berstreichen der Ecken beim Wechseln in eine benachbarte Zelle: Der Roboter (hier rot), kann nicht nur den urspr\IeC {\"u}nglichen, kreisf\IeC {\"o}rmigen Teil in der Mitte einer Zelle abernten, sondern beim Wechseln auch die Ecken, da sein Arbeitsbereich diese in der Bewegung \IeC {\"u}berschneidet. \relax }}{17}}
+\newlabel{fig:harvested_edges}{{13}{17}}
 \citation{*}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Lessons learned/Fehlentscheidungen}{15}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Ausblick}{15}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Lessons learned/Fehlentscheidungen}{18}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Ausblick}{18}}

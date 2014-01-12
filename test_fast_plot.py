@@ -58,7 +58,7 @@ def goal_was_reached(data, goal):
 if __name__ == '__main__':
 	from_file = True
 	if from_file:
-		ROBO_COUNT, robots = io.positions_from_file('tests/robots_010.txt')
+		ROBO_COUNT, robots = io.positions_from_file('tests/robots_100.txt')
 	else:
 		ROBO_COUNT = 100
 		robots = place_robots(ROBO_COUNT)
@@ -68,7 +68,7 @@ if __name__ == '__main__':
 	GOAL, MISSION_TIME = calc_battle_plan(robots)
 	assert all_can_reach_goal(robots, GOAL, MISSION_TIME)
 
-	MISSION_TIME *= 2
+	#MISSION_TIME *= 2
 
 	STEPS = MISSION_TIME + 1	
 	GOAL_X, GOAL_Y = GOAL

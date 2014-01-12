@@ -24,7 +24,7 @@ def distance_constraint_holds(robots):
 if __name__ == '__main__':
     ROBOT_CNT = 100
     #robots = place_robots(ROBOT_CNT)
-    robots = positions_from_file('profile_positions_100.txt')
+    robots = positions_from_file('doc/profiling/profile_positions_100.txt')
     #positions_to_file('profile.txt', robots)
     #sys.exit(0) 
     field = SquareGrid(robots)
@@ -40,6 +40,8 @@ if __name__ == '__main__':
     #mission_time *= 2
 
     goal = np.rint(circle.center()).astype(int)
+    print goal, mission_time
+    sys.exit(1)
     agent = LogicalAgent(goal)
     #agent = RandomAgent(goal)
     #agent = HeuristicAgent(goal)

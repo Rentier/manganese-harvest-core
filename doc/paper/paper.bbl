@@ -68,6 +68,51 @@
   \field{year}{2007}
 \endentry
 
+\entry{kling2008}{report}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Kling}{K.}%
+     {Peter}{P.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{KP1}
+  \strng{fullhash}{KP1}
+  \field{labelalpha}{Kli08}
+  \field{sortinit}{K}
+  \field{title}{Facility Location}
+  \list{institution}{1}{%
+    {Universität Paderborn}%
+  }
+  \field{type}{techreport}
+  \field{year}{2008}
+\endentry
+
+\entry{welzl91}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Welzl}{W.}%
+     {Emo}{E.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer-Verlag}%
+  }
+  \strng{namehash}{WE1}
+  \strng{fullhash}{WE1}
+  \field{labelalpha}{Wel91}
+  \field{sortinit}{W}
+  \field{booktitle}{Results and New Trends in Computer Science}
+  \field{pages}{359\bibrangedash 370}
+  \field{title}{Smallest Enclosing Disks (balls and Ellipsoids)}
+  \verb{url}
+  \verb http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.46.1450&rep=re
+  \verb p1&type=pdf
+  \endverb
+  \field{year}{1991}
+\endentry
+
 \entry{wikicity}{booklet}{}
   \name{author}{1}{}{%
     {{}%

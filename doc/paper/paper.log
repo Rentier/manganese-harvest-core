@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.8.4)  12 JAN 2014 13:03
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.8.4)  12 JAN 2014 16:01
 entering extended mode
  %&-line parsing enabled.
 **paper.tex
@@ -481,6 +481,7 @@ Package: nicefrac 1998/08/04 v0.9b Nice fractions
 \L@UnitsRaiseTextstyle=\skip55
 \L@UnitsRaiseScriptstyle=\skip56
 ))
+(/usr/share/texmf-texlive/tex/latex/fragments/subscript.sty)
 (/usr/share/texmf-texlive/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2005/10/04 v3.9 algorithms environments
 \c@AlgoLine=\count112
@@ -1179,25 +1180,25 @@ LaTeX Warning: Label `fig:tess_hexagon' multiply defined.
 )
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 36.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 39.
  (/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 36.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 39.
 
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1217,7 +1218,7 @@ File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
-LaTeX Info: Redefining \subref on input line 36.
+LaTeX Info: Redefining \subref on input line 39.
 Package caption Info: End \AtBeginDocument code.
 
 *geometry* driver: auto-detecting
@@ -1268,9 +1269,9 @@ Package biblatex Warning: Data encoding is 'utf8'.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'paper.bbl' found.
 (./paper.bbl)
-Package biblatex Info: Reference section=0 on input line 36.
-Package biblatex Info: Reference segment=0 on input line 36.
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 57.
+Package biblatex Info: Reference section=0 on input line 39.
+Package biblatex Info: Reference segment=0 on input line 39.
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 60.
  (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [1
@@ -1306,50 +1307,50 @@ File: img/hexagon_graph.png Graphic file (type png)
 <use img/hexagon_graph.png> [4
 
  <./img/triangle_grid.png> <./img/triangle_graph.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 185--187
+Underfull \hbox (badness 10000) in paragraph at lines 188--190
 
  []
 
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 200.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 203.
 
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 200.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 203.
 
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 200
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 203
 .
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 200
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 203
 .
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 200.
+(Font)              <10> on input line 203.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 200.
+(Font)              <7> on input line 203.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 200.
-LaTeX Font Info:    Try loading font information for U+msa on input line 200.
+(Font)              <5> on input line 203.
+LaTeX Font Info:    Try loading font information for U+msa on input line 203.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 200.
+LaTeX Font Info:    Try loading font information for U+msb on input line 203.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+wasy on input line 200.
+LaTeX Font Info:    Try loading font information for U+wasy on input line 203.
 
 (/usr/share/texmf-texlive/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
@@ -1368,54 +1369,80 @@ File: img/hexagon_circle.png Graphic file (type png)
 
 <use img/hexagon_circle.png>
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 235.
+(Font)              <8> on input line 238.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 235.
+(Font)              <6> on input line 238.
  [6 <./img/triangle_circle.png> <./img/square_circle.png> <./img/hexagon_circle
 .png>]
 <img/ocean_floor.png, id=50, 112.56926pt x 113.37524pt>
 File: img/ocean_floor.png Graphic file (type png)
 
 <use img/ocean_floor.png> [7 <./img/ocean_floor.png>]
-<img/taxicab_distance.png, id=56, 1003.75pt x 1003.75pt>
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 290.
+
+
+(/usr/share/texmf/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Overfull \hbox (36.00008pt too wide) in paragraph at lines 290--294
+[]\T1/lmr/m/n/10 Die hier ge-wähl-te Lö-sung ist ite-ra-tiv. Be-gin-nend mit ei
+-nem ers-ten Punkt (ge-ge-ben durch \T1/lmtt/m/n/10 generateFirstPoint\T1/lmr/m
+/n/10 ),
+ []
+
+<img/100_robots.png, id=56, 713.66624pt x 700.6175pt>
+File: img/100_robots.png Graphic file (type png)
+ <use img/100_robots.png>
+Underfull \hbox (badness 10000) in paragraph at lines 320--336
+
+ []
+
+[8
+
+] <img/kuk_100.png, id=64, 834.11626pt x 812.03375pt>
+File: img/kuk_100.png Graphic file (type png)
+ <use img/kuk_100.png>
+[9 <./img/100_robots.png>] [10 <./img/kuk_100.png>]
+<img/taxicab_distance.png, id=73, 1003.75pt x 1003.75pt>
 File: img/taxicab_distance.png Graphic file (type png)
 
-<use img/taxicab_distance.png> <img/manhattan.png, id=57, 341.275pt x 481.8pt>
+<use img/taxicab_distance.png> <img/manhattan.png, id=74, 341.275pt x 481.8pt>
 File: img/manhattan.png Graphic file (type png)
 
-<use img/manhattan.png> <img/mannheim.png, id=58, 1332.47812pt x 1326.45563pt>
+<use img/manhattan.png> <img/mannheim.png, id=75, 1332.47812pt x 1326.45563pt>
 File: img/mannheim.png Graphic file (type png)
 
-<use img/mannheim.png> [8
-
- <./img/taxicab_distance.png>]
-<img/euclidean_circle.png, id=63, 141.31606pt x 141.31606pt>
+<use img/mannheim.png> [11 <./img/taxicab_distance.png>]
+<img/euclidean_circle.png, id=83, 141.31606pt x 141.31606pt>
 File: img/euclidean_circle.png Graphic file (type png)
 
 <use img/euclidean_circle.png>
-<img/taxicab_circle.png, id=64, 131.9129pt x 131.9129pt>
+<img/taxicab_circle.png, id=84, 131.9129pt x 131.9129pt>
 File: img/taxicab_circle.png Graphic file (type png)
 
-<use img/taxicab_circle.png> [9 <./img/manhattan.png> <./img/mannheim.png (PNG 
-copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 357--392
+<use img/taxicab_circle.png>
+Underfull \hbox (badness 10000) in paragraph at lines 453--489
 
  []
 
-[10 <./img/euclidean_circle.png> <./img/taxicab_circle.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 396--431
+[12 <./img/manhattan.png> <./img/mannheim.png (PNG copy)>]
+<img/taxicab_from_two.png, id=90, 479.7925pt x 476.78125pt>
+File: img/taxicab_from_two.png Graphic file (type png)
+
+<use img/taxicab_from_two.png>
+<img/taxicab_from_three.png, id=91, 504.88625pt x 506.89375pt>
+File: img/taxicab_from_three.png Graphic file (type png)
+
+<use img/taxicab_from_three.png> [13 <./img/euclidean_circle.png> <./img/taxica
+b_circle.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 502--538
 
  []
 
-[11]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 435.
-
- (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [12] [13
+[14 <./img/taxicab_from_two.png> <./img/taxicab_from_three.png>] [15] [16
 
 ]
-<img/collected_edges.png, id=92, 231.85506pt x 232.12372pt>
+<img/collected_edges.png, id=110, 231.85506pt x 232.12372pt>
 File: img/collected_edges.png Graphic file (type png)
 
 <use img/collected_edges.png>
@@ -1425,14 +1452,14 @@ File: img/collected_edges.png Graphic file (type png)
 
 <use img/collected_edges.png>
 File: img/collected_edges.png Graphic file (type png)
- <use img/collected_edges.png> [14
+ <use img/collected_edges.png> [17
 
  <./img/collected_edges.png>]
 
 Package biblatex Warning: Deprecated option.
-(biblatex)                Ignoring 'maxnames' on input line 494.
+(biblatex)                Ignoring 'maxnames' on input line 589.
 
-[15] (./paper.aux)
+[18] (./paper.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1441,13 +1468,13 @@ Package logreq Info: Writing requests to 'paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 20876 strings out of 494886
- 377769 string characters out of 1177106
- 587196 words of memory out of 3000000
- 23640 multiletter control sequences out of 15000+50000
- 67691 words of font info for 61 fonts, out of 3000000 for 9000
+ 20920 strings out of 494886
+ 378713 string characters out of 1177106
+ 586267 words of memory out of 3000000
+ 23675 multiletter control sequences out of 15000+50000
+ 68012 words of font info for 62 fonts, out of 3000000 for 9000
  85 hyphenation exceptions out of 8191
- 56i,13n,56p,790b,1337s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,16n,56p,790b,1337s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
 /texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
@@ -1461,11 +1488,11 @@ share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf
 /fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
 0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmtt10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
-ts/symbols/msbm10.pfb>
-Output written on paper.pdf (15 pages, 985482 bytes).
+/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb><
+/usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on paper.pdf (18 pages, 1078390 bytes).
 PDF statistics:
- 160 PDF objects out of 1000 (max. 8388607)
+ 181 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 93 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
