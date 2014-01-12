@@ -59,6 +59,7 @@ if __name__ == '__main__':
 	AGENT = "heuristic"
 	from_file = False
 	write_file = False
+	double = True
 	if from_file:
 		ROBO_COUNT, robots = io.positions_from_file('tests/robots_100.txt')
 	else:
@@ -73,7 +74,8 @@ if __name__ == '__main__':
 	GOAL, MISSION_TIME = calc_battle_plan(robots)
 	assert all_can_reach_goal(robots, GOAL, MISSION_TIME)
 
-	#MISSION_TIME *= 2
+	if double:
+		MISSION_TIME *= 2
 
 	STEPS = MISSION_TIME + 1	
 	GOAL_X, GOAL_Y = GOAL
@@ -85,6 +87,7 @@ if __name__ == '__main__':
 	traveled, collected = fhl.harvest(data, AGENT, GOAL_X, GOAL_Y, STEPS, ROBO_COUNT)
 	#assert goal_was_reached(data, GOAL)
 
+	print "Double: ", double
 	print "Robots: ", ROBO_COUNT
 	print "Mission time: ", MISSION_TIME 
 	print "Goal: ", GOAL
@@ -93,6 +96,7 @@ if __name__ == '__main__':
 	print "% harvested: ", collected / float(MISSION_TIME * ROBO_COUNT)
 
 	#plot(data,GOAL,interval=100)
-	FILENAME = "test_{}_{}.".format(ROBO_COUNT, AGENT)
-	#svg(data, FILENAME + "svg")
-	png(data, FILENAME + "png")
+	FILENAME = "test_{}_{}".format(ROBO_COUNT, AGENT)
+	if double: FILENAME += "_double"
+	#svg(data, FILENAME + ".svg")
+	png(data, FILENAME + ".png")
