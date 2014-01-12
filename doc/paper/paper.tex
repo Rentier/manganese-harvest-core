@@ -9,7 +9,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm} 
-\usepackage{ wasysym }
+\usepackage{wasysym}
 \usepackage[justification=centering]{caption}
 \usepackage[parfill]{parskip}
 \usepackage[left=3cm,right=3cm,top=2cm,bottom=2cm,includeheadfoot]{geometry}
@@ -324,7 +324,7 @@ Methode könnte das Ergebnis eventuell verfälschen.
     \BlankLine
     \texttt{R} \textleftarrow \{ generateFirstPoint() \}\;
     \For{$i \leftarrow 1$ \KwTo $n$} {
-      %\texttt{\subs{min}{x}, \subs{min}{y}, \subs{max}{x}, \subs{max}{y}} \textleftarrow getExtrema(R)\;
+      \texttt{\subs{min}{x}, \subs{min}{y}, \subs{max}{x}, \subs{max}{y}} \textleftarrow getExtrema(R)\;
       \Repeat{ d(p, \text{nearest}) $\le 200$}{
       p \textleftarrow generatePointBoxed(\texttt{\subs{min}{x}, \subs{min}{y}, \subs{max}{x}, \subs{max}{y}})\;
       nearest \textleftarrow nearestNeighbour(R, p)
@@ -339,12 +339,12 @@ Methode könnte das Ergebnis eventuell verfälschen.
 
 Die Missionsdauer ist definiert als die minimal benötigte Zeit für ein Treffen aller Roboter an 
 einem gemeinsamen Ort auf dem Meeresboden. Es kann auch als Sonderfall des 1-center problem angesehen werden,
-welches sagt: Gegeben sei eine Menge von Punkten $R$, platziere einen Punkt $P$ so, dass die maximale Entfernung
-eines Punktes $r \in R$ zu $P$ minimiert wird. 
+welches sagt: Gegeben sei eine Menge von Punkten $R$, platziere einen Punkt $M$ so, dass die maximale Entfernung
+eines Punktes $p \in R$ zu $M$ minimiert wird. 
 
-Die Lösung des Problemes hier wird auf das Problem des kleinsten umschliessender Kreises reduziert. Dieser ist der Kreis,
+Dieses Problemes wird auf das Problem des kleinsten umschliessender Kreises reduziert. Dieser ist der Kreis,
 welcher alle Punkte enthält und dabei einen minimalen Radius hat. Dabei ist der Radius dessen die maximale Entfernung oder
-auch Missionsdauer. Der Mittelpunkt des Kreises ist der Treffpunkt.
+auch Missionsdauer. Der Mittelpunkt des Kreises ist ein potentieller Treffpunkt der Roboter.
 
 \begin{figure}[!ht]
   \centering
@@ -358,15 +358,61 @@ zeichnet sich dadurch aus, dass er äußerst einfach implementiert werden kann. 
 $\mathcal O(n)$. Interessant ist dies, da das Problem offensichtlich $\Omega (n)$ ist (jeder Punkt muss mindestens einmal 
 gesichtet werden, da er prinzipiell auf der Kreislinie liegt und somit den Radius vergrößern kann).
 
-Vorgestellt wurde er in \cite{welzl91}. Es wird im Folgenden kurz beschrieben, wie er funktioniert. Für Einzelheiten, z.B. warum es funktioniert,
-sei auf dieses Paper verwiesen.
+Vorgestellt wurde er in \cite{welzl91}. Es wird im Folgenden kurz beschrieben, wie er funktioniert. Für Einzelheiten, z.B. 
+warum es funktioniert, sei auf dieses Paper verwiesen. Die Implementierung von \texttt{minidisk} ist wie folgt:
 
+\begin{algorithm}[H]
+    \caption{Kleinster umschließender Kreis}
+    \KwData{Punktmenge $P$}
+    \KwResult{Radius und Mittelpunkt des Kreises, der alle Punkte p $\in P$ enthält und einen minimalen Radius hat}
+    \SetKwFunction{minidisk}{minidisk}
+    \SetKwFunction{bMd}{bMd}
+    \SetKwFunction{bMinidisk}{bMinidisk}
 
-goal runden
-missiontime runden
+    \SetKwProg{fn}{function}{}{end}
+    \BlankLine
+    \fn{\minidisk{points}}{
+    \BlankLine
+           \fn{\bMinidisk{P, R}}{
+           \uIf{P is $\varnothing$}{
+              \Return empty disk\;
+           }
+           \uElseIf{|R| $<=$ 3}{
+           return disk(R)\;
+           }
+           \Else{
+           return error\;
+           }
+
+           }
+           \BlankLine
+          \fn{\bMinidisk{P, R}}{
+          \eIf{P is $\varnothing$ or |R| is 3}{
+            D \textleftarrow \ bMd($\varnothing$, R)\;
+          }{
+          choose random $p \in D$\;
+          D \textleftarrow \ bMinidisk($P \setminus p$, R)\;
+          \If{$p \notin P$}{
+          D \textleftarrow \ bMinidisk($P \setminus p, R \cup p$)            
+          }}{}
+          \Return{$D$}
+          }
+     \BlankLine
+    \Return{\bMinidisk{points, $\varnothing$}}\;}{}
+    
+\end{algorithm} 
+
+Zu beachten ist, dass \texttt{disk(R)} die kleinste Scheibe berechnet, die alle Punkte in $R$ enthält. Der Algorithmus funkioniert wie folgt:
+Es gibt zwei Mengen $P,R$. P sind die Punkte, die noch verarbeitet werden müssen, $R$ die Punkte, die auf dem Rand der Scheibe liegen. In jedem
+Schritt überprüft, ob es schon eine eindeutige Lösung berechnet werden kann. Dies ist der Fall, wenn $P$ leer ist (kein nächster Schritt möglich) oder $R$ genau drei Elemente enthält (ein Kreis ist eindeutig durch drei Punkte definiert). 
+
+Falls keine dieser beiden Bedingungen zutrifft, wird ein Punkt $p$ aus $P$ zufällig ausgewählt und ohne ihn versucht, eine \texttt{minidisk} zu berechnen. Falls $p$  dann nicht in der neuen Scheibe liegt, muss er zwangsläufig im nächsten Schritt auf dem Rand liegen.
 
 %#
-\subsection{Finden des Sammelpunktes}
+\subsection{Finden der Missionsdaten}
+
+Die einfache Missionszeit ist der Radius der \texttt{minidisk}, der Treffpunkt ist dessen Mittelpunkt. In Fig. \ref{img:kuk_100} ist dargestellt,
+wie 100 Roboter (rot) positioniert sind und sich auf einen Treffpunkt (blau) geeinigt haben. Die Missionszeit hier ist minimal, da der Algorithmus versucht, die maximale Entfernung zu einem Punkt zu minimieren. Da nur mit Ganzzahlen gearbeitet wird, wird der Treffpunkt gerundet. Daher muss auch die Missionszeit angepasst werden, sie wird aufgerundet.
 
 %#
 \subsection{Manhattan-Metrik}
@@ -427,9 +473,10 @@ d(a,b)=|a_1-b_1|+|a_2-b_2|
 
 \subsubsection{Kreise}
 
-Ein Kreis ist die Menge aller Punkte in einer Ebene, die einen konstanten Abstand, dem Radius, zu einem bestimmten
-Punkt, dem Mittelpunkt, haben. Die gewählte Metrik, die in dem Wort \textit{Abstand} versteckt ist,
-hat unmittelbar Einfluss auf die Form des Kreises.
+Da die Berechnung der Missionszeit auf der Berechnung von Kreisen basiert, müssen diese auch in der verwendeten
+Taxicab-Geometrie betrachtet werden. Bekannt ist, dass ein Kreis die Menge aller Punkte in einer Ebene ist,
+welche einen konstanten Abstand, dem Radius, zu einem bestimmten Punkt, dem Mittelpunkt, haben. Die gewählte Metrik, 
+die in dem Wort \textit{Abstand} versteckt ist, hat unmittelbar Einfluss auf die Form des Kreises.
 
 Kreise in einer Taxicab-Geometrie haben die Form von Quadraten, die \unit[45]{\textdegree} um deren 
 Mittelpunkt gedreht sind. Fig. \ref{img:circle_in_diff_metrics} gibt eine Idee, wieso es so ist. Eine 
@@ -481,7 +528,7 @@ enthält. Da es nicht eindeutig definiert wird, reicht eine einzige Lösung für
     \item Rotiere $M'$ um \unit[45]{\textdegree} um den Ursprung und nenne den so entstehenden Punkt $M$.
     \item Der Radius $r$ ist gegeben durch 
     \begin{equation}
-    r = \sqrt( (A_x - M'_x) ^ 2 + (A_y - M'_y) ^ 2 )     
+    r = \sqrt{A_x - M'_x) ^ 2 + (A_y - M'_y) ^ 2 }
     \end{equation}
     \end{enumerate}
     \Return{$r$, $M$}
@@ -530,7 +577,7 @@ Finde das kleinste Quadrat, welches um \unit[45]{\textdegree} gedreht ist, welch
     \item Rotiere $M'$ um \unit[45]{\textdegree} um den Ursprung und nenne den so entstehenden Punkt $M$.
     \item Der Radius $r$ ist gegeben durch 
     \begin{equation}
-    r = \sqrt( (A_x - M'_x) ^ 2 + (A_y - M'_y) ^ 2 )     
+    r = \sqrt{A_x - M'_x) ^ 2 + (A_y - M'_y) ^ 2 }
     \end{equation}
     \end{enumerate}
     \Return{$r$, $M$}
@@ -542,10 +589,17 @@ für einen Kreis in Taxicab-Geometrie, der zwei (drei) Punkte enthält, ist unte
 \url{http://www.geogebratube.org/student/m65241} \newline
 \url{http://www.geogebratube.org/student/m68655}
 
+Interessanterweise funktioniert \texttt{minidisk} auch mit Taxicab-Kreisen, wenn man die \texttt{disk}-Funktion anpasst. Dies wurde hier nicht mathematisch bewiesen, aber die Ergebnisse sprechen für sich.
 
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=.9\textwidth]{img/taxicab_minidisk.png}
+  \caption{Platzierung von 100 Punkten und deren kleinster umschließender Kreis in Taxicab-Geometrie.}
+  \label{img:taxicab_minidisk}
+\end{figure}
 
 %#
-\subsection{Zeitbeschränkung}
+\section{Zeitbeschränkung}
 
 % ############################################
 \clearpage

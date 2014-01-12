@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.8.4)  12 JAN 2014 16:01
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.8.4)  12 JAN 2014 17:34
 entering extended mode
  %&-line parsing enabled.
 **paper.tex
@@ -483,38 +483,55 @@ Package: nicefrac 1998/08/04 v0.9b Nice fractions
 ))
 (/usr/share/texmf-texlive/tex/latex/fragments/subscript.sty)
 (/usr/share/texmf-texlive/tex/latex/algorithm2e/algorithm2e.sty
-Package: algorithm2e 2005/10/04 v3.9 algorithms environments
+Package: algorithm2e 2013/01/06 v5.00 algorithms environments
 \c@AlgoLine=\count112
 
 (/usr/share/texmf-texlive/tex/latex/tools/xspace.sty
 Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
 )
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/relsize.sty
+Package: relsize 2003/07/04 ver 3.1
+)
 ********************************************************
-Package `algorithm2e' Release 3.9 -- october 04 2005 --
+Package `algorithm2e' Release 5.0 -- january 06 2013 --
 - algorithm2e-announce@lirmm.fr mailing list for announcement about releases
 - algorithm2e-discussion@lirmm.fr mailing list for discussion about package
 subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
-- Author: Christophe Fiorio (fiorio@lirmm.fr)
+- Author: Christophe Fiorio (cfiorio@um2.fr)
 ********************************************************
 \skiptotal=\skip57
-\skiprule=\skip58
-\skiphlne=\skip59
-\skiptext=\skip60
-\skiplength=\skip61
-\algomargin=\skip62
-\skipalgocfslide=\skip63
+\skiplinenumber=\skip58
+\skiprule=\skip59
+\skiphlne=\skip60
+\skiptext=\skip61
+\skiplength=\skip62
+\algomargin=\skip63
+\skipalgocfslide=\skip64
 \algowidth=\dimen130
 \inoutsize=\dimen131
-\inoutline=\dimen132
+\inoutindent=\dimen132
+\interspacetitleruled=\dimen133
+\interspacealgoruled=\dimen134
+\interspacetitleboxruled=\dimen135
 \algocf@inoutbox=\box28
 \algocf@inputbox=\box29
-\AlCapSkip=\skip64
-\AlCapHSkip=\skip65
-\algocf@capbox=\box30
+\AlCapSkip=\skip65
+\AlCapHSkip=\skip66
+\algoskipindent=\skip67
+\algocf@nlbox=\box30
+\algocf@hangingbox=\box31
+\algocf@untilbox=\box32
+\algocf@skipuntil=\skip68
+\algocf@capbox=\box33
+\algoheightruledefault=\skip69
+\algoheightrule=\skip70
+\algotitleheightruledefault=\skip71
+\algotitleheightrule=\skip72
 \c@algocfline=\count113
-\c@algocf=\count114
-\algocf@algoframe=\box31
-\algocf@algobox=\box32
+\c@algocfproc=\count114
+\c@algocf=\count115
+\algocf@algoframe=\box34
+\algocf@algobox=\box35
 ) (/usr/share/texmf-texlive/tex/latex/base/textcomp.sty
 Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
@@ -663,7 +680,7 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 326.
 \pgfutil@everybye=\toks29
 )
 (/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box33
+\pgfutil@abb=\box36
 
 (/usr/share/texmf-texlive/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
@@ -685,20 +702,20 @@ Package: pgfsys 2010/06/30 v2.10 (rcs-revision 1.37)
 (/usr/share/texmf/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
 \pgfkeys@tmptoks=\toks32
 ))
-\pgf@x=\dimen133
-\pgf@y=\dimen134
-\pgf@xa=\dimen135
-\pgf@ya=\dimen136
-\pgf@xb=\dimen137
-\pgf@yb=\dimen138
-\pgf@xc=\dimen139
-\pgf@yc=\dimen140
+\pgf@x=\dimen136
+\pgf@y=\dimen137
+\pgf@xa=\dimen138
+\pgf@ya=\dimen139
+\pgf@xb=\dimen140
+\pgf@yb=\dimen141
+\pgf@xc=\dimen142
+\pgf@yc=\dimen143
 \w@pgf@writea=\write3
 \r@pgf@reada=\read1
-\c@pgf@counta=\count115
-\c@pgf@countb=\count116
-\c@pgf@countc=\count117
-\c@pgf@countd=\count118
+\c@pgf@counta=\count116
+\c@pgf@countb=\count117
+\c@pgf@countc=\count118
+\c@pgf@countd=\count119
 
 (/usr/share/texmf/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
@@ -713,8 +730,8 @@ File: pgfsys-common-pdf.def 2008/05/19  (rcs-revision 1.10)
 )))
 (/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2008/07/18  (rcs-revision 1.7)
-\pgfsyssoftpath@smallbuffer@items=\count119
-\pgfsyssoftpath@bigbuffer@items=\count120
+\pgfsyssoftpath@smallbuffer@items=\count120
+\pgfsyssoftpath@bigbuffer@items=\count121
 )
 (/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
@@ -743,9 +760,9 @@ Package: pgfcore 2010/04/11 v2.10 (rcs-revision 1.7)
 (/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
 (/usr/share/texmf/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texmf/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen141
-\pgfmath@count=\count121
-\pgfmath@box=\box34
+\pgfmath@dimen=\dimen144
+\pgfmath@count=\count122
+\pgfmath@box=\box37
 \pgfmath@toks=\toks33
 \pgfmath@stack@operand=\toks34
 \pgfmath@stack@operation=\toks35
@@ -759,51 +776,51 @@ Package: pgfcore 2010/04/11 v2.10 (rcs-revision 1.7)
 (/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.round.code.tex)
 (/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex)))
 (/usr/share/texmf/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count122
+\c@pgfmathroundto@lastzeros=\count123
 ))
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2010/04/09  (rcs-revision 1.20)
-\pgf@picminx=\dimen142
-\pgf@picmaxx=\dimen143
-\pgf@picminy=\dimen144
-\pgf@picmaxy=\dimen145
-\pgf@pathminx=\dimen146
-\pgf@pathmaxx=\dimen147
-\pgf@pathminy=\dimen148
-\pgf@pathmaxy=\dimen149
-\pgf@xx=\dimen150
-\pgf@xy=\dimen151
-\pgf@yx=\dimen152
-\pgf@yy=\dimen153
-\pgf@zx=\dimen154
-\pgf@zy=\dimen155
+\pgf@picminx=\dimen145
+\pgf@picmaxx=\dimen146
+\pgf@picminy=\dimen147
+\pgf@picmaxy=\dimen148
+\pgf@pathminx=\dimen149
+\pgf@pathmaxx=\dimen150
+\pgf@pathminy=\dimen151
+\pgf@pathmaxy=\dimen152
+\pgf@xx=\dimen153
+\pgf@xy=\dimen154
+\pgf@yx=\dimen155
+\pgf@yy=\dimen156
+\pgf@zx=\dimen157
+\pgf@zy=\dimen158
 )
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2010/08/03  (rcs-revision 1.24)
-\pgf@path@lastx=\dimen156
-\pgf@path@lasty=\dimen157
+\pgf@path@lastx=\dimen159
+\pgf@path@lasty=\dimen160
 )
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2008/04/22  (rcs-revision 1.12)
-\pgf@shorten@end@additional=\dimen158
-\pgf@shorten@start@additional=\dimen159
+\pgf@shorten@end@additional=\dimen161
+\pgf@shorten@start@additional=\dimen162
 )
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2010/09/08  (rcs-revision 1.34)
-\pgfpic=\box35
-\pgf@hbox=\box36
-\pgf@layerbox@main=\box37
-\pgf@picture@serial@count=\count123
+\pgfpic=\box38
+\pgf@hbox=\box39
+\pgf@layerbox@main=\box40
+\pgf@picture@serial@count=\count124
 )
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2008/04/22  (rcs-revision 1.9)
-\pgflinewidth=\dimen160
+\pgflinewidth=\dimen163
 )
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2009/06/10  (rcs-revision 1.11)
-\pgf@pt@x=\dimen161
-\pgf@pt@y=\dimen162
-\pgf@pt@temp=\dimen163
+\pgf@pt@x=\dimen164
+\pgf@pt@y=\dimen165
+\pgf@pt@temp=\dimen166
 )
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
@@ -819,15 +836,15 @@ File: pgfcorearrows.code.tex 2008/04/23  (rcs-revision 1.11)
 )
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2008/11/23  (rcs-revision 1.13)
-\pgf@max=\dimen164
-\pgf@sys@shading@range@num=\count124
+\pgf@max=\dimen167
+\pgf@sys@shading@range@num=\count125
 )
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2010/03/25  (rcs-revision 1.16)
 
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2010/09/01  (rcs-revision 1.17)
-\pgfexternal@startupbox=\box38
+\pgfexternal@startupbox=\box41
 ))
 (/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2010/08/27  (rcs-revision 1.2)
@@ -840,15 +857,15 @@ File: pgfcorepatterns.code.tex 2009/07/02  (rcs-revision 1.3)
 )))
 (/usr/share/texmf/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2010/09/09  (rcs-revision 1.13)
-\pgfnodeparttextbox=\box39
+\pgfnodeparttextbox=\box42
 )
 (/usr/share/texmf/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2010/10/22  (rcs-revision 1.8)
 )
 (/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2007/07/03 v2.10 (rcs-revision 1.7)
-\pgf@nodesepstart=\dimen165
-\pgf@nodesepend=\dimen166
+\pgf@nodesepstart=\dimen168
+\pgf@nodesepend=\dimen169
 )
 (/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2007/07/23 v2.10 (rcs-revision 1.1)
@@ -858,8 +875,8 @@ Package: pgfcomp-version-1-18 2007/07/23 v2.10 (rcs-revision 1.1)
 (/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex))
 (/usr/share/texmf/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2010/03/23 v2.10 (rcs-revision 1.18)
-\pgffor@iter=\dimen167
-\pgffor@skip=\dimen168
+\pgffor@iter=\dimen170
+\pgffor@skip=\dimen171
 \pgffor@stack=\toks36
 \pgffor@toks=\toks37
 ))
@@ -868,29 +885,29 @@ Package: tikz 2010/10/13 v2.10 (rcs-revision 1.76)
 
 (/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2010/05/31 v2.10 (rcs-revision 1.15)
-\pgf@plot@mark@count=\count125
-\pgfplotmarksize=\dimen169
+\pgf@plot@mark@count=\count126
+\pgfplotmarksize=\dimen172
 )
-\tikz@lastx=\dimen170
-\tikz@lasty=\dimen171
-\tikz@lastxsaved=\dimen172
-\tikz@lastysaved=\dimen173
-\tikzleveldistance=\dimen174
-\tikzsiblingdistance=\dimen175
-\tikz@figbox=\box40
-\tikz@tempbox=\box41
-\tikztreelevel=\count126
-\tikznumberofchildren=\count127
-\tikznumberofcurrentchild=\count128
-\tikz@fig@count=\count129
+\tikz@lastx=\dimen173
+\tikz@lasty=\dimen174
+\tikz@lastxsaved=\dimen175
+\tikz@lastysaved=\dimen176
+\tikzleveldistance=\dimen177
+\tikzsiblingdistance=\dimen178
+\tikz@figbox=\box43
+\tikz@tempbox=\box44
+\tikztreelevel=\count127
+\tikznumberofchildren=\count128
+\tikznumberofcurrentchild=\count129
+\tikz@fig@count=\count130
 
 (/usr/share/texmf/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2010/08/24  (rcs-revision 1.4)
-\pgfmatrixcurrentrow=\count130
-\pgfmatrixcurrentcolumn=\count131
-\pgf@matrix@numberofcolumns=\count132
+\pgfmatrixcurrentrow=\count131
+\pgfmatrixcurrentcolumn=\count132
+\pgf@matrix@numberofcolumns=\count133
 )
-\tikz@expandcount=\count133
+\tikz@expandcount=\count134
 
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
 hs.code.tex
@@ -946,28 +963,28 @@ File: tikzlibraryshapes.multipart.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
 (/usr/share/texmf/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.c
 ode.tex
 File: pgflibraryshapes.multipart.code.tex 2010/01/07 v2.10 (rcs-revision 1.2)
-\pgfnodepartlowerbox=\box42
-\pgfnodeparttwobox=\box43
-\pgfnodepartthreebox=\box44
-\pgfnodepartfourbox=\box45
-\pgfnodeparttwentybox=\box46
-\pgfnodepartnineteenbox=\box47
-\pgfnodeparteighteenbox=\box48
-\pgfnodepartseventeenbox=\box49
-\pgfnodepartsixteenbox=\box50
-\pgfnodepartfifteenbox=\box51
-\pgfnodepartfourteenbox=\box52
-\pgfnodepartthirteenbox=\box53
-\pgfnodeparttwelvebox=\box54
-\pgfnodepartelevenbox=\box55
-\pgfnodeparttenbox=\box56
-\pgfnodepartninebox=\box57
-\pgfnodeparteightbox=\box58
-\pgfnodepartsevenbox=\box59
-\pgfnodepartsixbox=\box60
-\pgfnodepartfivebox=\box61
+\pgfnodepartlowerbox=\box45
+\pgfnodeparttwobox=\box46
+\pgfnodepartthreebox=\box47
+\pgfnodepartfourbox=\box48
+\pgfnodeparttwentybox=\box49
+\pgfnodepartnineteenbox=\box50
+\pgfnodeparteighteenbox=\box51
+\pgfnodepartseventeenbox=\box52
+\pgfnodepartsixteenbox=\box53
+\pgfnodepartfifteenbox=\box54
+\pgfnodepartfourteenbox=\box55
+\pgfnodepartthirteenbox=\box56
+\pgfnodeparttwelvebox=\box57
+\pgfnodepartelevenbox=\box58
+\pgfnodeparttenbox=\box59
+\pgfnodepartninebox=\box60
+\pgfnodeparteightbox=\box61
+\pgfnodepartsevenbox=\box62
+\pgfnodepartsixbox=\box63
+\pgfnodepartfivebox=\box64
 )))
-\c@satz=\count134
+\c@satz=\count135
  (/usr/share/texmf/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2011/11/13 v1.7 programmable bibliographies
 
@@ -976,132 +993,132 @@ Package: etoolbox 2011/01/03 v2.1 e-TeX tools for LaTeX
 
 (/usr/share/texmf-texlive/tex/latex/etex-pkg/etex.sty
 Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
-\et@xins=\count135
+\et@xins=\count136
 )
-\etb@tempcnta=\count136
+\etb@tempcnta=\count137
 )
 (/usr/share/texmf/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count137
+\lrq@indent=\count138
 
 (/usr/share/texmf/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 ))
-\c@listtotal=\count138
-\c@listcount=\count139
-\c@liststart=\count140
-\c@liststop=\count141
-\c@citecount=\count142
-\c@citetotal=\count143
-\c@multicitecount=\count144
-\c@multicitetotal=\count145
-\c@instcount=\count146
-\c@maxnames=\count147
-\c@minnames=\count148
-\c@maxitems=\count149
-\c@minitems=\count150
-\c@citecounter=\count151
-\c@savedcitecounter=\count152
-\c@uniquelist=\count153
-\c@uniquename=\count154
-\c@refsection=\count155
-\c@refsegment=\count156
-\c@maxextrayear=\count157
-\c@maxextraalpha=\count158
-\c@abbrvpenalty=\count159
-\c@highnamepenalty=\count160
-\c@lownamepenalty=\count161
-\c@maxparens=\count162
-\c@parenlevel=\count163
-\blx@tempcnta=\count164
-\blx@tempcntb=\count165
-\blx@tempcntc=\count166
-\blx@maxsection=\count167
-\blx@maxsegment=\count168
-\blx@notetype=\count169
-\blx@parenlevel@text=\count170
-\blx@parenlevel@foot=\count171
-\labelnumberwidth=\skip66
-\labelalphawidth=\skip67
-\shorthandwidth=\skip68
-\biblabelsep=\skip69
-\bibitemsep=\skip70
-\bibnamesep=\skip71
-\bibinitsep=\skip72
-\bibparsep=\skip73
-\bibhang=\skip74
+\c@listtotal=\count139
+\c@listcount=\count140
+\c@liststart=\count141
+\c@liststop=\count142
+\c@citecount=\count143
+\c@citetotal=\count144
+\c@multicitecount=\count145
+\c@multicitetotal=\count146
+\c@instcount=\count147
+\c@maxnames=\count148
+\c@minnames=\count149
+\c@maxitems=\count150
+\c@minitems=\count151
+\c@citecounter=\count152
+\c@savedcitecounter=\count153
+\c@uniquelist=\count154
+\c@uniquename=\count155
+\c@refsection=\count156
+\c@refsegment=\count157
+\c@maxextrayear=\count158
+\c@maxextraalpha=\count159
+\c@abbrvpenalty=\count160
+\c@highnamepenalty=\count161
+\c@lownamepenalty=\count162
+\c@maxparens=\count163
+\c@parenlevel=\count164
+\blx@tempcnta=\count165
+\blx@tempcntb=\count166
+\blx@tempcntc=\count167
+\blx@maxsection=\count168
+\blx@maxsegment=\count169
+\blx@notetype=\count170
+\blx@parenlevel@text=\count171
+\blx@parenlevel@foot=\count172
+\labelnumberwidth=\skip73
+\labelalphawidth=\skip74
+\shorthandwidth=\skip75
+\biblabelsep=\skip76
+\bibitemsep=\skip77
+\bibnamesep=\skip78
+\bibinitsep=\skip79
+\bibparsep=\skip80
+\bibhang=\skip81
 \blx@auxin=\read2
 \blx@auxout=\write4
-\c@mincomprange=\count172
-\c@maxcomprange=\count173
-\c@mincompwidth=\count174
-\c@labelname=\count175
-\c@savedlabelname=\count176
-\c@author=\count177
-\c@savedauthor=\count178
-\c@shortauthor=\count179
-\c@savedshortauthor=\count180
-\c@editor=\count181
-\c@savededitor=\count182
-\c@editora=\count183
-\c@savededitora=\count184
-\c@editorb=\count185
-\c@savededitorb=\count186
-\c@editorc=\count187
-\c@savededitorc=\count188
-\c@shorteditor=\count189
-\c@savedshorteditor=\count190
-\c@bookauthor=\count191
-\c@savedbookauthor=\count192
-\c@translator=\count193
-\c@savedtranslator=\count194
-\c@annotator=\count195
-\c@savedannotator=\count196
-\c@commentator=\count197
-\c@savedcommentator=\count198
-\c@introduction=\count199
-\c@savedintroduction=\count200
-\c@foreword=\count201
-\c@savedforeword=\count202
-\c@afterword=\count203
-\c@savedafterword=\count204
-\c@holder=\count205
-\c@savedholder=\count206
-\c@namea=\count207
-\c@savednamea=\count208
-\c@nameb=\count209
-\c@savednameb=\count210
-\c@namec=\count211
-\c@savednamec=\count212
-\c@institution=\count213
-\c@savedinstitution=\count214
-\c@language=\count215
-\c@savedlanguage=\count216
-\c@location=\count217
-\c@savedlocation=\count218
-\c@organization=\count219
-\c@savedorganization=\count220
-\c@origlocation=\count221
-\c@savedoriglocation=\count222
-\c@origpublisher=\count223
-\c@savedorigpublisher=\count224
-\c@pageref=\count225
-\c@savedpageref=\count226
-\c@publisher=\count227
-\c@savedpublisher=\count228
-\c@lista=\count229
-\c@savedlista=\count230
-\c@listb=\count231
-\c@savedlistb=\count232
-\c@listc=\count233
+\c@mincomprange=\count173
+\c@maxcomprange=\count174
+\c@mincompwidth=\count175
+\c@labelname=\count176
+\c@savedlabelname=\count177
+\c@author=\count178
+\c@savedauthor=\count179
+\c@shortauthor=\count180
+\c@savedshortauthor=\count181
+\c@editor=\count182
+\c@savededitor=\count183
+\c@editora=\count184
+\c@savededitora=\count185
+\c@editorb=\count186
+\c@savededitorb=\count187
+\c@editorc=\count188
+\c@savededitorc=\count189
+\c@shorteditor=\count190
+\c@savedshorteditor=\count191
+\c@bookauthor=\count192
+\c@savedbookauthor=\count193
+\c@translator=\count194
+\c@savedtranslator=\count195
+\c@annotator=\count196
+\c@savedannotator=\count197
+\c@commentator=\count198
+\c@savedcommentator=\count199
+\c@introduction=\count200
+\c@savedintroduction=\count201
+\c@foreword=\count202
+\c@savedforeword=\count203
+\c@afterword=\count204
+\c@savedafterword=\count205
+\c@holder=\count206
+\c@savedholder=\count207
+\c@namea=\count208
+\c@savednamea=\count209
+\c@nameb=\count210
+\c@savednameb=\count211
+\c@namec=\count212
+\c@savednamec=\count213
+\c@institution=\count214
+\c@savedinstitution=\count215
+\c@language=\count216
+\c@savedlanguage=\count217
+\c@location=\count218
+\c@savedlocation=\count219
+\c@organization=\count220
+\c@savedorganization=\count221
+\c@origlocation=\count222
+\c@savedoriglocation=\count223
+\c@origpublisher=\count224
+\c@savedorigpublisher=\count225
+\c@pageref=\count226
+\c@savedpageref=\count227
+\c@publisher=\count228
+\c@savedpublisher=\count229
+\c@lista=\count230
+\c@savedlista=\count231
+\c@listb=\count232
+\c@savedlistb=\count233
 Normal \count register pool exhausted, switching to extended pool.
-\c@savedlistc=\count277
-\c@listd=\count278
-\c@savedlistd=\count279
-\c@liste=\count280
-\c@savedliste=\count281
-\c@listf=\count282
-\c@savedlistf=\count283
+\c@listc=\count277
+\c@savedlistc=\count278
+\c@listd=\count279
+\c@savedlistd=\count280
+\c@liste=\count281
+\c@savedliste=\count282
+\c@listf=\count283
+\c@savedlistf=\count284
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
 
@@ -1113,10 +1130,10 @@ Package biblatex Info: ... file 'biblatex.def' found.
 
 (/usr/share/texmf/tex/latex/biblatex/biblatex.def
 File: biblatex.def 2011/11/13 v1.7 biblatex generic definitions
-\c@biburlnumpenalty=\count284
-\c@biburlucpenalty=\count285
-\c@biburllcpenalty=\count286
-\c@smartand=\count287
+\c@biburlnumpenalty=\count285
+\c@biburlucpenalty=\count286
+\c@biburllcpenalty=\count287
+\c@smartand=\count288
 )
 Package biblatex Info: Trying to load natbib compatibility...
 Package biblatex Info: ... file 'blx-natbib.def' found.
@@ -1171,8 +1188,8 @@ File: german.lbx 2011/11/13 v1.7 biblatex localization
 Package biblatex Warning: 'babel' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count288
-\@quotereset=\count289
+\@quotelevel=\count289
+\@quotereset=\count290
 (./paper.aux
 
 LaTeX Warning: Label `fig:tess_hexagon' multiply defined.
@@ -1205,15 +1222,15 @@ File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count290
-\scratchdimen=\dimen176
-\scratchbox=\box62
-\nofMPsegments=\count291
-\nofMParguments=\count292
+\scratchcounter=\count291
+\scratchdimen=\dimen179
+\scratchbox=\box65
+\nofMPsegments=\count292
+\nofMParguments=\count293
 \everyMPshowfont=\toks38
-\MPscratchCnt=\count293
-\MPscratchDim=\dimen177
-\MPnumerator=\count294
+\MPscratchCnt=\count294
+\MPscratchDim=\dimen180
+\MPnumerator=\count295
 \everyMPtoPDFconversion=\toks39
 )
 Package caption Info: Begin \AtBeginDocument code.
@@ -1393,8 +1410,8 @@ Overfull \hbox (36.00008pt too wide) in paragraph at lines 290--294
 <img/100_robots.png, id=56, 713.66624pt x 700.6175pt>
 File: img/100_robots.png Graphic file (type png)
  <use img/100_robots.png>
-Underfull \hbox (badness 10000) in paragraph at lines 320--336
-
+Overfull \hbox (30.0pt too wide) in paragraph at lines 320--335
+$[]$ 
  []
 
 [8
@@ -1402,47 +1419,55 @@ Underfull \hbox (badness 10000) in paragraph at lines 320--336
 ] <img/kuk_100.png, id=64, 834.11626pt x 812.03375pt>
 File: img/kuk_100.png Graphic file (type png)
  <use img/kuk_100.png>
-[9 <./img/100_robots.png>] [10 <./img/kuk_100.png>]
-<img/taxicab_distance.png, id=73, 1003.75pt x 1003.75pt>
+[9 <./img/100_robots.png>]
+Overfull \hbox (30.0pt too wide) in paragraph at lines 364--403
+$[]$ 
+ []
+
+[10 <./img/kuk_100.png>] [11]
+<img/taxicab_distance.png, id=77, 1003.75pt x 1003.75pt>
 File: img/taxicab_distance.png Graphic file (type png)
 
-<use img/taxicab_distance.png> <img/manhattan.png, id=74, 341.275pt x 481.8pt>
+<use img/taxicab_distance.png> <img/manhattan.png, id=78, 341.275pt x 481.8pt>
 File: img/manhattan.png Graphic file (type png)
 
-<use img/manhattan.png> <img/mannheim.png, id=75, 1332.47812pt x 1326.45563pt>
+<use img/manhattan.png> <img/mannheim.png, id=79, 1332.47812pt x 1326.45563pt>
 File: img/mannheim.png Graphic file (type png)
 
-<use img/mannheim.png> [11 <./img/taxicab_distance.png>]
-<img/euclidean_circle.png, id=83, 141.31606pt x 141.31606pt>
+<use img/mannheim.png> [12 <./img/taxicab_distance.png>]
+<img/euclidean_circle.png, id=86, 141.31606pt x 141.31606pt>
 File: img/euclidean_circle.png Graphic file (type png)
 
 <use img/euclidean_circle.png>
-<img/taxicab_circle.png, id=84, 131.9129pt x 131.9129pt>
+<img/taxicab_circle.png, id=87, 131.9129pt x 131.9129pt>
 File: img/taxicab_circle.png Graphic file (type png)
 
 <use img/taxicab_circle.png>
-Underfull \hbox (badness 10000) in paragraph at lines 453--489
-
+Overfull \hbox (30.0pt too wide) in paragraph at lines 500--535
+$[]$ 
  []
 
-[12 <./img/manhattan.png> <./img/mannheim.png (PNG copy)>]
-<img/taxicab_from_two.png, id=90, 479.7925pt x 476.78125pt>
+<img/taxicab_from_two.png, id=88, 479.7925pt x 476.78125pt>
 File: img/taxicab_from_two.png Graphic file (type png)
 
 <use img/taxicab_from_two.png>
-<img/taxicab_from_three.png, id=91, 504.88625pt x 506.89375pt>
+<img/taxicab_from_three.png, id=89, 504.88625pt x 506.89375pt>
 File: img/taxicab_from_three.png Graphic file (type png)
 
-<use img/taxicab_from_three.png> [13 <./img/euclidean_circle.png> <./img/taxica
-b_circle.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 502--538
-
+<use img/taxicab_from_three.png> [13 <./img/manhattan.png> <./img/mannheim.png 
+(PNG copy)>] [14 <./img/euclidean_circle.png> <./img/taxicab_circle.png>]
+Overfull \hbox (30.0pt too wide) in paragraph at lines 549--584
+$[]$ 
  []
 
-[14 <./img/taxicab_from_two.png> <./img/taxicab_from_three.png>] [15] [16
+[15 <./img/taxicab_from_two.png> <./img/taxicab_from_three.png>]
+<img/taxicab_minidisk.png, id=107, 606.265pt x 602.25pt>
+File: img/taxicab_minidisk.png Graphic file (type png)
+
+<use img/taxicab_minidisk.png> [16] [17 <./img/taxicab_minidisk.png>] [18
 
 ]
-<img/collected_edges.png, id=110, 231.85506pt x 232.12372pt>
+<img/collected_edges.png, id=118, 231.85506pt x 232.12372pt>
 File: img/collected_edges.png Graphic file (type png)
 
 <use img/collected_edges.png>
@@ -1452,14 +1477,14 @@ File: img/collected_edges.png Graphic file (type png)
 
 <use img/collected_edges.png>
 File: img/collected_edges.png Graphic file (type png)
- <use img/collected_edges.png> [17
+ <use img/collected_edges.png> [19
 
  <./img/collected_edges.png>]
 
 Package biblatex Warning: Deprecated option.
-(biblatex)                Ignoring 'maxnames' on input line 589.
+(biblatex)                Ignoring 'maxnames' on input line 643.
 
-[18] (./paper.aux)
+[20] (./paper.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1468,13 +1493,13 @@ Package logreq Info: Writing requests to 'paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 20920 strings out of 494886
- 378713 string characters out of 1177106
- 586267 words of memory out of 3000000
- 23675 multiletter control sequences out of 15000+50000
+ 21314 strings out of 494886
+ 385769 string characters out of 1177106
+ 592395 words of memory out of 3000000
+ 24066 multiletter control sequences out of 15000+50000
  68012 words of font info for 62 fonts, out of 3000000 for 9000
  85 hyphenation exceptions out of 8191
- 56i,16n,56p,790b,1337s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,23n,56p,790b,1337s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
 /texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
@@ -1490,9 +1515,9 @@ share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public
 0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
 /type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb><
 /usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on paper.pdf (18 pages, 1078390 bytes).
+Output written on paper.pdf (20 pages, 1090371 bytes).
 PDF statistics:
- 181 PDF objects out of 1000 (max. 8388607)
+ 190 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 113 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 118 words of extra memory for PDF output out of 10000 (max. 10000000)
 
