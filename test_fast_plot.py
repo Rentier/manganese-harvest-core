@@ -58,11 +58,11 @@ def goal_was_reached(data, goal):
 if __name__ == '__main__':
 	AGENT = "heuristic"
 	from_file = False
-	write_file = True
+	write_file = False
 	if from_file:
-		ROBO_COUNT, robots = io.positions_from_file('tests/robots_010.txt')
+		ROBO_COUNT, robots = io.positions_from_file('tests/robots_100.txt')
 	else:
-		ROBO_COUNT = 42
+		ROBO_COUNT = 100
 		robots = place_robots(ROBO_COUNT)
 
 	if write_file:
@@ -85,14 +85,14 @@ if __name__ == '__main__':
 	traveled, collected = fhl.harvest(data, AGENT, GOAL_X, GOAL_Y, STEPS, ROBO_COUNT)
 	#assert goal_was_reached(data, GOAL)
 
-
+	print "Robots: ", ROBO_COUNT
 	print "Mission time: ", MISSION_TIME 
 	print "Goal: ", GOAL
 	print "Traveled: ", traveled
 	print "Collected: ", collected
 	print "% harvested: ", collected / float(MISSION_TIME * ROBO_COUNT)
 
-	plot(data,GOAL,interval=100)
+	#plot(data,GOAL,interval=100)
 	FILENAME = "test_{}_{}.".format(ROBO_COUNT, AGENT)
 	#svg(data, FILENAME + "svg")
 	png(data, FILENAME + "png")
