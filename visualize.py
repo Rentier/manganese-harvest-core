@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 from harvest.circle_magic import *
 
 
-
 c_min = -10
 c_max = 10
 

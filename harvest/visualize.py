@@ -11,7 +11,32 @@ import matplotlib.animation as animation
 import svgwrite
 import png as libpng
 
-def plot(data, goal, interval=200):
+from harvest.constants import *
+
+def plot(data):
+	min_x, min_y = np.min(data, axis=0)
+	max_x, max_y = np.amax(data, axis=0)
+
+	x_range = max_x - min_x
+	y_range = max_y - min_y
+
+	value_range = max(x_range, y_range)
+	
+	fig, axes = plt.subplots()
+	axes.set_xlim([min_x-5, min_x+value_range+5])
+	axes.set_ylim([min_y-5, min_x+value_range+5])	
+
+	plt.axis('equal')
+	
+	# Draw distance circles
+	for p in data:
+		circle = plt.Circle(p,MAX_DISTANCE,color='g')
+		fig.gca().add_artist(circle)
+	
+	plt.plot(*np.transpose(data), marker='o', color='r', ls='')
+	plt.show(block=False)
+
+def animated(data, goal, interval=200):
 	STEPS = data.shape[0]
 	border = STEPS  + 5 
 	xmid, ymid = goal
@@ -49,7 +74,7 @@ def plot(data, goal, interval=200):
 
 
 	#ani.save('harvest.mp4', writer=animation.FFMpegFileWriter(), fps=30)
-	plt.show()	
+	plt.show(block=False)	
 
 
 #http://bit.ly/19XGJCb
