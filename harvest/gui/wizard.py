@@ -1,13 +1,15 @@
+import numpy as np
+import itertools
+
 import ttk
 from Tkinter import *
 import tkFileDialog
 import tkMessageBox
 import tkSimpleDialog
 
-from harvest.util import abstract
+import os.path
 
-import numpy as np
-import itertools
+from harvest.util import abstract
 
 import fharvest.logic as fhl
 
@@ -21,6 +23,8 @@ import harvest.io as io
 
 from harvest.distance import *
 from harvest.constants import MAX_DISTANCE
+
+
 
 def distance_constraint_holds(robots):
 	N = len(robots)
@@ -98,7 +102,7 @@ def simulate(robots, robo_count, doubletime=False):
 	#svg(data, FILENAME + ".svg")
 	#png(data, FILENAME + ".png")
 
-	return data, int(traveled), int(collected)
+	return data, int(traveled), int(collected), GOAL
 
 class GuiState(object):
 
@@ -109,10 +113,12 @@ class GuiState(object):
 		self.data_single = None
 		self.collected_single = None
 		self.traveled_single = None
+		self.goal_single = None
 
 		self.data_double = None
 		self.collected_double = None
 		self.traveled_double = None
+		self.goal_double = None
 
 	def load_constant(self, path):
 		self.robo_count = io.constant_from_file(path)
@@ -127,14 +133,24 @@ class GuiState(object):
 		self.positions = place_robots(self.robo_count)
 
 	def simulate(self):
-		self.data_single, self.traveled_single, self.collected_single = simulate(self.positions, self.robo_count)
-		self.data_double, self.traveled_double, self.collected_double = simulate(self.positions, self.robo_count, doubletime=True)
+		self.data_single, self.traveled_single, self.collected_single, self.goal_single = simulate(self.positions, self.robo_count)
+		self.data_double, self.traveled_double, self.collected_double, self.goal_double = simulate(self.positions, self.robo_count, doubletime=True)
 
 		print "Single: ", self.traveled_single, self.collected_single
 		print "Double: ", self.traveled_double, self.collected_double
 
-	def visualize(self, media):
-		pass
+	def visualize(self, media, path):
+		if path:
+			name = os.path.basename(path)
+			directory = os.path.abspath(path)
+
+		if "animate" in media: 
+			animated(self.data_single, self.goal_single,interval=100)
+			animated(self.data_double, self.goal_double,interval=100, paused=True)
+		if "svg" in media: pass
+		if "png" in media: pass
+		if "mov" in media: pass
+		if "positions" in media: pass
 
 	def plot_positions(self):
 		plot(self.positions)
@@ -293,17 +309,17 @@ class SimulatedView(View):
 
 		group = ttk.LabelFrame(master, text="Visualize")
 
-		option_plt = IntVar()
-		option_svg = IntVar()
-		option_png = IntVar()
-		option_mov = IntVar()
-		option_pos = IntVar()
+		self.option_plt = BooleanVar()
+		self.option_svg = BooleanVar()
+		self.option_png = BooleanVar()
+		self.option_mov = BooleanVar()
+		self.option_pos = BooleanVar()
 
-		Checkbutton(master, text="Show animation", variable=option_plt).pack()
-		Checkbutton(master, text="Write positions  ", variable=option_pos).pack()
-		Checkbutton(master, text="Export svg        ", variable=option_svg).pack()
-		Checkbutton(master, text="Export png       ", variable=option_png).pack()
-		Checkbutton(master, text="Export mp4      ", variable=option_mov).pack()
+		Checkbutton(master, text="Show animation", variable=self.option_plt).pack()
+		Checkbutton(master, text="Write positions  ", variable=self.option_pos).pack()
+		Checkbutton(master, text="Export svg        ", variable=self.option_svg).pack()
+		Checkbutton(master, text="Export png       ", variable=self.option_png).pack()
+		Checkbutton(master, text="Export mp4      ", variable=self.option_mov).pack()
 
 		group.pack()
 
@@ -320,10 +336,21 @@ class SimulatedView(View):
 		self.frame.pack(**kwargs)
 
 	def visualize(self):
-		formats = [ ('File Name','*') ]
+		media = []
+		need_name = False
+		if self.option_plt.get(): media.append("animate");
+		if self.option_svg.get(): media.append("svg"); need_name = True
+		if self.option_png.get(): media.append("png"); need_name = True
+		if self.option_mov.get(): media.append("mov"); need_name = True
+		if self.option_pos.get(): media.append("positions"); need_name = True
 
-		name = tkFileDialog.asksaveasfilename(parent=None,filetypes=formats ,title="Save the image as...")
-		print name
+		name = None
+		if need_name:
+			formats = [ ('File Name','*') ]
+			name = tkFileDialog.asksaveasfilename(parent=None,filetypes=formats ,title="Directory and asename of visualization files is... ")
+
+		state.visualize(media, name)
+
 		self.on_next("simulated")
 
 class Wizard(ttk.Frame):

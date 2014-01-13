@@ -36,7 +36,7 @@ def plot(data):
 	plt.plot(*np.transpose(data), marker='o', color='r', ls='')
 	plt.show(block=False)
 
-def animated(data, goal, interval=200):
+def animated(data, goal, interval=200, paused=False):
 	STEPS = data.shape[0]
 	border = STEPS  + 5 
 	xmid, ymid = goal
@@ -56,6 +56,11 @@ def animated(data, goal, interval=200):
 	patch = matplotlib.patches.RegularPolygon(goal, 4, radius=STEPS, color='g', animated=True, zorder=0, alpha=.1, lw=0, fc='c')    
 
 	axis.set_aspect('equal')
+
+	d = {'pause' : paused}
+
+	def onClick(event):
+	    d['pause'] ^= True
 	
 	def init():
 		robots.set_data([],[])
@@ -65,12 +70,22 @@ def animated(data, goal, interval=200):
 		axis.add_patch(patch)
 		return robots, harvested, patch
 
+	def timez():
+		t_max = STEPS - 1
+		t = 0
+		dt = 1
+		while t < t_max:
+			if not d['pause']:
+				t = t + dt
+			yield t			
+
 	def animate(i):
 		robots.set_data(data[i].T)
 		patch.radius = STEPS - i
 		return robots, harvested, patch
 		
-	ani = animation.FuncAnimation(fig, animate, t, blit=True, init_func=init, repeat=False, interval=interval)
+	fig.canvas.mpl_connect('button_press_event', onClick)
+	ani = animation.FuncAnimation(fig, animate, timez, blit=True, init_func=init, repeat=True, interval=interval, )
 
 
 	#ani.save('harvest.mp4', writer=animation.FFMpegFileWriter(), fps=30)
