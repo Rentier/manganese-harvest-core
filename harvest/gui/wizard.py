@@ -101,7 +101,7 @@ def simulate(robots, robo_count, doubletime=False):
 	#svg(data, FILENAME + ".svg")
 	#png(data, FILENAME + ".png")
 
-	return data, int(traveled), int(collected), GOAL
+	return data, int(traveled), int(collected), GOAL, MISSION_TIME
 
 class GuiState(object):
 
@@ -113,11 +113,13 @@ class GuiState(object):
 		self.collected_single = None
 		self.traveled_single = None
 		self.goal_single = None
+		self.time_single = None
 
 		self.data_double = None
 		self.collected_double = None
 		self.traveled_double = None
 		self.goal_double = None
+		self.time_double = None
 
 	def load_constant(self, path):
 		self.robo_count = io.constant_from_file(path)
@@ -132,8 +134,8 @@ class GuiState(object):
 		self.positions = place_robots(self.robo_count)
 
 	def simulate(self):
-		self.data_single, self.traveled_single, self.collected_single, self.goal_single = simulate(self.positions, self.robo_count)
-		self.data_double, self.traveled_double, self.collected_double, self.goal_double = simulate(self.positions, self.robo_count, doubletime=True)
+		self.data_single, self.traveled_single, self.collected_single, self.goal_single, self.time_single = simulate(self.positions, self.robo_count)
+		self.data_double, self.traveled_double, self.collected_double, self.goal_double, self.time_double = simulate(self.positions, self.robo_count, doubletime=True)
 
 	def visualize(self, media, path):
 		if "animate" in media: 
@@ -150,7 +152,11 @@ class GuiState(object):
 			animated(self.data_double, self.goal_single, path=path+"_double.mp4")
 		if "positions" in media: 
 			io.positions_to_file(path + "_positions.txt", self.positions)
-
+		if "mission" in media:
+			io.mission_to_file(path + "_mission_data.txt", 
+				self.time_single, self.time_double,
+				self.traveled_single, self.traveled_double,
+				self.collected_single, self.collected_double)
 
 		tkMessageBox.showinfo("Success", "Data has been visualized!")
 
@@ -316,12 +322,14 @@ class SimulatedView(View):
 		self.option_png = BooleanVar()
 		self.option_mov = BooleanVar()
 		self.option_pos = BooleanVar()
+		self.option_mis = BooleanVar()
 
-		Checkbutton(master, text="Show animation", variable=self.option_plt).pack()
-		Checkbutton(master, text="Write positions  ", variable=self.option_pos).pack()
-		Checkbutton(master, text="Export svg        ", variable=self.option_svg).pack()
-		Checkbutton(master, text="Export png       ", variable=self.option_png).pack()
-		Checkbutton(master, text="Export mp4      ", variable=self.option_mov).pack()
+		Checkbutton(master, text="Show animation    ", variable=self.option_plt).pack()
+		Checkbutton(master, text="Write positions      ", variable=self.option_pos).pack()
+		Checkbutton(master, text="Write mission data", variable=self.option_mis).pack()
+		Checkbutton(master, text="Export svg            ", variable=self.option_svg).pack()
+		Checkbutton(master, text="Export png           ", variable=self.option_png).pack()
+		Checkbutton(master, text="Export mp4          ", variable=self.option_mov).pack()
 
 		group.pack()
 
@@ -345,6 +353,7 @@ class SimulatedView(View):
 		if self.option_png.get(): media.append("png"); need_name = True
 		if self.option_mov.get(): media.append("mov"); need_name = True
 		if self.option_pos.get(): media.append("positions"); need_name = True
+		if self.option_mis.get(): media.append("mission"); need_name = True
 
 		name = None
 		if need_name:

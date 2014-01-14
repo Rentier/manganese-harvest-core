@@ -53,5 +53,11 @@ def positions_to_file(path, data):
 		for x, y in data:
 			f.write("{} {}\n".format(x, y))
 		
-def mission_to_file(path):
-	pass
+def mission_to_file(path, s_time, d_time, s_trav, d_trav, s_coll, d_coll):
+	with open(path, 'w') as f:
+		f.write("{}\n".format(s_time))
+		f.write("{}\n".format(s_trav))
+		f.write("{}\n".format(s_coll))
+		f.write("{}\n".format(d_time))
+		f.write("{}\n".format(d_trav))
+		f.write("{}\n".format(d_coll))
