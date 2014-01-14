@@ -8,6 +8,7 @@ import tkMessageBox
 import tkSimpleDialog
 
 import os.path
+import sys
 
 from harvest.util import abstract
 
@@ -23,8 +24,6 @@ import harvest.io as io
 
 from harvest.distance import *
 from harvest.constants import MAX_DISTANCE
-
-
 
 def distance_constraint_holds(robots):
 	N = len(robots)
@@ -136,21 +135,24 @@ class GuiState(object):
 		self.data_single, self.traveled_single, self.collected_single, self.goal_single = simulate(self.positions, self.robo_count)
 		self.data_double, self.traveled_double, self.collected_double, self.goal_double = simulate(self.positions, self.robo_count, doubletime=True)
 
-		print "Single: ", self.traveled_single, self.collected_single
-		print "Double: ", self.traveled_double, self.collected_double
-
 	def visualize(self, media, path):
-		if path:
-			name = os.path.basename(path)
-			directory = os.path.abspath(path)
-
 		if "animate" in media: 
-			animated(self.data_single, self.goal_single,interval=100)
-			animated(self.data_double, self.goal_double,interval=100, paused=True)
-		if "svg" in media: pass
-		if "png" in media: pass
-		if "mov" in media: pass
-		if "positions" in media: pass
+			animated(self.data_single, self.goal_single, title="Single time")
+			animated(self.data_double, self.goal_double, paused=True, title="Double time")
+		if "svg" in media: 
+			svg(self.data_single, path + "_single.svg")
+			svg(self.data_double, path + "_double.svg")
+		if "png" in media: 
+			png(self.data_single, path + "_single.png")
+			png(self.data_double, path + "_double.png")
+		if "mov" in media: 
+			animated(self.data_single, self.goal_single, path=path+"_single.mp4")
+			animated(self.data_double, self.goal_single, path=path+"_double.mp4")
+		if "positions" in media: 
+			io.positions_to_file(path + "_positions.txt", self.positions)
+
+
+		tkMessageBox.showinfo("Success", "Data has been visualized!")
 
 	def plot_positions(self):
 		plot(self.positions)
@@ -159,10 +161,9 @@ state = GuiState()
 
 class View(object):
 
-	def __init__(self, on_next, on_prev, on_close):
-		self.frame = ttk.LabelFrame()
+	def __init__(self, on_next, on_close):
+		self.frame = ttk.Frame()
 		self.on_next = on_next
-		self.on_prev = on_prev
 		self.on_close = on_close
 
 	def pack(self, **kwargs):
@@ -172,12 +173,10 @@ class View(object):
 		self.frame.pack_forget()
 
 	def generate_positions(self):
-		print "Generate positions"
 		while state.robo_count is None:
 			state.robo_count = tkSimpleDialog.askinteger("Robo count", "How many robots?\n Valid are integers [0,150].\nValues above 100 are not recommended!", minvalue=1, maxvalue=200)
 		print state.robo_count
 		state.generate_positions()
-		state.plot_positions()
 		self.on_next("pos_created")
 
 	def simulate(self):
@@ -192,10 +191,13 @@ class View(object):
 	def close(self):
 		self.on_close()
 
+	def restart(self):
+		self.on_next("entry")
+
 class EntryView(View):
 
-	def __init__(self, on_next, on_prev, on_close):
-		super(EntryView, self).__init__(on_next, on_prev, on_close)
+	def __init__(self, on_next, on_close):
+		super(EntryView, self).__init__(on_next, on_close)
 
 		master = self.frame
 
@@ -222,7 +224,6 @@ class EntryView(View):
 		path = tkFileDialog.askopenfilename()
 		state.load_positions(path)
 		tkMessageBox.showinfo("Success", "Positions have been loaded: \n{} robots.".format(state.robo_count))
-		state.plot_positions()
 		self.on_next("pos_created") 
 
 	def load_constant(self):
@@ -233,8 +234,8 @@ class EntryView(View):
 
 class PositionsCreatedView(View):
 
-	def __init__(self, on_next, on_prev, on_close):
-		super(PositionsCreatedView, self).__init__(on_next, on_prev, on_close)
+	def __init__(self, on_next, on_close):
+		super(PositionsCreatedView, self).__init__(on_next, on_close)
 
 		master = self.frame
 
@@ -250,11 +251,14 @@ class PositionsCreatedView(View):
 		save_positions_btn = ttk.Button(btn_frame, text="Save positions", command=self.save_positions)
 		save_positions_btn.pack()
 
-		prev_btn = ttk.Button(btn_frame, text="Back", command=self.simulate)
-		prev_btn.pack(anchor=SW, side=BOTTOM)
+		show_positions_btn = ttk.Button(btn_frame, text="Show positions", command=self.show_positions)
+		show_positions_btn.pack()
 
 	def pack(self, **kwargs):
 		self.frame.pack(**kwargs)
+
+	def show_positions(self):
+		state.plot_positions()
 
 	def save_positions(self):
 		print "Positions saved"
@@ -265,8 +269,8 @@ class PositionsCreatedView(View):
 
 class ConstantLoadedView(View):
 
-	def __init__(self, on_next, on_prev, on_close):
-		super(ConstantLoadedView, self).__init__(on_next, on_prev, on_close)
+	def __init__(self, on_next, on_close):
+		super(ConstantLoadedView, self).__init__(on_next, on_close)
 
 		master = self.frame
 
@@ -279,12 +283,10 @@ class ConstantLoadedView(View):
 	def pack(self, **kwargs):
 		self.frame.pack(**kwargs)
 
-	
-
 class PositionsWrittenView(View):
 
-	def __init__(self, on_next, on_prev, on_close):
-		super(PositionsWrittenView, self).__init__(on_next, on_prev, on_close)
+	def __init__(self, on_next, on_close):
+		super(PositionsWrittenView, self).__init__(on_next, on_close)
 
 		master = self.frame
 
@@ -299,8 +301,8 @@ class PositionsWrittenView(View):
 
 class SimulatedView(View):
 
-	def __init__(self, on_next, on_prev, on_close):
-		super(SimulatedView, self).__init__(on_next, on_prev, on_close)
+	def __init__(self, on_next, on_close):
+		super(SimulatedView, self).__init__(on_next, on_close)
 
 		master = self.frame
 
@@ -329,8 +331,8 @@ class SimulatedView(View):
 		visualize_btn = ttk.Button(btn_frame, text="Visualize", command=self.visualize)
 		visualize_btn.pack()
 
-		prev_btn = ttk.Button(btn_frame, text="Back", command=self.close)
-		prev_btn.pack(side=BOTTOM)
+		restart_btn = ttk.Button(btn_frame, text="Restart", command=self.restart)
+		restart_btn.pack()
 
 	def pack(self, **kwargs):
 		self.frame.pack(**kwargs)
@@ -358,11 +360,11 @@ class Wizard(ttk.Frame):
 		ttk.Frame.__init__(self, master,)
 
 		self.views = { 
-						"entry" : EntryView(self.next_page, self.prev_page, self.close),
-		            	"pos_created" : PositionsCreatedView(self.next_page, self.prev_page, self.close),
-		            	"const_loaded" : ConstantLoadedView(self.next_page, self.prev_page, self.close),
-		            	"pos_written" : PositionsWrittenView(self.next_page, self.prev_page, self.close),
-		            	"simulated" : SimulatedView(self.next_page, self.prev_page, self.close),
+						"entry" : EntryView(self.next_page, self.close),
+		            	"pos_created" : PositionsCreatedView(self.next_page, self.close),
+		            	"const_loaded" : ConstantLoadedView(self.next_page, self.close),
+		            	"pos_written" : PositionsWrittenView(self.next_page, self.close),
+		            	"simulated" : SimulatedView(self.next_page, self.close),
 		             }
 
 
@@ -378,15 +380,15 @@ class Wizard(ttk.Frame):
 		
 		print s
 
-	def prev_page(self, s):
-		print "prev"
-
 	def close(self):
+		print "Close"
 		self.master.destroy()
+		sys.exit(0)
 
 def demo():
 	root = Tk()
 	root.wm_title("Mangani sacra fames")
+	root.protocol("WM_DELETE_WINDOW", lambda: sys.exit(0))
 	s = ttk.Style()
 	s.theme_use('clam')
 	wizard = Wizard()

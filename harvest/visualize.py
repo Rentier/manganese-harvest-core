@@ -2,6 +2,9 @@ from __future__ import division
 
 import itertools
 
+from multiprocessing import Process
+
+
 import numpy as np
 
 import matplotlib
@@ -27,16 +30,13 @@ def plot(data):
 	axes.set_ylim([min_y-5, min_x+value_range+5])	
 
 	plt.axis('equal')
-	
-	# Draw distance circles
-	for p in data:
-		circle = plt.Circle(p,MAX_DISTANCE,color='g')
-		fig.gca().add_artist(circle)
+
+	fig.canvas.set_window_title("Robot Positions")
 	
 	plt.plot(*np.transpose(data), marker='o', color='r', ls='')
 	plt.show(block=False)
 
-def animated(data, goal, interval=200, paused=False):
+def animated(data, goal, interval=100, paused=False, title="", path=None):
 	STEPS = data.shape[0]
 	border = STEPS  + 5 
 	xmid, ymid = goal
@@ -56,11 +56,24 @@ def animated(data, goal, interval=200, paused=False):
 	patch = matplotlib.patches.RegularPolygon(goal, 4, radius=STEPS, color='g', animated=True, zorder=0, alpha=.1, lw=0, fc='c')    
 
 	axis.set_aspect('equal')
+	time_text = axis.text(0.15, 0.9,'',
+    						horizontalalignment='center',
+    						verticalalignment='center',
+     						transform = axis.transAxes)
 
-	d = {'pause' : paused}
+	d = {'pause' : paused}	
+
+	if d['pause']: 
+	    fig.canvas.set_window_title(title + "- Click on plot to unpause!")
+	else:
+	    fig.canvas.set_window_title(title)
 
 	def onClick(event):
 	    d['pause'] ^= True
+	    if d['pause']: 
+	    	fig.canvas.set_window_title(title + "- Click on plot to unpause!")
+	    else:
+	    	fig.canvas.set_window_title(title)
 	
 	def init():
 		robots.set_data([],[])
@@ -68,7 +81,7 @@ def animated(data, goal, interval=200, paused=False):
 		patch.center = goal
 		patch.radius = STEPS
 		axis.add_patch(patch)
-		return robots, harvested, patch
+		return robots, harvested, patch, time_text
 
 	def timez():
 		t_max = STEPS - 1
@@ -77,19 +90,23 @@ def animated(data, goal, interval=200, paused=False):
 		while t < t_max:
 			if not d['pause']:
 				t = t + dt
-			yield t			
+			yield t
+		d['pause'] = True
+		fig.canvas.set_window_title(title + "- Click on plot to restart!")
 
 	def animate(i):
 		robots.set_data(data[i].T)
 		patch.radius = STEPS - i
-		return robots, harvested, patch
+		time_text.set_text("Moves left: {}".format(STEPS - i - 1))
+		return robots, harvested, patch, time_text
 		
 	fig.canvas.mpl_connect('button_press_event', onClick)
 	ani = animation.FuncAnimation(fig, animate, timez, blit=True, init_func=init, repeat=True, interval=interval, )
 
-
-	#ani.save('harvest.mp4', writer=animation.FFMpegFileWriter(), fps=30)
-	plt.show(block=False)	
+	if path:
+		ani.save(path, writer=animation.FFMpegFileWriter())
+	else:
+		plt.show(block=False)	
 
 
 #http://bit.ly/19XGJCb
