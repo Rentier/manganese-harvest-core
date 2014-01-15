@@ -1,0 +1,81 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {ngerman}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Problembeschreibung und -analyse}{3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1}Problembeschreibung}{3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2}Annahmen \IeC {\"u}ber das Problem}{3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.3}Disclaimer}{3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}Vorgehensmodell und Entwicklung}{4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1}Ideenfindung}{4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2}Design-Ziele}{4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3}Nicht-Ziele}{5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4}Entscheidungen}{5}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}Problembetrachtung}{6}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1}Graphenproblem}{6}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.1.1}Graphendefinition}{6}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.1.2}Problembeschreibung}{6}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {3.1.3}L\IeC {\"o}sungsans\IeC {\"a}tze}{6}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Depth Limited Search}{6}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Bellman Ford}{7}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2}Maschinenlernen}{8}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3}K\IeC {\"u}nstliche Intelligenz}{10}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}Umgebung}{11}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1}Konkrete Modellierung des Meeresbodens}{11}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2}Polygone und Innenkreis}{13}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3}Entscheidung}{13}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5}Theory Crafting}{15}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1}Platzierung}{15}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2}Missionsdauer}{17}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3}Finden der Missionsdaten}{18}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.4}Manhattan-Metrik}{19}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.4.1}Entfernung}{20}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.4.2}Kreise}{20}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.5}Zeitbeschr\IeC {\"a}nkung}{23}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}Implementierung}{25}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1}Logik}{25}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {6.1.1}Heuristic Agent}{25}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.2}Collected}{26}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}Diskussion}{28}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {7.1}Performance}{28}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {7.2}Fehlerrechnung}{28}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {7.2.1}Fehler durch Modellierung}{28}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {7.2.2}Abweichung von der Optimalen L\IeC {\"o}sung}{28}

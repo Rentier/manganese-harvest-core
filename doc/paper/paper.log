@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.8.4)  12 JAN 2014 19:01
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.8.4)  15 JAN 2014 23:02
 entering extended mode
  %&-line parsing enabled.
 **paper.tex
@@ -912,9 +912,40 @@ File: pgfmodulematrix.code.tex 2010/08/24  (rcs-revision 1.4)
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
 hs.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v2.10 (rcs-revision 1.2)
-))) (/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+))) (/usr/share/texmf-texlive/tex/latex/listings/listings.sty
+\lst@mode=\count135
+\lst@gtempboxa=\box45
+\lst@token=\toks38
+\lst@length=\count136
+\lst@currlwidth=\dimen179
+\lst@column=\count137
+\lst@pos=\count138
+\lst@lostspace=\dimen180
+\lst@width=\dimen181
+\lst@newlines=\count139
+\lst@lineno=\count140
+\lst@maxwidth=\dimen182
+
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count141
+\lst@skipnumbers=\count142
+\lst@framebox=\box46
+)
+(/usr/share/texmf-texlive/tex/latex/listings/listings.cfg
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 )
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshape
 s.code.tex
@@ -963,28 +994,28 @@ File: tikzlibraryshapes.multipart.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
 (/usr/share/texmf/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.c
 ode.tex
 File: pgflibraryshapes.multipart.code.tex 2010/01/07 v2.10 (rcs-revision 1.2)
-\pgfnodepartlowerbox=\box45
-\pgfnodeparttwobox=\box46
-\pgfnodepartthreebox=\box47
-\pgfnodepartfourbox=\box48
-\pgfnodeparttwentybox=\box49
-\pgfnodepartnineteenbox=\box50
-\pgfnodeparteighteenbox=\box51
-\pgfnodepartseventeenbox=\box52
-\pgfnodepartsixteenbox=\box53
-\pgfnodepartfifteenbox=\box54
-\pgfnodepartfourteenbox=\box55
-\pgfnodepartthirteenbox=\box56
-\pgfnodeparttwelvebox=\box57
-\pgfnodepartelevenbox=\box58
-\pgfnodeparttenbox=\box59
-\pgfnodepartninebox=\box60
-\pgfnodeparteightbox=\box61
-\pgfnodepartsevenbox=\box62
-\pgfnodepartsixbox=\box63
-\pgfnodepartfivebox=\box64
+\pgfnodepartlowerbox=\box47
+\pgfnodeparttwobox=\box48
+\pgfnodepartthreebox=\box49
+\pgfnodepartfourbox=\box50
+\pgfnodeparttwentybox=\box51
+\pgfnodepartnineteenbox=\box52
+\pgfnodeparteighteenbox=\box53
+\pgfnodepartseventeenbox=\box54
+\pgfnodepartsixteenbox=\box55
+\pgfnodepartfifteenbox=\box56
+\pgfnodepartfourteenbox=\box57
+\pgfnodepartthirteenbox=\box58
+\pgfnodeparttwelvebox=\box59
+\pgfnodepartelevenbox=\box60
+\pgfnodeparttenbox=\box61
+\pgfnodepartninebox=\box62
+\pgfnodeparteightbox=\box63
+\pgfnodepartsevenbox=\box64
+\pgfnodepartsixbox=\box65
+\pgfnodepartfivebox=\box66
 )))
-\c@satz=\count135
+\c@satz=\count143
  (/usr/share/texmf/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2011/11/13 v1.7 programmable bibliographies
 
@@ -993,51 +1024,51 @@ Package: etoolbox 2011/01/03 v2.1 e-TeX tools for LaTeX
 
 (/usr/share/texmf-texlive/tex/latex/etex-pkg/etex.sty
 Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
-\et@xins=\count136
+\et@xins=\count144
 )
-\etb@tempcnta=\count137
+\etb@tempcnta=\count145
 )
 (/usr/share/texmf/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count138
+\lrq@indent=\count146
 
 (/usr/share/texmf/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 ))
-\c@listtotal=\count139
-\c@listcount=\count140
-\c@liststart=\count141
-\c@liststop=\count142
-\c@citecount=\count143
-\c@citetotal=\count144
-\c@multicitecount=\count145
-\c@multicitetotal=\count146
-\c@instcount=\count147
-\c@maxnames=\count148
-\c@minnames=\count149
-\c@maxitems=\count150
-\c@minitems=\count151
-\c@citecounter=\count152
-\c@savedcitecounter=\count153
-\c@uniquelist=\count154
-\c@uniquename=\count155
-\c@refsection=\count156
-\c@refsegment=\count157
-\c@maxextrayear=\count158
-\c@maxextraalpha=\count159
-\c@abbrvpenalty=\count160
-\c@highnamepenalty=\count161
-\c@lownamepenalty=\count162
-\c@maxparens=\count163
-\c@parenlevel=\count164
-\blx@tempcnta=\count165
-\blx@tempcntb=\count166
-\blx@tempcntc=\count167
-\blx@maxsection=\count168
-\blx@maxsegment=\count169
-\blx@notetype=\count170
-\blx@parenlevel@text=\count171
-\blx@parenlevel@foot=\count172
+\c@listtotal=\count147
+\c@listcount=\count148
+\c@liststart=\count149
+\c@liststop=\count150
+\c@citecount=\count151
+\c@citetotal=\count152
+\c@multicitecount=\count153
+\c@multicitetotal=\count154
+\c@instcount=\count155
+\c@maxnames=\count156
+\c@minnames=\count157
+\c@maxitems=\count158
+\c@minitems=\count159
+\c@citecounter=\count160
+\c@savedcitecounter=\count161
+\c@uniquelist=\count162
+\c@uniquename=\count163
+\c@refsection=\count164
+\c@refsegment=\count165
+\c@maxextrayear=\count166
+\c@maxextraalpha=\count167
+\c@abbrvpenalty=\count168
+\c@highnamepenalty=\count169
+\c@lownamepenalty=\count170
+\c@maxparens=\count171
+\c@parenlevel=\count172
+\blx@tempcnta=\count173
+\blx@tempcntb=\count174
+\blx@tempcntc=\count175
+\blx@maxsection=\count176
+\blx@maxsegment=\count177
+\blx@notetype=\count178
+\blx@parenlevel@text=\count179
+\blx@parenlevel@foot=\count180
 \labelnumberwidth=\skip73
 \labelalphawidth=\skip74
 \shorthandwidth=\skip75
@@ -1049,76 +1080,76 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 \bibhang=\skip81
 \blx@auxin=\read2
 \blx@auxout=\write4
-\c@mincomprange=\count173
-\c@maxcomprange=\count174
-\c@mincompwidth=\count175
-\c@labelname=\count176
-\c@savedlabelname=\count177
-\c@author=\count178
-\c@savedauthor=\count179
-\c@shortauthor=\count180
-\c@savedshortauthor=\count181
-\c@editor=\count182
-\c@savededitor=\count183
-\c@editora=\count184
-\c@savededitora=\count185
-\c@editorb=\count186
-\c@savededitorb=\count187
-\c@editorc=\count188
-\c@savededitorc=\count189
-\c@shorteditor=\count190
-\c@savedshorteditor=\count191
-\c@bookauthor=\count192
-\c@savedbookauthor=\count193
-\c@translator=\count194
-\c@savedtranslator=\count195
-\c@annotator=\count196
-\c@savedannotator=\count197
-\c@commentator=\count198
-\c@savedcommentator=\count199
-\c@introduction=\count200
-\c@savedintroduction=\count201
-\c@foreword=\count202
-\c@savedforeword=\count203
-\c@afterword=\count204
-\c@savedafterword=\count205
-\c@holder=\count206
-\c@savedholder=\count207
-\c@namea=\count208
-\c@savednamea=\count209
-\c@nameb=\count210
-\c@savednameb=\count211
-\c@namec=\count212
-\c@savednamec=\count213
-\c@institution=\count214
-\c@savedinstitution=\count215
-\c@language=\count216
-\c@savedlanguage=\count217
-\c@location=\count218
-\c@savedlocation=\count219
-\c@organization=\count220
-\c@savedorganization=\count221
-\c@origlocation=\count222
-\c@savedoriglocation=\count223
-\c@origpublisher=\count224
-\c@savedorigpublisher=\count225
-\c@pageref=\count226
-\c@savedpageref=\count227
-\c@publisher=\count228
-\c@savedpublisher=\count229
-\c@lista=\count230
-\c@savedlista=\count231
-\c@listb=\count232
-\c@savedlistb=\count233
+\c@mincomprange=\count181
+\c@maxcomprange=\count182
+\c@mincompwidth=\count183
+\c@labelname=\count184
+\c@savedlabelname=\count185
+\c@author=\count186
+\c@savedauthor=\count187
+\c@shortauthor=\count188
+\c@savedshortauthor=\count189
+\c@editor=\count190
+\c@savededitor=\count191
+\c@editora=\count192
+\c@savededitora=\count193
+\c@editorb=\count194
+\c@savededitorb=\count195
+\c@editorc=\count196
+\c@savededitorc=\count197
+\c@shorteditor=\count198
+\c@savedshorteditor=\count199
+\c@bookauthor=\count200
+\c@savedbookauthor=\count201
+\c@translator=\count202
+\c@savedtranslator=\count203
+\c@annotator=\count204
+\c@savedannotator=\count205
+\c@commentator=\count206
+\c@savedcommentator=\count207
+\c@introduction=\count208
+\c@savedintroduction=\count209
+\c@foreword=\count210
+\c@savedforeword=\count211
+\c@afterword=\count212
+\c@savedafterword=\count213
+\c@holder=\count214
+\c@savedholder=\count215
+\c@namea=\count216
+\c@savednamea=\count217
+\c@nameb=\count218
+\c@savednameb=\count219
+\c@namec=\count220
+\c@savednamec=\count221
+\c@institution=\count222
+\c@savedinstitution=\count223
+\c@language=\count224
+\c@savedlanguage=\count225
+\c@location=\count226
+\c@savedlocation=\count227
+\c@organization=\count228
+\c@savedorganization=\count229
+\c@origlocation=\count230
+\c@savedoriglocation=\count231
+\c@origpublisher=\count232
+\c@savedorigpublisher=\count233
 Normal \count register pool exhausted, switching to extended pool.
-\c@listc=\count277
-\c@savedlistc=\count278
-\c@listd=\count279
-\c@savedlistd=\count280
-\c@liste=\count281
-\c@savedliste=\count282
-\c@listf=\count283
-\c@savedlistf=\count284
+\c@pageref=\count277
+\c@savedpageref=\count278
+\c@publisher=\count279
+\c@savedpublisher=\count280
+\c@lista=\count281
+\c@savedlista=\count282
+\c@listb=\count283
+\c@savedlistb=\count284
+\c@listc=\count285
+\c@savedlistc=\count286
+\c@listd=\count287
+\c@savedlistd=\count288
+\c@liste=\count289
+\c@savedliste=\count290
+\c@listf=\count291
+\c@savedlistf=\count292
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
 
@@ -1130,10 +1161,10 @@ Package biblatex Info: ... file 'biblatex.def' found.
 
 (/usr/share/texmf/tex/latex/biblatex/biblatex.def
 File: biblatex.def 2011/11/13 v1.7 biblatex generic definitions
-\c@biburlnumpenalty=\count285
-\c@biburlucpenalty=\count286
-\c@biburllcpenalty=\count287
-\c@smartand=\count288
+\c@biburlnumpenalty=\count293
+\c@biburlucpenalty=\count294
+\c@biburllcpenalty=\count295
+\c@smartand=\count296
 )
 Package biblatex Info: Trying to load natbib compatibility...
 Package biblatex Info: ... file 'blx-natbib.def' found.
@@ -1188,8 +1219,8 @@ File: german.lbx 2011/11/13 v1.7 biblatex localization
 Package biblatex Warning: 'babel' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count289
-\@quotereset=\count290
+\@quotelevel=\count297
+\@quotereset=\count298
 (./paper.aux
 
 LaTeX Warning: Label `fig:tess_hexagon' multiply defined.
@@ -1197,45 +1228,46 @@ LaTeX Warning: Label `fig:tess_hexagon' multiply defined.
 )
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 39.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 65.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 65.
  (/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 39.
+LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 65.
 
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count291
-\scratchdimen=\dimen179
-\scratchbox=\box65
-\nofMPsegments=\count292
-\nofMParguments=\count293
-\everyMPshowfont=\toks38
-\MPscratchCnt=\count294
-\MPscratchDim=\dimen180
-\MPnumerator=\count295
-\everyMPtoPDFconversion=\toks39
+\scratchcounter=\count299
+\scratchdimen=\dimen183
+\scratchbox=\box67
+\nofMPsegments=\count300
+\nofMParguments=\count301
+\everyMPshowfont=\toks39
+\MPscratchCnt=\count302
+\MPscratchDim=\dimen184
+\MPnumerator=\count303
+\everyMPtoPDFconversion=\toks40
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
-LaTeX Info: Redefining \subref on input line 39.
+LaTeX Info: Redefining \subref on input line 65.
+Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
 *geometry* driver: auto-detecting
@@ -1273,6 +1305,7 @@ Package caption Info: End \AtBeginDocument code.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 ABD: EveryShipout initializing macros
+\c@lstlisting=\count304
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
@@ -1286,188 +1319,225 @@ Package biblatex Warning: Data encoding is 'utf8'.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'paper.bbl' found.
 (./paper.bbl)
-Package biblatex Info: Reference section=0 on input line 39.
-Package biblatex Info: Reference segment=0 on input line 39.
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 60.
- (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
-File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
-
-] [3
-
-]
-<img/triangle_grid.png, id=17, 342.54369pt x 255.49728pt>
-File: img/triangle_grid.png Graphic file (type png)
-
-<use img/triangle_grid.png>
-<img/triangle_graph.png, id=19, 348.30125pt x 348.30125pt>
-File: img/triangle_graph.png Graphic file (type png)
-
-<use img/triangle_graph.png>
-<img/square_grid.png, id=20, 224.33253pt x 223.79521pt>
-File: img/square_grid.png Graphic file (type png)
-
-<use img/square_grid.png>
-<img/square_graph.png, id=21, 637.38126pt x 637.38126pt>
-File: img/square_graph.png Graphic file (type png)
-
-<use img/square_graph.png>
-<img/hexagon_grid.png, id=22, 306.81168pt x 231.31773pt>
-File: img/hexagon_grid.png Graphic file (type png)
-
-<use img/hexagon_grid.png>
-<img/hexagon_graph.png, id=23, 733.74126pt x 733.74126pt>
-File: img/hexagon_graph.png Graphic file (type png)
-
-<use img/hexagon_graph.png> [4
-
- <./img/triangle_grid.png> <./img/triangle_graph.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 188--190
-
- []
-
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 203.
-
-(/usr/share/texmf/tex/latex/lm/ot1lmr.fd
+Package biblatex Info: Reference section=0 on input line 65.
+Package biblatex Info: Reference segment=0 on input line 65.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 68.
+ (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 203.
-
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 68.
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 203
-.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 68.
+
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 203
-.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 68.
+
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 203.
+(Font)              <12> on input line 68.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 203.
+(Font)              <8> on input line 68.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 203.
-LaTeX Font Info:    Try loading font information for U+msa on input line 203.
+(Font)              <6> on input line 68.
+LaTeX Font Info:    Try loading font information for U+msa on input line 68.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 203.
+LaTeX Font Info:    Try loading font information for U+msb on input line 68.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+wasy on input line 203.
+LaTeX Font Info:    Try loading font information for U+wasy on input line 68.
 
 (/usr/share/texmf-texlive/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
-) [5 <./img/square_grid.png> <./img/square_graph.png (PNG copy)> <./img/hexagon
-_grid.png> <./img/hexagon_graph.png (PNG copy)>]
-<img/triangle_circle.png, id=37, 159.04773pt x 137.82346pt>
-File: img/triangle_circle.png Graphic file (type png)
-
-<use img/triangle_circle.png>
-<img/square_circle.png, id=38, 90.539pt x 91.07632pt>
-File: img/square_circle.png Graphic file (type png)
-
-<use img/square_circle.png>
-<img/hexagon_circle.png, id=39, 91.61365pt x 105.58405pt>
-File: img/hexagon_circle.png Graphic file (type png)
-
-<use img/hexagon_circle.png>
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 238.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 238.
- [6 <./img/triangle_circle.png> <./img/square_circle.png> <./img/hexagon_circle
-.png>]
-<img/ocean_floor.png, id=50, 112.56926pt x 113.37524pt>
-File: img/ocean_floor.png Graphic file (type png)
-
-<use img/ocean_floor.png> [7 <./img/ocean_floor.png>]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 290.
-
+)
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 68.
 
 (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) (./paper.toc
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 7.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 7.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 7.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
+\tf@toc=\write5
+\openout5 = `paper.toc'.
+
+ [2]
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 92.
+ (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Overfull \hbox (36.00008pt too wide) in paragraph at lines 290--294
+[3] [4
+
+] [5]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <8> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 222.
+ [6
+
+]
+Overfull \hbox (0.12604pt too wide) in paragraph at lines 307--308
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][] 
+ []
+
+[7] <img/SSSP_BellmanFord.png, id=42, 926.75647pt x 1003.27765pt>
+File: img/SSSP_BellmanFord.png Graphic file (type png)
+
+<use img/SSSP_BellmanFord.png> [8] [9 <./img/SSSP_BellmanFord.png (PNG copy)>]
+[10] <img/triangle_grid.png, id=52, 342.54369pt x 255.49728pt>
+File: img/triangle_grid.png Graphic file (type png)
+
+<use img/triangle_grid.png>
+<img/triangle_graph.png, id=54, 348.30125pt x 348.30125pt>
+File: img/triangle_graph.png Graphic file (type png)
+
+<use img/triangle_graph.png>
+<img/square_grid.png, id=55, 224.33253pt x 223.79521pt>
+File: img/square_grid.png Graphic file (type png)
+
+<use img/square_grid.png>
+<img/square_graph.png, id=56, 637.38126pt x 637.38126pt>
+File: img/square_graph.png Graphic file (type png)
+
+<use img/square_graph.png>
+<img/hexagon_grid.png, id=57, 306.81168pt x 231.31773pt>
+File: img/hexagon_grid.png Graphic file (type png)
+
+<use img/hexagon_grid.png>
+<img/hexagon_graph.png, id=58, 733.74126pt x 733.74126pt>
+File: img/hexagon_graph.png Graphic file (type png)
+
+<use img/hexagon_graph.png> [11
+
+ <./img/triangle_grid.png> <./img/triangle_graph.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 450--452
+
+ []
+
+[12 <./img/square_grid.png> <./img/square_graph.png (PNG copy)> <./img/hexagon_
+grid.png> <./img/hexagon_graph.png (PNG copy)>]
+<img/triangle_circle.png, id=70, 159.04773pt x 137.82346pt>
+File: img/triangle_circle.png Graphic file (type png)
+
+<use img/triangle_circle.png>
+<img/square_circle.png, id=71, 90.539pt x 91.07632pt>
+File: img/square_circle.png Graphic file (type png)
+
+<use img/square_circle.png>
+<img/hexagon_circle.png, id=72, 91.61365pt x 105.58405pt>
+File: img/hexagon_circle.png Graphic file (type png)
+
+<use img/hexagon_circle.png> [13 <./img/triangle_circle.png> <./img/square_circ
+le.png> <./img/hexagon_circle.png>]
+<img/ocean_floor.png, id=81, 112.56926pt x 113.37524pt>
+File: img/ocean_floor.png Graphic file (type png)
+
+<use img/ocean_floor.png> [14 <./img/ocean_floor.png>]
+Overfull \hbox (36.00008pt too wide) in paragraph at lines 549--553
 []\T1/lmr/m/n/10 Die hier ge-wähl-te Lö-sung ist ite-ra-tiv. Be-gin-nend mit ei
 -nem ers-ten Punkt (ge-ge-ben durch \T1/lmtt/m/n/10 generateFirstPoint\T1/lmr/m
 /n/10 ),
  []
 
-<img/100_robots.png, id=56, 713.66624pt x 700.6175pt>
+<img/100_robots.png, id=87, 713.66624pt x 700.6175pt>
 File: img/100_robots.png Graphic file (type png)
  <use img/100_robots.png>
-Overfull \hbox (30.0pt too wide) in paragraph at lines 320--335
+Overfull \hbox (30.0pt too wide) in paragraph at lines 579--594
 $[]$ 
  []
 
-[8
 
-] <img/kuk_100.png, id=64, 834.11626pt x 812.03375pt>
+Overfull \hbox (30.0pt too wide) in paragraph at lines 598--614
+$[]$ 
+ []
+
+[15
+
+]
+Overfull \vbox (4.3874pt too high) has occurred while \output is active []
+
+
+[16 <./img/100_robots.png>]
+<img/kuk_100.png, id=95, 834.11626pt x 812.03375pt>
 File: img/kuk_100.png Graphic file (type png)
  <use img/kuk_100.png>
-[9 <./img/100_robots.png>]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 364--403
+[17 <./img/kuk_100.png>]
+Overfull \hbox (30.0pt too wide) in paragraph at lines 642--681
 $[]$ 
  []
 
-[10 <./img/kuk_100.png>] [11]
-<img/taxicab_distance.png, id=77, 1003.75pt x 1003.75pt>
+[18] <img/taxicab_distance.png, id=104, 1003.75pt x 1003.75pt>
 File: img/taxicab_distance.png Graphic file (type png)
 
-<use img/taxicab_distance.png> <img/manhattan.png, id=78, 341.275pt x 481.8pt>
+<use img/taxicab_distance.png>
+<img/manhattan.png, id=105, 341.275pt x 481.8pt>
 File: img/manhattan.png Graphic file (type png)
-
-<use img/manhattan.png> <img/mannheim.png, id=79, 1332.47812pt x 1326.45563pt>
+ <use img/manhattan.png>
+<img/mannheim.png, id=106, 1332.47812pt x 1326.45563pt>
 File: img/mannheim.png Graphic file (type png)
-
-<use img/mannheim.png> [12 <./img/taxicab_distance.png>]
-<img/euclidean_circle.png, id=86, 141.31606pt x 141.31606pt>
+ <use img/mannheim.png>
+[19 <./img/taxicab_distance.png>]
+<img/euclidean_circle.png, id=112, 141.31606pt x 141.31606pt>
 File: img/euclidean_circle.png Graphic file (type png)
 
 <use img/euclidean_circle.png>
-<img/taxicab_circle.png, id=87, 131.9129pt x 131.9129pt>
+<img/taxicab_circle.png, id=113, 131.9129pt x 131.9129pt>
 File: img/taxicab_circle.png Graphic file (type png)
 
-<use img/taxicab_circle.png>
-Overfull \hbox (30.0pt too wide) in paragraph at lines 500--535
+<use img/taxicab_circle.png> [20 <./img/manhattan.png> <./img/mannheim.png (PNG
+ copy)>]
+Overfull \hbox (30.0pt too wide) in paragraph at lines 778--813
 $[]$ 
  []
 
-<img/taxicab_from_two.png, id=88, 479.7925pt x 476.78125pt>
+<img/taxicab_from_two.png, id=121, 479.7925pt x 476.78125pt>
 File: img/taxicab_from_two.png Graphic file (type png)
 
 <use img/taxicab_from_two.png>
-<img/taxicab_from_three.png, id=89, 504.88625pt x 506.89375pt>
+<img/taxicab_from_three.png, id=122, 504.88625pt x 506.89375pt>
 File: img/taxicab_from_three.png Graphic file (type png)
 
-<use img/taxicab_from_three.png> [13 <./img/manhattan.png> <./img/mannheim.png 
-(PNG copy)>] [14 <./img/euclidean_circle.png> <./img/taxicab_circle.png>]
-Overfull \hbox (30.0pt too wide) in paragraph at lines 549--584
+<use img/taxicab_from_three.png> [21 <./img/euclidean_circle.png> <./img/taxica
+b_circle.png>] [22 <./img/taxicab_from_two.png> <./img/taxicab_from_three.png>]
+
+Overfull \hbox (30.0pt too wide) in paragraph at lines 827--862
 $[]$ 
  []
 
-[15 <./img/taxicab_from_two.png> <./img/taxicab_from_three.png>]
-<img/taxicab_minidisk.png, id=107, 606.265pt x 602.25pt>
+<img/taxicab_minidisk.png, id=134, 606.265pt x 602.25pt>
 File: img/taxicab_minidisk.png Graphic file (type png)
 
-<use img/taxicab_minidisk.png> [16] [17 <./img/taxicab_minidisk.png>] [18
+<use img/taxicab_minidisk.png> [23] [24 <./img/taxicab_minidisk.png>]
+Overfull \hbox (30.0pt too wide) in paragraph at lines 894--911
+$[]$ 
+ []
 
-]
-<img/collected_edges.png, id=118, 231.85506pt x 232.12372pt>
+[25
+
+] <img/heuristic_density.png, id=146, 114.34402pt x 114.34402pt>
+File: img/heuristic_density.png Graphic file (type png)
+
+<use img/heuristic_density.png>
+<img/collected_edges.png, id=147, 231.85506pt x 232.12372pt>
 File: img/collected_edges.png Graphic file (type png)
 
 <use img/collected_edges.png>
@@ -1477,14 +1547,15 @@ File: img/collected_edges.png Graphic file (type png)
 
 <use img/collected_edges.png>
 File: img/collected_edges.png Graphic file (type png)
- <use img/collected_edges.png> [19
+ <use img/collected_edges.png> [26 <./img/heuristic_density.png>] [27 <./img/co
+llected_edges.png>] [28
 
- <./img/collected_edges.png>]
+]
 
 Package biblatex Warning: Deprecated option.
-(biblatex)                Ignoring 'maxnames' on input line 643.
+(biblatex)                Ignoring 'maxnames' on input line 1019.
 
-[20] (./paper.aux)
+[29] (./paper.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1493,13 +1564,13 @@ Package logreq Info: Writing requests to 'paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21314 strings out of 494886
- 385769 string characters out of 1177106
- 592395 words of memory out of 3000000
- 24066 multiletter control sequences out of 15000+50000
- 68012 words of font info for 62 fonts, out of 3000000 for 9000
+ 23131 strings out of 494886
+ 409585 string characters out of 1177106
+ 624356 words of memory out of 3000000
+ 25855 multiletter control sequences out of 15000+50000
+ 76214 words of font info for 72 fonts, out of 3000000 for 9000
  85 hyphenation exceptions out of 8191
- 56i,23n,56p,790b,1337s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,23n,56p,833b,1691s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
 /texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
@@ -1509,15 +1580,18 @@ pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts
 /type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/typ
 e1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/
-share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf
-/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb><
-/usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on paper.pdf (20 pages, 1090374 bytes).
+share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/
+public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf-texlive/fonts/type
+1/public/amsfonts/symbols/msbm10.pfb>
+Output written on paper.pdf (29 pages, 1279028 bytes).
 PDF statistics:
- 190 PDF objects out of 1000 (max. 8388607)
+ 237 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 118 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 128 words of extra memory for PDF output out of 10000 (max. 10000000)
 

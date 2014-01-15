@@ -19,7 +19,27 @@
 \usepackage[ruled,german]{algorithm2e}
 \usepackage{textcomp}
 \usepackage{tikz}
+\usepackage{listings}
 \usepackage{url}
+
+\lstset{
+  language=C,
+  tabsize=4,
+  captionpos=b,
+  numbers=left,
+  commentstyle=\color{green},
+  backgroundcolor=\color{white},
+  numberstyle=\color{gray},
+  keywordstyle=\color{blue} \textbf,%otherkeywords={xdata},
+  keywords=[2]{xdata},
+  keywordstyle=[2]\color{red}\textbf,
+  identifierstyle=\color{black},
+  stringstyle=\color{red}\ttfamily,
+  basicstyle = \ttfamily \color{black} \footnotesize,
+  showstringspaces=false ,
+  moredelim=[is][\color{yellow}]{|}{|},
+}
+
 \usetikzlibrary{shapes}
 
 \newtheorem{satz}{Satz} 
@@ -35,66 +55,122 @@
 \AtBeginBibliography{\renewcommand*{\mkbibnamelast }[1]{\textbf{#1}}}
 \AtBeginBibliography{\renewcommand*{\mkbibnamefirst }[1]{\textbf{#1}}}
 
+\title{Manganernte auf dem pazifischen Meeresgrund}
+\date{\today}
+\author{Jan-Christoph Klie \hspace{2cm} Stephan Alaniz Kupsch \\
+\url{jck@mrklie.com} \hspace{2cm} \url{stephan.alaniz@gmail.com} \\
+DHBW Mannheim }
+
 
 \begin{document}
 % Title page
+
+\maketitle
+\tableofcontents 
+\newpage
 
 % ############################################
 \section{Problembeschreibung und -analyse}
 
 \subsection{Problembeschreibung}
 
-Die Hauptschwierigkeit des Problems liegt daran, dass es sich eigentlich
-um eine Kombination aus (mindestens) zwei Problemen handelen. Jedes Problem
-für sich ist gut beschrieben und gelöst worden, doch für alles gleichzeitig
-nicht.
+Aufgabe war es, Roboter zu simulieren, die allein auf sich gestellt auf dem
+pazifischen Meeresboden Mangan sammeln und sich nach einer gewissen Zeit 
+an einem gemeinsamen Punkt treffen.
 
-\begin{enumerate}
-\item Graph coloring - Visit stuff
-\item Evacuate 
-\end{enumerate}
+Im weiteren wird ein kurzer Überblick über mögliche Lösungen gegeben, welche
+warum implementiert wurde, und wie die Theorie dahinter aussieht. Schließlich
+wird noch diskutiert, wie gut der gewählte Ansatz schließlich war und wie es
+mit mehr Zeit (noch) besser gemacht werden kann.
 
 \subsection{Annahmen über das Problem}
 
+Es wurden Annahmen über die Eigenschaften des roblem  gemacht, wo es keine
+Beschreibung/Limitierung gab. Diese sind im Folgenden:
+
 \begin{itemize}
 \item Roboter sind punktförmig
-\item Können in der Bewegung saugen
-\item Keine Beschränkung, wie viele Roboter sich in einem Punkt befinden
+\item Roboter können in der Bewegung saugen
+\item Es gibt keine Beschränkung, wie viele Roboter sich in einem Punkt befinden
 \item Kommunikation ist instantan und ohne Berechnungszeit (Senden wie Empfangen)
-\item Kommunikation zwischen Robotern kann alles sein
+\item Art der Kommunikation zwischen Robotern ist unbeschränkt (es kann alles übertragen werden)
 \item Roboter haben unbeschränkt viel Speicher
 \end{itemize}
 
 \subsection{Disclaimer}
 
-Einschränkungen nicht simuliert, aber deren Auswirkungen
+Die Einschränkungen, die mit dem Problem kommen, wurden nicht simuliert. Nur deren
+Auswirkungen wurde berücksichtigt. 
 
 % ############################################
 \clearpage
-\section{Vorgehensmodell}
+\section{Vorgehensmodell und Entwicklung}
 
-\begin{itemize}
-\item Keep it simple
-\item Start with working prototype before you do srs stuff
-\item Getrennt marschieren, zusammen kämpfen (self contained subprograms, assemble at the end, bottom to top)
-\item ipython notebook
-\item using a lib before reinventing the wheel
-\item Optimize when needed, first correct and working, then fast
-\item 90 \% thinking, 10 \% coding
-\item Abstract away decisions not made or which might change (geometry, polygon, agent)
-\end{itemize}
+Die Entwicklung hat sich in zwei große Phasen geteilt. Beide hatten ihr eigenens Vorgehensmodell,
+welche im Folgenden beschrieben werden:
+
+\subsection{Ideenfindung}
+
+Die erste Phase hat damit begonnen, mögliche Kanditaten für eine Lösung zu finden. Die Früchte dessen
+sind in Kapitel \ref{sec:probrems} zu finden. Wichtig war, sich nicht auf einen Ansatz zu versteifen und
+sofort zu implementieren, sonder Für und Wider abzuwägen. Im Laufe dessen sind immer neue Ideen gekommen,
+viele sind verworfen worden. Schließlich hat man sich für einen Ansatz entschieden, der möglichst schnell
+ein Ergebnis liefern sollte und eine Grundlage für alle späteren Entwicklungen bildet. Als sich dann
+herauskristallisiert hat, welcher Ansatz am geeignetsten war, wurde schließlich Phase Zwei eingeläutet,
+die Entwicklung an sich.
 
 \subsection{Design-Ziele}
 
+Bevor jedoch implementiert wurde, wurden einige Richtlinien und Ziele definiert, wie genau entwickelt werden
+soll. Diese werden im folgenden beschrieben:
+
+\begin{description}
+\item[Keep it simple] \hfill \\ Die Lösung sollte so einfach wie möglich gehalten sein. So wenig Abstraktion wie möglich, so viel wie nötig. Nichts implementieren, was nicht benötigt wird (z.B. Interfaces für womöglich benötigte Komponenten)
+\item[Rapid Prototyping] \hfill \\ Lieber schnell einen Prototypen schreiben und gucken, ob es überhaupt funktionieren kann. Im Laufe
+dieser Arbeit sind so vier oder fünf lauffähige Lösungen entstanden, und nur die letzte wurde so bereinigt und optimiert. Ziel
+war, Zeit zu sparen, was auch erreicht wurde.
+\item[Getrennt marschieren - vereint schlagen] \hfill \\ Es wurde versucht, Komponenten möglichst unabhängig zu entwickeln. Da viele 
+der verwendeten Algorithmen ohne weiteres Stand-Alone getestet und implementiert werden konnten, wurde erst ganz am Schluss
+integriert. So konnte ohne Probleme Schnittstellen und Datenstruktueren vollkommen geändert werden, ohne Änderungen an anderer
+Stelle nach sich zu ziehen.
+\item[Not reinventing the square wheel] \hfill \\ Fast alles an Standardbibliotheken wurde bereits entwickelt, und zwar besser, als man es
+selbst könnte. Daher wurde lieber und ohne Zögern auf externe Module gesetzt.
+\item[Optimize last] \hfill \\ Da viel Code geschrieben wird, der am Ende nicht mehr benutzt wird, wurde erst in der letzten Iteration
+auf Performance geachtet. 
+\item[90 \% thinking, 10 \% coding] \hfill \\ Die Zeit, die mit Programmierung an sich verbraucht wurde, hat nur einen geringen Anteil an
+der Gesamtzeit. Daher wurde viel mehr Wert auf gute Ideen zum Anfang hin gelegt.
+\item[Wenn unklar, abstrahiere] \hfill \\ Viele Detailentscheidungen wurden erst spät getroffen oder laufend geändert. Diese wurden so
+implementiert, dass sie leicht austauschbar sind. Beispiel dafür ist die Modellierung des Meeresbodens. Im letzten Schritt
+wurden diese Abstraktionen dann entfernt.
+\end{description}
+
 \subsection{Nicht-Ziele}
 
-Schöne UI, nur usable
+Es wurde keinen Wert darauf gelegt, eine ästethisch schöne Benutzeroberfläche zu entwickeln. Ziel war nur, dass sie Benutzerfreundlich ist.
+
+\subsection{Entscheidungen}
+
+Einige wichtige Entscheidungen wurden schon in der Beschreibung der Implementierung aufgezählt. Im Folgenden werden nun
+noch
+
+\begin{description}
+\item[Python] \hfill \\ Python als Programmiersprache hat viele Vorteile. Zum einen ist es extrem viel einfacher, Protoypen zu schreiben,
+da man im Allgemeinen viel weniger Code für Funktionalität braucht wie für vergleichbare andere Sprachen. Außerdem kommt Python 
+``batteries included'', d.h. es gibt sehr viele externe Pakete, die sich einfach installieren lassen. Schließlich kann Python
+als Duct Tape für nativen Code eingesetzt werden, was sich im Laufe des Projektes als äußerst praktisch erwiesen hat.
+\item[Matplotlib] \hfill \\ Matplotlib ist ein Paket, welches für das Plotten von Daten zuständig ist. Außerdem kann es diese auch animieren. Es ist kein vergleichbares Paket in anderen Programmiersprachen bekannt, was so vielseitig visualisieren kann, und somit ein weiterer Grund für Python als Grundlage 
+\item[Numpy] \hfill \\ Numpy bietet schnelle, native Datenstrukturen für N-Dimensionale Arrays an. Es ist Grundlage für die gespeicherten Daten. Diese Arrays können von Python aus an C-und-C++-Code übergeben werden, wo dann performant Number Crunching betrieben werden kann. Außerdem ist es gut für Rechenoperationen auf Matrizen, vergleichbar da mit MATLAB.
+\item[Ipython notebook] \hfill \\ Zum Prototyping wurde eine Webanwendung benutzt, Ipython notebook genannt. Dort kann im Browser Python geschrieben werden und Matplotlib-Graphiken angezeigt werden. Somit kann das Arbeitsergebnis einfach geteilt werden. Beispiel dafür ist eine statische Version aus den Anfängen des Projektes: \url{http://goo.gl/z6B1N8}
+\item[Cython] \hfill \\ Cython ist ein Python-Modul, welches eine Schnittstelle zwischen Python und C/C++ bietet. So ist die Logik des Erntens in C++ geschrieben (Laufzeit ist so von 200s auf unter 10s gefallen), und wird nur von Python aufgerufen.
+\item[Git+Github] \hfill \\ Unverzichtbar mittlerweile ist die Versionsverwaltung von Sourcecode, vor allem, wenn mit mehreren Entwicklern zusammengearbeitet wird. 
+\end{description}
 
 % ############################################
 \clearpage
 \section{Problembetrachtung}
+\label{sec:probrems}
 
-Das Problem kann unter vielen verschiedenen betrachtet 
+Das Problem kann unter vielen verschiedenen Blickwinkeln betrachtet 
 werden. Je nachdem, in welcher Domäne der Informatik
 es eingeordnet wird, gibt es unterschiedliche Lösungsansätze.
 
@@ -104,15 +180,201 @@ für welche schließlich ausgewählt wurden.
 
 \subsection{Graphenproblem}
 
-Suche
+\subsubsection{Graphendefinition}
 
-\subsection{Optimierungsproblem}
+Aus der zugrunde liegenden Umgebung aus quadratischen Zellen 
+(beschrieben in Kapitel 4 [ref?]) lässt sich ein Graph erstellen, 
+bei dem jeder Knoten einer Zelle entspricht und über eine Kante zu 
+jeder Nachbarzelle verbunden ist. Da sich ein Roboter in jede 
+beliebige Richtung bewegen kann, handelt es sich dabei um einen 
+bidirektionalen Graphen. Kanten zwischen zwei Knoten besitzen 
+eine Gewichtung, je nachdem, ob ein Feld bereits besucht wurde oder 
+nicht. Zu einem Knoten, der bereits besucht wurde, kann somit jede 
+auf ihn gerichtete Kante die Gewichtung 0 besitzen. Ein noch nicht 
+besuchter Knoten hat dahingegen Kanten mit einer Gewichtung von 1 
+die auf ihn zeigen.
+
+\subsubsection{Problembeschreibung}
+
+Es wird angenommen, dass die Position von einem Roboter und die 
+Position des Ziels bekannt sind. Eine relative Position ist hier 
+vollkommen ausreichend. Nun soll der Pfad gefunden werden, der 
+in einer vorgegebenen Anzahl an Schritten (gleichzusetzen mit der 
+vorhandenen Missionszeit) zum Ziel führt und dabei so viele 
+unbesuchten Knoten wie möglich durchquert. Der Einfachheit halber
+wird für jeden Roboter sequentiell der beste Weg gesucht.
+
+\subsubsection{Lösungsansätze}
+
+\paragraph{Depth Limited Search}
+
+Depth Limited Search (beschränkte Tiefensuche) ist ein Suchalgorithmus, 
+bei dem Baum oder ein Graph erst in der Tiefe und anschließend in der 
+Breite durchsucht wird. Zusätzlich besitzt der Algorithmus eine feste 
+Tiefe. Das heißt, dass der Algorithmus alle Pfade durchsucht, die die 
+maximale Tiefe nicht überschreitet. Von jedem Node kann so bei einem 
+Schritt zu einem der vier Nachbarn gegangen werden. Der folgende Pseudocode
+beschreibt, wie Depth Limited Search funktioniert.
+
+\begin{lstlisting}[frame=single, language=C]  % Start your code-block
+
+DLS(node, goal, depth) {
+  if ( depth >= 0 ) {
+    if ( node == goal )
+      return node
+
+    for each child in expand(node)
+      DLS(child, goal, depth-1)
+  }
+}
+\end{lstlisting}
+
+Bezogen auf einen Roboter wird die aktuelle Position (\texttt{node}) , das Ziel
+(\texttt{goal}) und die Missionszeit (\texttt{depth}) dem Algorithmus übergeben. Da Depth
+Limited Search ursprünglich terminiert, sobald das Ziel gefunden wurde, muss der
+Algorithmus dahingehend modifiziert werden, sodass er alle möglichen Pfade
+durchsucht und sich den besten merkt.
+
+\begin{lstlisting}[frame=single, language=C]
+DLS(node, goal, depth, path_so_far) {
+  if ( depth >= 0 ) {
+    if ( node == goal )
+      path_so_far.append(node)
+      check_for_path_score(path_so_far)
+      path_so_far.pop()
+
+    for each child in expand(node)
+      path_so_far.append(node)
+      DLS(child, goal, depth-1, path_so_far)
+      path_so_far.pop()
+  }
+}
+\end{lstlisting}
+
+Die modifizierte DLS durchsucht nun alle möglichen Pfade,
+berechnet in \texttt{check\_for\_path\_score()}, wie viele unbesuchten Knoten durchlaufen
+werden und speichert zugleich den besten Pfad, den er findet.
+
+Der Hauptvorteil von Depth Limited Search ist, dass der Algorithmus definitiv den
+best möglichen Pfad zum Ziel im gegebenen Szenario findet. Der entscheidene
+Nachteil liegt allerdings in der Komplexität des Algorithmus. Diese ist geschätzt 
+$\mathcal O(b^d)$.
+
+Da die Rechenkomplexität exponentiell ist, wird schnell ein Schwellenwert
+erreicht, bei der die Berechnung aller Pfade zum Ziel schlicht zu lange dauert.
+Es ist möglich die Rechenkomplexität etwas zu verringen, indem nur die Pfade
+durchsucht werden, von denen das Ziel in der restlichen Zeit auch noch
+erreichbar ist. Dennoch bleibt es bei der theoretischen Grundkomplexität und
+verhilft gerade bei langen Pfaden (höhere Missionzeit) zu keinem entscheidenen
+Zeitgewinn.
+
+Depth Limited Search wurde implementiert, allerdings auch schnell wieder
+verworfen, auf Grund der fehlenden Performance bei längeren Pfaden.
+
+\paragraph{Bellman Ford}
+
+Der Bellman Ford Algorithmus ist ein Suchalgorithmus der Graphtheorie um den
+kürzesten Weg zu berechnen. Eine Besonderheit des Algorithmus ist, dass er auch
+mit negativen Kantengewichtungen umgehen kann und erkennt, sobald es einen
+negativ gewichteten Zyklus gibt. Ein solcher Zyklus entsteht, indem sich in
+einem Pfad ein Kreis befindet, bei dem sich die Pfadkosten (Summe der
+Kantengewichtungen eines Pfades) immer weiter senken. Ist ein solcher Zyklus
+vorhanden, gibt es keinen kürzesten Pfad, da die Pfadkosten beliebig klein
+werden können.
+
+Im folgenden ist der Bellman Ford Algorithmus mit Pseudo Code beschrieben.
+Die Idee des Algorithmus besteht darin in jeden Knoten zu speichern mit welcher
+Pfadlänge der Knoten erreicht werden kann und welcher Vorgänger zurückverfolgt
+werden muss, um dem Pfad mit der gespeicherten Länge zu erhalten. Dabei wird
+iterativ immer nach dem kürzesten Pfad zu jedem Knoten gesucht und die Werte
+aktualisiert.
+
+Konkret wird im ersten Schritt der Ausgangsknoten mit der Pfadlänge 0
+initialisiert und alle anderen Knoten bekommen eine undefinierte oder unendliche
+Länge zugeordnet.
+
+Im zweiten Schritt wird über alle Kanten iteriert und überprüft, ob über eine
+Kante ein Knoten erreicht werden kann, sodass der Pfad, der über den Ursprung
+der Kante führt, kürzer ist als die bisherig gespeicherte Pfadlänge im
+Zielknoten. In diesem Fall wird die Pfadlänge angepasst und der Vorhänger neu
+gesetzt. Dies geschiet solange bis sich die Informationen in den Knoten nicht
+mehr ändern (oder maximal so oft wie es Knoten gibt).
+Schließlich wird im dritten Schritt geprüft, ob ein negativ gewichteter Zyklus
+vorhanden ist.
+
+\begin{lstlisting}[frame=single, language=C]
+BellmanFord(list vertices, list edges, vertex source)
+   // This implementation takes in a graph, represented as lists of vertices and edges,
+   // and fills two arrays (distance and predecessor) with shortest-path information
+
+   // Step 1: initialize graph
+   for each vertex v in vertices:
+       if v is source then distance[v] := 0
+       else distance[v] := infinity
+       predecessor[v] := null
+
+   // Step 2: relax edges repeatedly
+   for i from 1 to size(vertices)-1:
+       for each edge (u, v) with weight w in edges:
+           if distance[u] + w < distance[v]:
+               distance[v] := distance[u] + w
+               predecessor[v] := u
+
+   // Step 3: check for negative-weight cycles
+   for each edge (u, v) with weight w in edges:
+       if distance[u] + w < distance[v]:
+           error "Graph contains a negative-weight cycle"
+\end{lstlisting}
+
+\begin{figure}
+  \includegraphics[width=.8\textwidth]{img/SSSP_BellmanFord.png}
+  \caption{Bellman Ford Algorithmus, Iterationen aus Schritt 2}
+\end{figure}
+
+Bezogen auf einen Roboter, der den Pfad zum Ziel sucht, der am höchsten
+gewichtet ist, kann man einfach den Algorithmus dahingehend anpassen, dass er
+nach der längsten Pfadlänge sucht. In der Praxis ergibt such allerdings das
+Problem, dass Zyklen kaum zu vermeiden sind und Roboter ihre eigenen Pfade
+niemals kreuzen dürfen. In beiden Fällen gelangt der Algorithmus nicht zu einer
+Lösung. Daher wurde dieser Algorithmus zwar implementiert, jedoch schließlich
+auch wieder verworfen.
 
 \subsection{Maschinenlernen}
 
+Ähnlich wie bei der künstlichen Intelligenz, wird beim Machine Learning die
+Umgebung als Input aufgenommen und daraus eine Output, die Entscheidung,
+erzeugt. Der wesentliche Unterschied ist, dass beim Machine Learning der Agent
+durch Trainieren und das damit verbundene Lernen seine Entscheidungen fällt. Die
+Entscheidung wird mit dem kontinuierlichen Training besser.
+
+Machine Learning lässt sich in viele verschiedene Disziplinen unterscheiden. Ein
+konkreter Ansatz ist das so genannte Reinforcement Learning mit einem Artificial
+Neural Network. Reinforcement Learning beschreibt das Lernverhalten, bei dem der
+Agent Feedback zu seinen Entscheidungen bekommt und daraus lernen kann. Z.B.
+lassen sich die Entscheidungen des Agenten durch die konkrete Anzahl an
+geerntetem Mangan messen und dieses Ergebnis als Feedback geben. Der Agent nutzt
+nun ein Artificial Neural Network und passt dieses durch das gegebene Feedback
+an. Das Artificial Neural Network ist, angelehnt an das menschliche Gehirn, ein
+Netzwerk von Neuroen die ein Input verarbeiten können. Komplexe verknüpfungen
+zwischen den Neuronen werden so angepasst, dass Inputs ein gewünschtes Ergebnis
+liefern.
+
+Wichtig ist hierbei auch die Wahl des Inputs. Es ist möglich den kompletten von
+Roboter erfassbaren Bereich als Input zu überliefern. Dies würde jede Zelle im
+Umkreis von 200 Metern, sowie deren Zustand beinhalten (geerntet, ungeerntet,
+anderer Roboter). Zusätzlich ist es sicher hilfreich zu erfassen in welcher
+Richtung sich das Ziel bzw. der Mittelpunkt aller Roboter befindet.
+
+Es war geplant mithilfe der Machine Learning Library PyBrain \url{www.pybrain.org}
+ein solches System aufzubauen. Zeitliche Einschränkungen haben schließlich dazu
+geführt, diese Idee nicht weiter auszuführen.
+
 \subsection{Künstliche Intelligenz}
 
-
+Das Problem kann auch so betrachtet werden, dass Agenten genannte Akteure
+nach jedem Zug entscheiden, wie der nächste Zug aussehen soll. Worauf diese Entscheidung
+fußt, wird in der Implementierung beschrieben, da diese Lösungsidee tatsächlich
+und schlussendlich realisiert wurde.
 
 % ############################################
 \clearpage
@@ -203,9 +465,9 @@ Bereiche, die nicht (unmittelbar) gesaugt werden. Berechnen lässt
 sich der Verlust $Q$ über das Verhältnis von der Fläche des Innenkreises 
 des Polygons zum Flächeninhalt des Polygons selbst:
 
-\begin{equation}
+\begin{equation*}
   Q = \frac{A_\text{Kreis} }{A_\text{Polygon}}
-\end{equation}
+\end{equation*}
 
 \begin{figure}[!ht]
   \centering
@@ -233,9 +495,6 @@ Die folgende Tabelle zeigt das Verhälntis von den drei Polygonen.
 
 Somit würde zum Beispiel bei Modellierung durch Zellen in Form von regelmäßigen Dreiecken ein Roboter
 nur 60 \% des Mangans darin einsammeln. Je größer $n$, desto besser wird die unmittelbare Ausbeute.
-
-
-Die genaue Herleitung kann unter HIER\footnote{HIER} nachvollzogen werden.
 
 \subsection{Entscheidung}
 
@@ -320,7 +579,7 @@ Methode könnte das Ergebnis eventuell verfälschen.
 \begin{algorithm}[H]
     \caption{Platzierung von Robotern}
     \KwData{Die Anzahl von Robotern $n$, die platziert werden sollen}
-    \KwResult{Menge von Punkten, sodass (\ref{eq:robot_constraint}) erfüllt wird. Punkte werden zufällig erzeugt.}
+    \KwResult{Menge von Punkten $R$, sodass (\ref{eq:robot_constraint}) erfüllt wird. Punkte werden zufällig erzeugt.}
     \BlankLine
     \texttt{R} \textleftarrow \{ generateFirstPoint() \}\;
     \For{$i \leftarrow 1$ \KwTo $n$} {
@@ -332,8 +591,27 @@ Methode könnte das Ergebnis eventuell verfälschen.
       R $\leftarrow R\cup\{p\}$\;
     }
     \Return{$R$}
-\end{algorithm}    
+\end{algorithm}  
 
+Im Laufe der Zeit hat sich dieser Algorithmus als extrem langsam herausgestellt, und eine einfachere Lösung wurde gewählt (siehe ``Platzierung von Robotern II'').  
+
+\begin{algorithm}[H]
+    \caption{Platzierung von Robotern II}  
+    \KwData{Die Anzahl von Robotern $n$, die platziert werden sollen}
+    \KwResult{Menge von Punkten $R$, sodass (\ref{eq:robot_constraint}) erfüllt wird. Punkte werden zufällig erzeugt.}
+    \BlankLine
+    \texttt{R} \textleftarrow \{ generateFirstPoint() \}\;   
+    \For{$i \leftarrow 1$ \KwTo $n$} {
+      \texttt{\subs{min}{x}, \subs{min}{y}, \subs{max}{x}, \subs{max}{y}} \textleftarrow getExtrema(R)\;
+      pivot \textleftarrow getRandomElement(data)\;
+      \Repeat{ d(p, pivot) $\le 200$}{
+      p \textleftarrow generatePoint(\texttt{\subs{min}{x}, \subs{min}{y}, \subs{max}{x}, \subs{max}{y}})\;
+      }
+      R $\leftarrow R\cup\{p\}$\;
+    }
+    \Return{$R$}
+
+\end{algorithm}  
 %#
 \subsection{Missionsdauer}
 
@@ -508,33 +786,33 @@ enthält. Da es nicht eindeutig definiert wird, reicht eine einzige Lösung für
     Ursprung herum gedreht, dann das Quadrat berechnet, die so enstandende Lösung schließlich zurückgedreht.
     \item Rotiere $X, Y$ \unit[45]{\textdegree} um den Ursprung und nenne die so entstehenden Punkte $P, Q$.
     \item Offensichtlich ist nun die Seitenlänge $s$ des minimalen Quadrates gegeben durch
-    \begin{equation}
+    \begin{equation*}
     s = \max\{|P_x - Q_x|, |P_y - Q_y|\}
-    \end{equation}
+    \end{equation*}
     \item Um eine Lösung zu finden, wähle die unterste linke Ecke als Ausgangspunkt und nenne sie $A$.
-    \begin{equation}
+    \begin{equation*}
     \begin{cases}
     A_x = \min\{P_x,Q_x\}\\
     A_y = \min\{P_y,Q_y\}
     \end{cases}
-    \end{equation}
+    \end{equation*}
     \item Der rotierte Mittelpunkt $M'$ ist somit gegeben durch
-    \begin{equation}
+    \begin{equation*}
     \begin{cases}
     M'_x = A_x + \frac{s}{2}\\
     M'_y = A_y + \frac{s}{2}
     \end{cases}
-    \end{equation}
+    \end{equation*}
     \item Rotiere $M'$ um \unit[-45]{\textdegree} um den Ursprung und nenne den so entstehenden Punkt $M$.
     \item Der Radius $r$ ist gegeben durch 
-    \begin{equation}
+    \begin{equation*}
     r = \sqrt{A_x - M'_x) ^ 2 + (A_y - M'_y) ^ 2 }
-    \end{equation}
+    \end{equation*}
     \end{enumerate}
     \Return{$r$, $M$}
 \end{algorithm} 
 
-\begin{figure}[!ht]
+\begin{figure}[htb]
   \centering
   \subfloat[][Zwei Punkte]{\includegraphics[width=.45\textwidth]{img/taxicab_from_two.png}}\qquad
   \subfloat[][Drei Punkte]{\includegraphics[width=.45\textwidth]{img/taxicab_from_three.png}}\qquad
@@ -557,28 +835,28 @@ Finde das kleinste Quadrat, welches um \unit[45]{\textdegree} gedreht ist, welch
     Ursprung herum gedreht, dann das Quadrat berechnet, die so enstandende Lösung schließlich zurückgedreht.
     \item Rotiere $X, Y, Z$ \unit[45]{\textdegree} um den Ursprung und nenne die so entstehenden Punkte $P, Q, R$.
     \item Offensichtlich ist nun die Seitenlänge $s$ des minimalen Quadrates gegeben durch
-    \begin{equation}
+    \begin{equation*}
     s = \max\{|P_x-Q_x|,|P_x-R_x|,|Q_x-R_x|,|P_y-Q_y|,|P_y-R_y|,|Q_y-R_y|\}
-    \end{equation}
+    \end{equation*}
     \item Um eine Lösung zu finden, wähle die unterste linke Ecke als Ausgangspunkt und nenne sie $A$.
-    \begin{equation}
+    \begin{equation*}
     \begin{cases}
     A_x = \min\{P_x,Q_x,R_x\}\\
     A_y = \min\{P_y,Q_y,R_y\}
     \end{cases}
-    \end{equation}
+    \end{equation*}
     \item Der rotierte Mittelpunkt $M'$ ist somit gegeben durch
-    \begin{equation}
+    \begin{equation*}
     \begin{cases}
     M'_x = A_x + \frac{s}{2}\\
     M'_y = A_y + \frac{s}{2}
     \end{cases}
-    \end{equation}
+    \end{equation*}
     \item Rotiere $M'$ um \unit[-45]{\textdegree} um den Ursprung und nenne den so entstehenden Punkt $M$.
     \item Der Radius $r$ ist gegeben durch 
-    \begin{equation}
+    \begin{equation*}
     r = \sqrt{A_x - M'_x) ^ 2 + (A_y - M'_y) ^ 2 }
-    \end{equation}
+    \end{equation*}
     \end{enumerate}
     \Return{$r$, $M$}
 \end{algorithm}
@@ -599,24 +877,91 @@ Interessanterweise funktioniert \texttt{minidisk} auch mit Taxicab-Kreisen, wenn
 \end{figure}
 
 %#
-\section{Zeitbeschränkung}
+\subsection{Zeitbeschränkung}
+
+Das Einhalten Zeitbeschränkung ist nun trivial. Da es einen festen Treffpunkt gibt, sind nur Bewegungen in Zellen erlaubt, die einen 
+Abstand von gleich oder weniger als dem Wert der verbliebenen Schritten haben. Mit jedem neuen Schritt wird dieser Kreis
+um den Treffpunkt kleiner, und die Roboter treffen sich zwangsläufig in einem Punkt. Ein Schritt hier ist vollzogen, wenn alle Roboter ihren Zug gemacht haben (Bewegung in benachbarte Zelle oder NOP).
 
 % ############################################
 \clearpage
 \section{Implementierung}
 
+Die Implementierung beruht auf der Modellierung der Umgebung als Gitter von quadratischen Zellen. Zunächst wird, wie zuvor beschrieben, Missionsdauer und Ziel bestimmt. Falls mit der doppelten Missionsdauer gerechnet werden soll, muss \texttt{steps} einfach verdoppelt werden. In jedem Schritt werden die Roboter nacheinander bewegt. Wichtig ist hier, das in-place gearbeitet wird, damit für jeden Roboter die Invariante aus (\ref{eq:robot_constraint}) gilt. Ein Roboter macht einen Schritt und guckt auf die Positionen der anderen Roboter und macht dann seinen Zug. Der nächste Roboter betrachtet dann die neue Position des zuvor berechneten Roboters. Da bei einem Zug beachtet wird, dass er legal sein muss (kann Ziel erreichen und Roboter in der Nähe), bleibt diese Invariante auch invariant.
 
-% ############################################
-\clearpage
-\section{Diskussion}
+Die eigentliche Logik ist in der \texttt{agent}-Funktion. Diese aktualisiert den Wert des gesammelten Mangans und der gelaufenen Strecke. Viel wichtiger ist aber, dass dort entschieden wird, ob und in welche Zelle sich ein Roboter bewegt.
 
-\subsection{Performance}
+\begin{algorithm}[H]
+    \caption{Mangan Harvest}  
+    \KwData{Menge von Robotern $R$}
+    \KwResult{}
+    \BlankLine
+    circle \textleftarrow  minidisk(R)\;  
+    steps \textleftarrow  radius(circle)\;
+    goal \textleftarrow center(circle)\; 
+ 
+    \For{$t \leftarrow 1$ \KwTo steps} {
+      timeleft \textleftarrow steps - t;
+      \For{$n \leftarrow 1$ \KwTo $|R|$} {
+        agent(n, timeleft);
+      }
+    }
+    \Return{$R$}
 
-\subsection{Fehlerrechnung}
+\end{algorithm} 
 
-\subsubsection{Abweichung vom Optimum}
+\subsection{Logik}
 
-\subsubsection{Fehler durch Modellierung}
+Jeder Roboter soll eigens mit seinen Sensoren seine Umgebung erfassen und daraus
+eine rationale Entscheidung treffen. Dabei kann er andere Roboter sowie
+geerntete und ungeerntere Felder in einem Umkreis von 200 Metern erfassen. Eine
+Entscheidung beinhaltet den nächsten Zug in eine der benachbarten quadratischen
+Zellen, sodass jeder Roboter bis zu 4 Auswahlmöglichkeiten pro Zug besitzt.
+
+\subsubsection{Heuristic Agent}
+Der verfolgte Lösungsansatz eines Heuristic Agent lässt sich in drei Heuristiken 
+gliedern. Eine Heuristik hier ist etwas wie eine Daumenregel, eine Entscheidungshilfe,
+von der man ausgeht, dass sie gute Ergebnisse liefert.
+
+\begin{enumerate}
+\item Von einen Set aller benachbarten Zellen, die besucht werden können, filtere
+jene Zellen heraus, die noch nicht geerntet wurden. Falls alle Zellen bereits
+geerntet sind, behalte alle Zellen im Set.
+\item Falls mehr als eine Zelle zur Auswahl steht, wähle jene Zellen, bei der die
+Richtung in die sich bewegt wird eine höhere Dichte and ungeernteten Zellen
+aufweist. Dazu wird ein quadratisches Feld von definierbarer größe wie in
+Abbildung [ref] vor dem Roboter auf gebaut und berechnet wie viele ungeerntete
+Zellen in diesem Feld vorhanden sind. Ebenfalls wirkt sich ein anderer Roboter,
+der sich in diesem Feld befindet negativ auf die Gewichtung aus. Schließlich
+werden ein oder mehrere Felder mit der höchsten Dichte an ungeernteten Feldern
+ausgewählt und die dazugehörigen Zellen in die Entscheidungsfindung weiter
+aufgenommen.
+\item Falls mehr als eine Zelle zur Auswahl steht, wähle jene Zelle, die die
+Distanz zu den umstehenden Robotern maximiert. Dazu werden die Zellen gefiltert,
+welche die Distanz zum naheligensten Roboter maximieren. Falls es mehr als eine
+Zelle ist, wird die Distanz zum zweitnähesten Roboter maximiert usw.
+\item Falls mehr als eine Zelle zur Auswahl steht (zu diesem Zeitpunkt eher
+unwahrscheinlich), eine beliebige Zellen aus den Entscheidungsmöglichkeiten.
+\end{enumerate}
+
+\begin{figure}
+\includegraphics[width=.4\textwidth]{img/heuristic_density.png}
+\centering
+\caption{Schritt 2 des Heuristic Agent \\R - Roboter M - Zug, der auf Dichte untersucht wird \\ Roter Bereich - Quadrat der Größe 5, dessen Zellen in die Dichteberechnung einfließen}
+\end{figure}
+
+\subsection{Collected}
+
+Da auf Genauigkeit Wert gelegt wird, wird nicht nur berechnet, wie viele Zellen ein Roboter besucht hat, um auf die gesammelten Manganmenge zu schließen. Wenn ein Roboter eine Zelle verlässt und in eine Benachbarte wechselt, so überstreicht sein Arbeitsbereich auch die Ecken. Dieser Vorgang ist in Fig. \ref{fig:harvested_edges} dargestellt. 
+
+Die gesammelte Menge an Mangan $M [kg]$  berechnet sich wie folgt:
+
+\begin{equation*}
+M = |Z| \times \frac{\pi}{4} + |E| \times \frac{4-\pi}{16}
+\end{equation*}
+
+wobei $Z$ die Menge an besuchten Zellen ist, und $E$ die Menge an überstrichenen Ecken (keine Duplikate). Hintergrund ist hier, 
+dass der Innenkreis einen Anteil von $\frac{\pi}{4}$ an der Zelle hat, somit jede Ecke $ \frac{1}{4} \times (1- \frac{\pi}{4}) $.
 
 \begin{figure}[!ht]
   \centering
@@ -630,13 +975,44 @@ Interessanterweise funktioniert \texttt{minidisk} auch mit Taxicab-Kreisen, wenn
   \label{fig:harvested_edges}
 \end{figure}
 
-\subsection{Lessons learned/Fehlentscheidungen}
 
-\begin{itemize}
-\item Zu viele Abstraktion, die sich später unnötig herausgetsellt hat (Geometry, Circle)
-\end{itemize}
+% ############################################
+\clearpage
+\section{Diskussion}
 
-\subsection{Ausblick}
+\subsection{Performance}
+
+Die Zeit für Berechnungen ist kaum zu merken; am Längsten dauert noch die Visualisierung. Die einzige Einschränkung, die es der Zahl zu simulierenden Robotern gibt, ist die Zeit, die man warten möchte. 
+
+\subsection{Fehlerrechnung}
+
+\subsubsection{Fehler durch Modellierung}
+
+In der Modellierung selbst gibt es keine Fehler, wie es zum Beispiel durch Annäherung der kreisförmigen Arbeitsbereiche durch Polygone der Fall wäre.
+
+\subsubsection{Abweichung von der Optimalen Lösung}
+
+Die maximale Menge an Mangan $M_max$, die gesammelt werden kann, lässt sich wie folgt berechnen:
+
+\begin{equation*}
+M_max = |R| \times T
+\end{equation*}
+
+wobei T die Missionsdauer ist. Im Folgenden wird für verschiedene Szenarien jeweils die prozentuale Zielereichung aufgezeigt. Diese Dateien entsprechen denen, die abgegeben wurden.
+
+\begin{figure}[h!]
+\centering
+\begin{tabular}{ l|l|l }
+n   & Single &  Double   \\ \hline
+4   & 99.61 & 99.68 \\
+10  & 94.84 & 97.24 \\
+50  & 78.91 & 91.08 \\
+100 & 88.74 & 91.77 \\
+\end{tabular}
+\caption{Erreichung des Optimums in \% \\ für verschiedene Anzahl von Robotern }
+\end{figure}
+
+\newpage
 
 \nocite{*}
 

@@ -180,7 +180,7 @@ class View(object):
 
 	def generate_positions(self):
 		while state.robo_count is None:
-			state.robo_count = tkSimpleDialog.askinteger("Robo count", "How many robots?\n Valid are integers [0,150].\nValues above 100 are not recommended!", minvalue=1, maxvalue=200)
+			state.robo_count = tkSimpleDialog.askinteger("Robo count", "How many robots?\n Valid are integers > 1.\nValues above 100 are not recommended!", minvalue=2)
 		print state.robo_count
 		state.generate_positions()
 		self.on_next("pos_created")
