@@ -190,7 +190,7 @@ class View(object):
 		s = "{}:\nCollected: {} kg \nTraveled: {} m\n"
 		msg = "Simulation has been finished:\n"
 		msg += s.format("Single time", state.collected_single, state.traveled_single)
-		msg += s.format("Double time", state.traveled_double, state.collected_double)
+		msg += s.format("Double time", state.collected_double, state.traveled_double)
 		tkMessageBox.showinfo("Success", msg)
 		self.on_next("simulated")
 
